@@ -1347,10 +1347,10 @@ input[type=submit] {
   line-height: 26px;
   text-align: center;
   border-radius: 13px;
-  box-shadow: 0.487px 3.97px 10px 0px rgba(40, 58, 140, 0.3);
+  box-shadow: 0.487px 3.97px 10px 0px rgba(0, 0, 0, 0.3);
   font-weight: 500;
-  color: #171d1c;
-  background-color: rgba(255, 255, 255, 0.102);
+  color: white;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .slider-nav a:last-child {
   margin-right: 0;
@@ -1363,7 +1363,8 @@ input[type=submit] {
 }
 .slider-nav a.active, .slider-nav a:hover {
   color: #ffffff;
-  background: -webkit-linear-gradient(45deg, rgb(215, 61, 245) 0%, rgb(143, 61, 245) 100%);
+  background: -webkit-linear-gradient(259.96deg, #FFC857 8.93%, #C42325 105.39%);
+
 }
 .slider-nav a.active i, .slider-nav a:hover i {
   color: white;
@@ -2232,24 +2233,14 @@ header {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 @media (min-width: 992px) {
   .banner-section {
-    padding: 270px 0 270px;
+    padding: 270px 0 170px;
   }
 }
 @media (min-width: 1200px) {
   .banner-section {
-    padding: 250px 0 280px;
+    padding: 250px 0 175px;
   }
 }
 
@@ -2267,7 +2258,8 @@ header {
 .banner-content p {
   font-size: 19px;
   line-height: 28px;
-  margin: 0;
+  margin: 0 0 15px 0;
+
 }
 .banner-content .custom-button {
   letter-spacing: 2px;
@@ -2343,7 +2335,7 @@ header {
 }
 @media (min-width: 992px) {
   .banner-section-2 {
-    padding: 200px 0 240px;
+    padding: 200px 0 170px;
   }
 }
 @media (min-width: 1200px) {
@@ -2414,8 +2406,9 @@ header {
 .browse-item {
   display: block;
   border-radius: 10px;
-  box-shadow: -2.034px 6.84px 10px 0px rgba(55, 34, 154, 0.3);
-  padding: 40px 15px;
+  border: 1px solid rgba(228, 30, 38, 1);
+  box-shadow: -2.034px 6.84px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 40px 15px 3px 15px;
   text-align: center;
   text-transform: uppercase;
   color: #171d1c;
@@ -2425,20 +2418,28 @@ header {
   font-weight: 500;
 }
 .browse-item img {
-  height: 88px;
   width: unset !important;
   margin: 0 auto 10px;
+  height: 50px;
 }
 .browse-item span {
+  font-weight: 100;
+  font-size: 12px;
   transition: all 0.4s;
+  color: rgba(228, 30, 38, 1);
 }
 .browse-item:hover, .browse-item.active {
-  color: #ffffff;
-  background: -ms-linear-gradient(88deg, rgb(67, 46, 185) 4%, rgb(110, 72, 211) 58%, rgb(153, 97, 236) 100%);
-  box-shadow: -2.034px 6.84px 10px 0px rgba(56, 34, 154, 0.168);
+  color: white;
+  background: rgba(228, 30, 38, 1);
+  box-shadow: -2.034px 6.84px 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+.browse-item:hover img, .browse-item.active img {
+  filter: brightness(0) invert(1);
 }
 .browse-item:hover .info, .browse-item.active .info {
-  color: #d63384;
+  color: white;
+  font-weight: 600;
 }
 
 .browse-slider-section {
@@ -4829,6 +4830,20 @@ div[class*=auction] .custom-button {
   transform: scale(1.1);
 }
 
+
+.get-start-btn {
+  background-color: rgba(255, 200, 87, 1);
+  border-radius: 50px;
+  padding: 10px 50px;
+  color: black;
+}
+
+.get-start-btn:hover {
+  /* box-shadow: 0px 3px 5px 0px rgba(162, 44, 202, 0.3); */
+  box-shadow: -1.04px 4.891px 20px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-weight: 600;
+}
 
 
 
