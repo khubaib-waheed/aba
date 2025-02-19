@@ -861,7 +861,6 @@
     });
     // PoPuP 
     $('.popup').magnificPopup({
-      disableOn: 700,
       type: 'iframe',
       mainClass: 'mfp-fade',
       removalDelay: 160,
@@ -985,7 +984,6 @@
     });
     //Client Slider
     $('.client-slider').owlCarousel({
-      loop: true,
       responsiveClass: true,
       nav: false,
       dots: false,
