@@ -505,7 +505,7 @@
     margin-bottom: 45px;
     justify-content: space-between;
     @include breakpoint(xl) {
-        margin-bottom: 55px;
+        margin-bottom: 20px;
     }
     .left {
         @extend %flex;
