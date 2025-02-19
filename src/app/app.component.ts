@@ -1,14 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { interval, timeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  // imports: [RouterOutlet],
+  imports: [CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  landingPage: boolean = true;
 
   constructor(private ngZone: NgZone) {}
   date: any;
