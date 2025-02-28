@@ -853,7 +853,7 @@
       });
     }
     // Nice Select
-    $('.select-bar').niceSelect();
+    // $('.select-bar').niceSelect();
     // counter 
     $('.counter').countUp({
       'time': 2500,
@@ -1273,21 +1273,21 @@
   });
 })(jQuery);
 
-/**change customer language dropdown up and down icons */
-const select = document.querySelector(".custom-select");
-const arrow = document.querySelector(".custom-arrow");
+// /**change customer language dropdown up and down icons */
+// const select = document.querySelector(".custom-select");
+// const arrow = document.querySelector(".custom-arrow");
 
-select.addEventListener("focus", () => {
-  arrow.src = "../assets/images/up-arrow.png"; // Change to up arrow
-});
+// select.addEventListener("focus", () => {
+//   arrow.src = "../assets/images/up-arrow.png"; // Change to up arrow
+// });
 
-select.addEventListener("blur", () => {
-  arrow.src = "../assets/images/down-arrow.png"; // Change back to down arrow
-});
+// select.addEventListener("blur", () => {
+//   arrow.src = "../assets/images/down-arrow.png"; // Change back to down arrow
+// });
 
-// Detect when scrolling closes the dropdown
-document.addEventListener("scroll", () => {
-  arrow.src = "../assets/images/down-arrow.png"; // Reset to down arrow
-}, true); // Use capture mode to detect scrolls inside elements
+// // Detect when scrolling closes the dropdown
+// document.addEventListener("scroll", () => {
+//   arrow.src = "../assets/images/down-arrow.png"; // Reset to down arrow
+// }, true); // Use capture mode to detect scrolls inside elements
 
 
