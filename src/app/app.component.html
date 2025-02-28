@@ -249,7 +249,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -292,7 +292,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -335,7 +335,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -399,7 +399,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -442,7 +442,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -485,7 +485,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -652,6 +652,343 @@
 
 
 
+    <!--************************** Bid Detail Page  ******************************-->
+    <ng-container *ngIf="page === 'bid-detail'">
+      
+
+
+    <!--============= Banner Section Starts Here =============-->
+    <section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
+        <!-- <div class="banner-shape d-none d-lg-block">
+            <img src="../assets/css/img/banner-shape.png" alt="css">
+        </div> -->
+    </section>
+    <!--============= Banner Section Ends Here =============-->
+
+
+    <!--============= Product Details Section Starts Here =============-->
+    <section class="product-details bids-details padding-bottom mt--240">
+        <div class="container">
+            <div class="product-details-slider-top-wrapper">
+                <div class="product-details-slider owl-theme owl-carousel" id="sync1">
+                    <div class="slide-top-item">
+                        <img class="star" src="../assets/images/bids-details/star.png" alt="">
+                        <div class="status">Promote Ad</div>
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/main-car.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-top-item">
+                        <div class="slide-inner">
+                            <img src="./assets/images/product/product2.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-top-item">
+                        <div class="slide-inner">
+                            <img src="./assets/images/product/product3.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-top-item">
+                        <div class="slide-inner">
+                            <img src="./assets/images/product/product4.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-top-item">
+                        <div class="slide-inner">
+                            <img src="./assets/images/product/product5.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-top-item">
+                        <div class="slide-inner">
+                            <img src="./assets/images/product/product6.png" alt="product">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-details-slider-wrapper">
+                <div class="product-bottom-slider owl-theme owl-carousel" id="sync2">
+                    <div class="slide-bottom-item">
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/car-1.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-bottom-item">
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/car-2.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-bottom-item">
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/car-1.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-bottom-item">
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/car-2.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-bottom-item">
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/car-1.png" alt="product">
+                        </div>
+                    </div>
+                    <div class="slide-bottom-item">
+                        <div class="slide-inner">
+                            <img src="../assets/images/bids-details/car-2.png" alt="product">
+                        </div>
+                    </div>
+                </div>
+                <span class="det-prev det-nav">
+                    <i class="fas fa-angle-left"></i>
+                </span>
+                <span class="det-next det-nav active">
+                    <i class="fas fa-angle-right"></i>
+                </span>
+            </div>
+            
+
+
+
+
+
+            <div class="row mt-40-60-80">
+                <div class="col-lg-6">
+                    <div class="product-details-content">
+                        <div class="product-details-header">
+                            <h2 class="title">Hyundai Sonata</h2>
+                        </div>
+
+                        <div>
+                           <h5 style="margin-bottom: 5px;">Description</h5> 
+                           <div style="color: black; font-size: 14px;">
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product-sidebar-details mb-3">
+                        <div class="box">
+                            <h6>Sold By: Johnson</h6>
+                            <div class="info"><img src="../assets/images/bids-details/visitors.png" alt=""> Number of visitors: <span style="margin-left: auto;color: rgba(237, 28, 36, 1);">118</span></div>
+                            <div class="info"><img src="../assets/images/bids-details/cars.png" alt=""> Number Of Cars Sold: <span style="margin-left: auto;color: rgba(237, 28, 36, 1);">34</span></div>
+                            <div class="info"><img src="../assets/images/bids-details/rate.png" alt=""> Rating of the seller: 
+                                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="section-2">
+                                <div>
+                                    <div>Maker</div>
+                                    <div>Posted on</div>
+                                    <div>Country</div>
+                                    <div>Transmission</div>
+                                    <div>Engine Type</div>
+                                </div>
+                                <div>
+                                    <div>:</div>
+                                    <div>:</div>
+                                    <div>:</div>
+                                    <div>:</div>
+                                    <div>:</div>
+                                </div>
+
+                                <div>
+                                    <div>BMW</div>
+                                    <div>Dec 25, 2025</div>
+                                    <div>Albania</div>
+                                    <div>ABCD</div>
+                                    <div>ABCD</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bid-section">
+                        <div class="certificate">
+                          <a>Certificate of Conformity</a>
+                        </div>
+                        <div class="bid-area">
+                            <div class="bid-amount">
+                                <div class="icon">
+                                    <img src="../assets/images/auction-bid-green.png" alt="">
+                                </div>
+                                <div class="amount-content">
+                                    <div class="current">Current Bid</div>
+                                    <div class="amount">$876.00</div>
+                                </div>
+                            </div>
+                            <div class="seperator"></div>
+                            <div class="bid-amount">
+                                <div class="icon">
+                                    <img src="../assets/images/auction-bid-amount.png" alt="">
+                                </div>
+                                <div class="amount-content">
+                                    <div class="current buy-now">Buy Now</div>
+                                    <div class="amount">$5,00.00</div>
+                                </div>
+                            </div>
+                            <div class="bid-amount">
+                                <div class="amount-content">
+                                    <div class="current" style="font-size: 20px;">30 Bids</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shipping">
+                          <a>(Shipping Rates)</a>
+                        </div>
+                    </div>
+                    <div class="social-section">
+                        <div>
+                             <div>Payment options</div>
+                             <div>
+                                <img src="../assets/images/bids-details/payment-card.png" alt="">
+                                <img src="" alt="">
+                             </div>
+                        </div>
+                        <div>
+                            <div>Share</div>
+                              <div>
+                                <img src="../assets/images/bids-details/facebook.png" alt="">
+                                <img src="../assets/images/bids-details/instagram.png" alt="">
+                                <img src="../assets/images/bids-details/twitter.png" alt="">
+                                <img src="../assets/images/bids-details/linkedin.png" alt="">
+                              </div>
+                        </div>
+                        <div>
+                            <div>Jhon hanter:$800</div>
+                            <div>Kiwe may:$600</div>
+                            <div>Alina tom:$400</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="auction-container">
+                <input type="text" placeholder="Enter your bid amount" class="bid-input">
+                <button class="bid-btn">Submit a bid</button>
+                <button class="buy-btn">Buy Now $24,000</button>
+                <div class="timer">
+                    <div style="font-size: 10px; color: black;">This Auction Ends In:</div>
+                    <div class="countdown">
+                        <div id="bid_counter1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container bid-user-details">
+            <div class="item">
+                <h5 class="title">Description</h5>
+                <div class="history-table-area">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Bidder</th>
+                                <th>date</th>
+                                <th>time</th>
+                                <th>unit price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-history="bidder">
+                                    <div class="user-info">
+                                        <div class="thumb">
+                                            <img src="../assets/images/bids-details/user-1.png" alt="history">
+                                        </div>
+                                        <div class="content">
+                                            Moses Watts
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-history="date">06/16/2024</td>
+                                <td data-history="time">02:45:25 PM</td>
+                                <td data-history="unit price">$900.00</td>
+                            </tr>
+                            <tr>
+                                <td data-history="bidder">
+                                    <div class="user-info">
+                                        <div class="thumb">
+                                            <img src="../assets/images/bids-details/user-2.png" alt="history">
+                                        </div>
+                                        <div class="content">
+                                            Pat Powell
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-history="date">06/16/2024</td>
+                                <td data-history="time">02:45:25 PM</td>
+                                <td data-history="unit price">$900.00</td>
+                            </tr>
+                            <tr>
+                                <td data-history="bidder">
+                                    <div class="user-info">
+                                        <div class="thumb">
+                                            <img src="../assets/images/bids-details/user-1.png" alt="history">
+                                        </div>
+                                        <div class="content">
+                                            Jack Rodgers
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-history="date">06/16/2024</td>
+                                <td data-history="time">02:45:25 PM</td>
+                                <td data-history="unit price">$900.00</td>
+                            </tr>
+                            <tr>
+                                <td data-history="bidder">
+                                    <div class="user-info">
+                                        <div class="thumb">
+                                            <img src="../assets/images/bids-details/user-2.png" alt="history">
+                                        </div>
+                                        <div class="content">
+                                            Arlene Paul
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-history="date">06/16/2024</td>
+                                <td data-history="time">02:45:25 PM</td>
+                                <td data-history="unit price">$900.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center mb-3 mt-4">
+                        <a href="#0" class="button-3">Load More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Product Details Section Ends Here =============-->
+    </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -662,7 +999,7 @@
 
 
     <!--************************** Contact Page  ******************************-->
-<ng-container *ngIf="page === 'contact'">
+    <ng-container *ngIf="page === 'contact'">
     <!--============= Banner Section Starts Here =============-->
     <section class="banner-section contact" style="padding: 200px 0 175px;">
         <div class="container">
