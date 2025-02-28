@@ -357,6 +357,14 @@ legend {
   white-space: normal;
 }
 
+.landing-header {
+  background-color: rgba(228, 30, 38, 1);
+}
+
+.default-header {
+  background-color: transparent;
+}
+
 progress {
   vertical-align: baseline;
 }
@@ -566,6 +574,7 @@ a {
 }
 a:hover {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {
@@ -1012,7 +1021,7 @@ input[type=submit] {
 
 .custom-select-wrapper {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .custom-select {
@@ -1818,7 +1827,7 @@ header {
   display: block;
 }
 .header-wrapper .logo img {
-  width: 100%;
+  width: 80%;
 }
 
 .search-form {
@@ -2054,7 +2063,7 @@ header {
 }
 
 .header-bottom {
-  padding: 20px 0;
+  padding: 12px 0;
   transition: all ease 0.3s;
 }
 
@@ -2202,6 +2211,7 @@ header {
   padding: 220px 0 240px;
   overflow: hidden;
 }
+
 .banner-top {
   position: absolute;
   top: 0;
@@ -2237,10 +2247,18 @@ header {
   .banner-section {
     padding: 270px 0 170px;
   }
+
+  .bid-list-banner-section {
+    padding: 270px 0 270px;
+  }
 }
 @media (min-width: 1200px) {
   .banner-section {
     padding: 250px 0 175px;
+  }
+
+  .bid-list-banner-section {
+    padding: 270px 0 270px;
   }
 }
 
@@ -2449,6 +2467,10 @@ header {
 
 .mt--140 {
   margin-top: -140px;
+}
+
+.mt--300 {
+  margin-top: -300px;
 }
 
 /*Banner Section Four Starts Here*/
@@ -4708,9 +4730,9 @@ div[class*=auction] .custom-button {
 }
 .auction-item-6 .auction-inner .auction-content .item-information ul li {
   padding: 0;
-  color: #171d1c;
-  margin-bottom: 5px;
-  font-size: 16px;
+  color: rgba(79, 77, 77, 1);
+  /* margin-bottom: 5px; */
+  font-size: 14px;
 }
 .auction-item-6 .auction-inner .auction-content .item-information ul li span {
   color: #717185;
@@ -4831,11 +4853,12 @@ div[class*=auction] .custom-button {
 }
 
 
-.get-start-btn {
+.get-start-btn, .send-message-btn {
   background-color: rgba(255, 200, 87, 1);
   border-radius: 50px;
   padding: 10px 50px;
   color: black;
+  margin-top: 10px;
 }
 
 .get-start-btn:hover {
@@ -5134,7 +5157,6 @@ div[class*=auction] .custom-button {
   opacity: 0;
 }
 
-/* custom styles */
 .wallet-table .wallet-date {
   border: 1px solid rgba(177, 177, 177, 1);
   border-radius: 5px;
@@ -5150,6 +5172,884 @@ div[class*=auction] .custom-button {
   border-radius: 50px;
   font-size: 12px;
 }
+
+
+/**================= Bid List Page Css =====================**/
+.bid-list-banner-section {
+  position: relative;
+  padding: 220px 0 270px;
+  overflow: hidden;
+}
+
+.bid-list {
+  margin: 20px 40px;
+}
+
+.bid-list-slider {
+  margin-top: -300px;
+}
+
+.bid-list-dropdown {
+  background-color: rgba(232, 232, 232, 1);
+  border-radius: 50px;
+  padding: 0 15px;
+  font-size: 13px;
+  color: black;
+  border: none;
+}
+
+.bid-list .custom-arrow {
+  right: 30px;
+}
+
+.bid-list-car-auction {
+  margin-top: 130px;
+}
+
+
+
+/** ============== Bids History Page Custom Css ==============**/
+.bids-history .bids-history-item {
+  margin-bottom: 30px;
+}
+
+.bids-history .auction-item-2 {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.bids-history .auction-item-2 .auction-thumb .top-status {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.bids-history .auction-item-2 .auction-thumb .top-status-right {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.bids-history .auction-item-2 .auction-thumb .bottom-status {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.bids-history .auction-item-2 .auction-thumb .top-status span,
+.bids-history .auction-item-2 .auction-thumb .top-status-right span,
+.bids-history .auction-item-2 .auction-thumb .bottom-status span {
+  background-color: rgba(44, 110, 73, 1);
+  color: white;
+  padding: 5px 20px;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+
+.bids-history .auction-item-2 .auction-thumb .top-status span[status-color] {
+   background-color: attr(status-color background-color);
+}
+
+
+.bids-history .auction-content {
+  background-color: rgba(237, 237, 237, 1);
+  padding: 20px;
+  border-radius: 0 0 15px 15px;
+}
+
+.bids-history .auction-content .title {
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  padding-bottom: 5px;
+  font-weight: 600;
+}
+
+.bids-history .auction-content .bid-area {
+  display: flex;
+  padding-top: 10px;
+}
+
+.bids-history .auction-content .bid-action {
+  padding: 3px 25px;
+  border-radius: 5px;
+  font-size: 13px;
+  color: white;
+}
+
+
+
+
+
+
+
+/** ============== New Cars Page Custom Css ==============**/
+
+.new-cars .auction-inner .auction-content .information-section .item-information {
+  display: grid;
+  grid-template-columns: auto 10px auto; /* Set column sizes */
+  gap: 0 10px; /* Adjust spacing */
+  align-items: center;
+  font-size: 13px;
+}
+
+.new-cars .auction-inner .auction-content .information-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-cars .auction-inner {
+  justify-content: center;
+}
+
+.new-cars .auction-inner .auction-thumb {
+  width: unset;
+}
+
+.new-cars .auction-inner .auction-thumb img {
+  width: unset;
+}
+
+.new-cars .auction-inner .auction-thumb .bid {
+  width: unset;
+  height: unset;
+  line-height: 40px;
+  bottom: 10px;
+  right: 10px;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.13);
+  background: #ffffff;
+  padding: 10px;
+}
+
+.new-cars .auction-inner .auction-content .title {
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  font-weight: 600;
+}
+
+.new-cars .auction-inner .auction-content .buy-now {
+  background-color: rgba(196, 35, 37, 1);
+  padding: 5px 50px;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.new-cars .auction-inner .auction-content .buy-now:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 1);
+}
+
+.new-cars .auction-inner .auction-content .price-information {
+  padding-top: 17px;
+}
+
+.new-cars .auction-inner .auction-content .price-information span {
+  font-size: 24px;
+  color: rgba(228, 30, 38, 1);
+  font-weight: 600;
+}
+
+.new-cars .auction-inner .auction-content {
+  width: calc(100% - 320px);
+}
+
+.new-cars .auction-inner .auction-thumb .rating {
+  right: 10px;
+  top: 10px;
+  left: unset;
+}
+
+
+
+
+
+
+
+
+/** ============== Bids Details Page Custom Css ==============**/
+
+
+.bids-details .auction-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  padding: 30px 0;
+  border-top: 1px solid rgba(211, 211, 211, 1);
+  margin-top: 20px;
+}
+
+.bids-details .auction-container .bid-input {
+  flex: 1;
+  min-width: 470px;
+  padding: 10px;
+  border: 1px solid rgba(178, 178, 178, 1);
+  background-color: rgba(241, 241, 241, 1);
+  border-radius: 5px;
+}
+
+.bids-details .auction-container .bid-btn {
+  background-color: rgba(44, 110, 73, 1);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bids-details .auction-container .buy-btn {
+  background-color: rgba(228, 30, 38, 1);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bids-details .auction-container .timer {
+  text-align: center;
+  color: rgba(196, 35, 37, 1);
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: 18px;
+}
+
+.bid-user-details .item .title {
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  padding-bottom: 10px;
+}
+
+
+.bids-details .star {
+ width: unset !important;
+ position: absolute;
+ top: 15px;
+ right: 15px;
+}
+
+.bids-details .status {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(255, 200, 87, 1);
+  padding: 5px 50px;
+  border-radius: 5px;
+  font-size: 13px;
+  color: black;
+  font-weight: 600;
+ }
+
+
+.product-details-header .title {
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  padding-bottom: 5px;
+}
+
+
+
+.bids-details .product-sidebar-details {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.bids-details .product-sidebar-details .box {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  background: rgba(238, 238, 238, 1);
+  line-height: 20px;
+  font-size: 12px;
+  color: rgba(68, 68, 68, 1);
+  font-weight: 600;
+  font-family: system-ui;
+}
+.bids-details .product-sidebar-details .box h6 {
+  border-bottom: 1px solid rgba(162, 162, 162, 1);
+  padding-bottom: 3px;
+  margin-bottom: 10px;
+}
+.bids-details .product-sidebar-details .info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.bids-details .product-sidebar-details .stars {
+  color: gold;
+  margin-left: auto;
+}
+.bids-details .product-sidebar-details .box .section-2 {
+  display: flex;
+  gap: 15px;
+}
+
+.bids-details .social-section {
+  display: flex;
+  background-color: rgba(237, 237, 237, 1);
+  padding: 19px 20px 10px 20px;
+  font-size: 12px;
+  color: rgba(149, 149, 149, 1);
+  justify-content: space-between;
+}
+
+.bids-details .bid-section {
+  border-top: 1px solid rgba(211, 211, 211, 1);
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  padding-top: 15px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.bids-details .bid-section .certificate, 
+.bids-details .bid-section .shipping {
+  text-align: end;
+}
+
+.bids-details .bid-section .certificate a {
+  font-size: 12px;
+  color: black;
+  background-color: rgba(244, 164, 31, 1);
+  padding: 3px 20px;
+  border-radius: 5px;
+}
+
+.bids-details .bid-section .bid-area {
+  display: flex;
+  font-family: system-ui;
+  gap: 20px;
+}
+
+.bids-details .bid-section .bid-area .seperator {
+  height: 45px;
+  margin-top: 5px;
+  border-left: 1px solid rgba(211, 211, 211, 1);
+}
+
+.bids-details .bid-section .bid-area .bid-amount {
+  display: flex;
+}
+
+.bids-details .bid-section .bid-area .bid-amount .icon {
+  margin: auto 0;
+}
+
+.bids-details .bid-section .bid-area .bid-amount .amount-content {
+  margin: auto 8px;
+}
+
+.bids-details .bid-section .bid-area .bid-amount .amount-content .current {
+  font-size: 14px;
+  color: rgba(44, 110, 73, 1);
+}
+
+.bids-details .bid-section .bid-area .bid-amount .amount-content .current.buy-now {
+   color:rgba(196, 35, 37, 1);
+}
+
+.bids-details .bid-section .bid-area .bid-amount .amount-content .amount {
+  font-weight: 600;
+  color: black;
+  font-size: 20px;
+}
+
+.bids-details .bid-section .shipping {
+  color: rgba(3, 3, 3, 1);
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** ============== Contact Page Custom Css ==============**/
+
+.contact .form-section {
+  padding: 30px;
+  text-align: center;
+  border-radius: 20px;
+  background: linear-gradient(139.98deg, rgba(255, 255, 255, 0.7) 2.22%, rgba(213, 213, 213, 0.7) 98.75%);
+}
+
+.contact .form-section .heading {
+  font-size: 15px;
+  color: black;
+  font-weight: 600;
+}
+
+.contact .form-section .title {
+  margin: 0;
+}
+
+.contact .form-section .input-field {
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  margin: 5px;
+}
+
+
+.contact .form-section .send-message-btn {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.contact .form-section .send-message-btn:hover {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/** ============== Chat Page Custom Css ==============**/
+.chat.dashboard-widget .user {
+  text-align: start;
+}
+.chat .chat-container {
+  display: flex;
+  /* max-width: 900px; */
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 1);
+}
+
+/* Sidebar */
+.chat .sidebar {
+  background: #fff;
+  border-right: 1px solid rgba(220, 220, 220, 0.6);
+}
+
+.chat .chat-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.chat .user-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.chat .user {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s;
+  background: rgba(248, 248, 248, 1);
+  margin: 10px 10px 10px 0 !important;
+}
+
+.chat .user:hover {
+  background: #d6d6d6;
+}
+
+.chat .user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 2px solid red;
+}
+
+.chat .user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 20px;
+  margin-right: 30px;
+}
+
+.chat .name {
+  font-weight: bold;
+}
+
+.chat .chat-container .sidebar .status {
+  font-size: 12px;
+}
+
+/* Chat Window */
+.chat .chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.chat .chat-window .chat-header {
+  display: flex;
+  align-items: center;
+  background: rgba(234, 233, 233, 1);
+  padding: 8px 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+.chat .chat-window .chat-header .user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 2px solid red;
+}
+
+.chat .chat-window .chat-header .header-info {
+  flex: 1;
+  line-height: 15px;
+}
+
+.chat .chat-window .chat-header .header-info .name {
+  font-size: 12px;
+}
+
+.chat .chat-window .chat-header .header-info .status {
+  font-size: 10px;
+}
+
+.chat .options {
+  /* font-size: 20px; */
+  cursor: pointer;
+}
+
+/* Chat Body */
+.chat .chat-body {
+  flex: 1;
+  padding: 25px 20px;
+  overflow-y: auto;
+  background-color: rgba(248, 248, 248, 1);
+}
+
+/* Message Styles */
+.chat .chat-body .message {
+  max-width: 70%;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  position: relative;
+  font-size: 14px;
+}
+
+.chat .chat-body .received {
+  background: #f1f1f1;
+  align-self: flex-start;
+}
+
+.chat .chat-body .sent {
+  background: #e41e26;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+  max-width: 60%;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px 0;
+  display: inline-block;
+}
+
+.chat .chat-body .message-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chat .chat-body .timestamp {
+  font-size: 10px;
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+  opacity: 0.7;
+}
+
+/* Chat Footer */
+.chat .chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: rgba(234, 233, 233, 1);
+  border-radius: 0 0 10px 10px;
+  gap: 10px;
+}
+
+.chat .chat-footer input {
+  flex: 1;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: white;
+  font-size: 12px;
+}
+
+.chat .send-btn:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+
+
+
+
+
+
+/** ============== Sign In Page Custom Css ==============**/
+
+
+.bg-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: contain;
+}
+
+.top-image {
+  position: absolute;
+  top: 0;
+  left: 50px;
+}
+
+.sign-in-form {
+  border: 1px solid black;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px 30px 5px 30px;
+  border-radius: 15px;
+  border: 3px solid white;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(139.98deg, rgba(228, 30, 38, 0.8) 2.22%, rgba(196, 35, 37, 0.8) 98.75%);
+}
+
+.sign-in-form .title {
+  color: white;
+  text-align: center;
+}
+
+.sign-in-form .check-section {
+  display: flex; 
+  justify-content: space-between;
+  font-size: 12px;
+  color: white;
+}
+
+.sign-in-form .check-section div {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 5px; /* Space between checkbox and text */
+}
+
+.sign-in-form .check-section .forgot-password {
+  color: white;
+  text-decoration: underline;
+}
+
+.sign-in-form input {
+  height: unset;
+}
+
+.sign-in-form .input-field {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 12px;
+  background-color: white;
+  margin: 5px auto;
+  border: none;
+  outline: none;
+}
+
+
+.sign-in-form input[type="checkbox"] {
+  width: 15px;
+  height: 14px;
+}
+
+
+.sign-in-form .sign-in-btn {
+  background-color: rgba(255, 200, 87, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5px 30%;
+  color: black;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sign-in-form .sign-up-link {
+  color: white;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+/** ============== Sign Up Page Custom Css ==============**/
+
+
+.sign-up {
+  padding: 50px 0 50px;
+  background: linear-gradient(180deg, #E32028 0%, #AD1517 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.main-section {
+  display: flex;
+  border-radius: 20px;
+}
+.left-section, .right-section {
+  padding: 20px;
+}
+
+.sign-up .main-section .right-section {
+  text-align: center;
+  border: 2px solid white; 
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(139.98deg, rgba(255, 255, 255, 0.7) 2.22%, rgba(213, 213, 213, 0.7) 98.75%);
+}
+
+.sign-up .main-section .left-section h2,
+.sign-up .main-section .left-section p {
+  color: white;
+  margin-left: 80px;
+}
+
+
+
+.signup-form input,
+.signup-form select,
+.signup-form button {
+
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.sign-up .main-section input {
+  height: unset;
+}
+
+.sign-up .signup-form .fields input {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.sign-up .signup-form .dropdown {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 20px;
+  width: 50%;
+  color: black;
+  margin: 10px auto 0px auto;
+}
+
+.sign-up .signup-form .check-section {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  gap: 5px;
+}
+
+.sign-up .signup-form .check-section a {
+  color: black;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.sign-up .signup-form .check-section input {
+  width: auto;
+}
+
+.sign-up .signup-form .sign-up-btn {
+  background-color: rgba(255, 200, 87, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5px 20%;
+  color: black;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 40px auto 5px auto;
+}
+
+
+.sign-up .signup-form .sign-in-link {
+  color: black;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* Custom Scrollbar Styles for Chat */ 
+.chat .chat-body::-webkit-scrollbar {
+  width: 3px;
+}
+
+.chat .chat-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat .chat-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.chat .chat-body::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Custom Scrollbar Styles */
@@ -5178,6 +6078,10 @@ div[class*=auction] .custom-button {
   .auction-item-6 .auction-details .header h5 {
     font-size: unset !important;
   }
+
+  .sign-up .main-section .left-section .banner {
+    height: 280px;
+  }
     
 }
 
@@ -5198,7 +6102,30 @@ div[class*=auction] .custom-button {
   .auction-item-6 .auction-details .footer {
     margin-top: 5px;
   }
-    
+
+  .bid-list-slider {
+    margin-top: -290px;
+  }
+
+  .bid-list .custom-select-wrapper {
+    margin-bottom: 10px;
+  }
+
+  .new-cars .auction-inner .auction-content .information-section {
+    display: block;
+  }
+
+  .bids-details .auction-container .bid-input {
+    min-width: 280px;
+  }
+
+  .sign-up .main-section .left-section h2, .sign-up .main-section .left-section p {
+    margin-left: 0;
+  }
+
+  .sign-up .main-section .left-section .banner {
+    height: 180px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -5239,6 +6166,38 @@ div[class*=auction] .custom-button {
   .wallet .wallet-inner .wallet-thumb .wallet-info .separator-line::before {
     bottom: 0px;
   }
+
+  .chat .chat-container {
+    width: 95%;
+    flex-direction: column;
+    height: 90vh;
+  }
+
+  .chat .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sign-up .main-section .left-section {
+    line-height: unset;
+  }
+
+  .sign-up .main-section {
+    display: block;
+  }
+
+  .sign-up .main-section .left-section .banner {
+    display: none;
+  }
+
+  .sign-up .main-section .left-section h2 {
+    font-size: xx-large;
+  }
+
+  .sign-up .main-section .left-section p {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 767px) {
@@ -5249,7 +6208,34 @@ div[class*=auction] .custom-button {
   .wallet-table .purchasing-table .date {
     padding-left: 7px;
   }
+
+  .bid-list-slider {
+    margin-top: -250px;
+  }
+
+  .bid-list-car-auction {
+    margin-top: 80px;
+  }
+
+  .new-cars .auction-inner .auction-content {
+    width: 100%;
+  }
+
+  .new-cars .auction-inner .auction-content {
+    padding: 30px 0;
+  }
+
+  .bids-details .auction-container {
+    flex-wrap: wrap;
+  }
 }
+
+@media (max-width: 600px) {
+  .bids-details .product-sidebar-details {
+    flex-wrap: wrap;
+  }
+}
+
 
 @media (max-width: 575px) {
   p {
@@ -5266,6 +6252,35 @@ div[class*=auction] .custom-button {
 
   .wallet-table .wallet-date {
     margin-top: 10px;
+  }
+
+  .bid-list-slider {
+    margin-top: -290px;
+  }
+
+  .bid-list-car-auction {
+    margin-top: 120px;
+  }
+
+  .bids-details .social-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .sign-in-form {
+    width: 100%;
+    left: 0;
+    transform: translate(0, -50%);
+  }
+
+  .bg-image {
+    object-fit: cover;
+  }
+
+  .top-image {
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 }
 
@@ -5303,6 +6318,28 @@ div[class*=auction] .custom-button {
   .auction-item-6 .auction-details .footer .rate-seller {
     float: unset;
     margin: 10px 5px ;
+  }
+
+  .bid-list-slider {
+    margin-top: -250px;
+  }
+
+  .bid-list-car-auction {
+    margin-top: 80px;
+  }
+
+  .bids-details .bid-section .bid-area {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bids-details .bid-section .certificate, 
+  .bids-details .bid-section .shipping {
+    text-align: center;
+  }
+
+  .bids-details .bid-section .certificate {
+    margin-bottom: 15px;
   }
 }
 
@@ -6479,10 +7516,12 @@ div[class*=auction] .custom-button {
 }
 
 .slide-bottom-item {
-  margin: 20px;
-  border-radius: 20px;
-  box-shadow: 0px 0px 15px rgba(22, 26, 57, 0.36);
+  margin: 5px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 15px rgba(22, 26, 57, 0.1);
   cursor: pointer;
+  padding: 5px;
+  height: 100px;
 }
 @media (max-width: 575px) {
   .slide-bottom-item {
@@ -6500,13 +7539,14 @@ div[class*=auction] .custom-button {
 
 .slide-top-item {
   margin: 15px;
-  box-shadow: 0px 0px 15px rgba(22, 26, 57, 0.36);
+  box-shadow: none;
   background: #f1f3fd;
-  border-radius: 20px;
+  border-radius: 10px;
+  position: relative;
 }
 .slide-top-item .slide-inner {
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .slide-top-item .slide-inner img {
   width: 100%;
@@ -6544,8 +7584,14 @@ div[class*=auction] .custom-button {
 }
 .det-nav:hover, .det-nav.active {
   color: #ffffff;
-  background: -webkit-linear-gradient(7deg, rgb(236, 19, 121) 0%, rgb(108, 0, 146) 100%);
-  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
+  background: -webkit-linear-gradient(259.96deg, #FFC857 8.93%, #C42325 105.39%);
+  box-shadow: 0px 9px 20px 0px rgba(22, 26, 57, 0.36);
+}
+
+.product-details-slider {
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 15px rgba(22, 26, 57, 0.36);
 }
 
 .product-details-slider-wrapper {
@@ -7056,9 +8102,10 @@ div[class*=auction] .custom-button {
 }
 
 .history-table-area {
-  background: #ebf2ff;
+  background: rgba(243, 243, 243, 1);
   border-radius: 5px;
-  padding: 20px 40px;
+  padding: 5px 30px;
+  margin-top: 20px;
 }
 @media (max-width: 991px) {
   .history-table-area {
@@ -7075,7 +8122,7 @@ div[class*=auction] .custom-button {
   width: 100%;
 }
 .history-table tr {
-  border-bottom: 1px solid #c2d2ef;
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
   color: #171d1c;
 }
 .history-table tr td, .history-table tr th {
@@ -7089,8 +8136,7 @@ div[class*=auction] .custom-button {
 }
 .history-table tr th {
   text-transform: capitalize;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
   padding: 15px 0;
 }
 .history-table tr td {
@@ -7159,7 +8205,7 @@ div[class*=auction] .custom-button {
   .history-table tbody tr td::before {
     content: attr(data-history);
     text-transform: uppercase;
-    color: #007ec3;
+    color: black;
     font-weight: 600;
   }
 }
@@ -7184,6 +8230,10 @@ div[class*=auction] .custom-button {
 @media screen and (min-width: 450px) {
   .dashboard-widget {
     padding: 30px;
+  }
+
+  .chat {
+    padding: 30px 15px;
   }
 }
 .dashboard-widget .user {
@@ -7253,6 +8303,12 @@ div[class*=auction] .custom-button {
 .dashboard-menu li a:hover, .dashboard-menu li a.active {
   background: #f7f6fc;
 }
+
+.dashboard-menu li.active {
+  background-color: #ebe8f4;
+  border-radius: 25px;
+}
+
 
 .dashboard-item {
   border-radius: 20px;
