@@ -124,6 +124,13 @@ fieldset {
   padding: 0;
 }
 
+.modal-content select, 
+.modal-content input, 
+.modal-content textarea, 
+.modal-content button {
+  width: auto;
+}
+
 textarea {
   resize: vertical;
 }
@@ -1804,6 +1811,39 @@ footer {
   top: 7px;
 }
 
+.header-top-wrapper .cart-button-area li .amount-section {
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center; background: white; 
+  padding: 5px 15px; 
+  border-radius: 50px;
+}
+
+.header-top-wrapper .cart-button-area li .amount {
+  font-size: 18px;
+  font-weight: 600;
+  padding-top: 8px;
+  padding-left: 8px;
+  color: black;
+}
+
+.header-top-wrapper .cart-button-area li .sell-section {
+  text-align: center; 
+  background: white; 
+  padding: 15px 35px; 
+  border-radius: 50px;
+}
+
+.header-top-wrapper .cart-button-area li .sell {
+  font-size: 15px;
+  color: black;
+}
+
+.header-top-wrapper .cart-button-area li .profile-icon {
+  cursor: pointer;
+}
+
+
 .header-top {
   border-bottom: 1px solid white;
 }
@@ -1880,10 +1920,6 @@ header {
     transition: all ease 0.3s;
     visibility: hidden;
     opacity: 0;
-  }
-  .search-form input {
-    background: #3f22b3;
-    border: 1px solid #bccaea;
   }
   .search-form.active {
     opacity: 1;
@@ -5614,13 +5650,16 @@ div[class*=auction] .custom-button {
 
 
 
-
+.landing-page-banner {
+  background-image: url('../images/landing-banner.png');
+}
 
 
 
 
 
 /** ============== Chat Page Custom Css ==============**/
+
 .chat.dashboard-widget .user {
   text-align: start;
 }
@@ -5905,6 +5944,20 @@ div[class*=auction] .custom-button {
   text-decoration: underline;
 }
 
+.sign-in-form .password-container {
+  position: relative;
+}
+
+.sign-in-form .toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+
 
 
 
@@ -5926,11 +5979,11 @@ div[class*=auction] .custom-button {
   margin: 0;
 }
 
-.main-section {
+.sign-up .main-section {
   display: flex;
   border-radius: 20px;
 }
-.left-section, .right-section {
+.sign-up .left-section, .sign-up .right-section {
   padding: 20px;
 }
 
@@ -5948,12 +6001,9 @@ div[class*=auction] .custom-button {
   margin-left: 80px;
 }
 
-
-
 .signup-form input,
 .signup-form select,
 .signup-form button {
-
   width: 100%;
   margin: 10px 0;
   padding: 10px;
@@ -5972,12 +6022,9 @@ div[class*=auction] .custom-button {
 }
 
 .sign-up .signup-form .dropdown {
-  background-color: white;
-  font-size: 12px;
-  border-radius: 20px;
   width: 50%;
-  color: black;
   margin: 10px auto 0px auto;
+  border: none;
 }
 
 .sign-up .signup-form .check-section {
@@ -6014,6 +6061,568 @@ div[class*=auction] .custom-button {
   font-size: 13px;
   text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** ============== Verification Pages Custom Css ==============**/
+
+
+.verification-process {
+  padding: 50px 0 50px;
+  background: linear-gradient(180deg, #E32028 0%, #AD1517 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.verification-process .left-car {
+  position: absolute; 
+  bottom: 0; 
+  left: 0;
+}
+
+.verification-process .right-car {
+  position: absolute; 
+  bottom: 0; 
+  right: 0;
+}
+
+.verification-form input,
+.verification-form select,
+.verification-form button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 20px;
+}
+
+.verification-form input {
+  height: unset;
+}
+
+.verification-form .fields input {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.verification-process .main-section {
+  text-align: center;
+  border: 2px solid white; 
+  border-radius: 20px;
+  width: 550px;
+  padding: 15px 30px 30px 30px;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(139.98deg, rgba(255, 255, 255, 0.7) 2.22%, rgba(213, 213, 213, 0.7) 98.75%);
+}
+
+.verification-process .main-section .title {
+  margin: 10px auto 15px auto;
+  font-size: 24px;
+  font-weight: 600;
+  color: black;
+}
+
+.verification-process .documents .title {
+  margin: 10px auto 0 auto;
+}
+
+.verification-process .main-section .subtitle {
+  font-size: 13px;
+  color: black;
+}
+
+.verification-form .custom-select-wrapper {
+  padding: 15px 0 20px 0;
+}
+
+.verification-form .dropdown {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 20px;
+  color: black;
+  border: none;
+  text-align: center;
+  font-weight: 600;
+}
+
+.verification-form .verification-btn {
+  background-color: rgba(255, 200, 87, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5px 20%;
+  color: black;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 10px auto auto auto;
+}
+
+.verification-skip-btn {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 5px 23%;
+  color: black;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 10px auto auto auto;
+}
+
+
+
+
+
+
+
+/*===========File Uploader==========*/
+
+.verification-process .documents .files-section {
+  border: 1px solid rgba(211, 211, 211, 1);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.verification-process .documents .files-section .file-uploader:nth-child(1) {
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+}
+
+.verification-process .documents .files-section .file-uploader:nth-child(2) {
+  border-radius: 0 0 10px 10px;
+}
+
+.file-uploader {
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+
+.verification-process .documents .files-section:hover {
+  border-color: #aaa;
+}
+
+.file-uploader label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.upload-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-text strong {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.upload-text p {
+  font-size: 12px;
+  color: rgba(192, 192, 192, 1);
+  margin: 0;
+}
+
+.verification-process .documents .verification-btn {
+  margin: 30px auto 60px auto;
+}
+
+
+.verification-process .business-info .file-uploader {
+  border: 1px solid rgba(211, 211, 211, 1);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.verification-process .business-info .file-uploader:hover {
+  border-color: #aaa;
+}
+
+.verification-process .subscription .title {
+  margin: 10px auto 0 auto;
+}
+
+.verification-form .plans a {
+  background-color: white;
+  font-size: 12px;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: 700;
+  margin: 10px 0;
+  padding: 10px 20px;
+  color: rgba(228, 30, 38, 1);
+}
+
+.verification-form .plans a:hover {
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+
+
+
+/**================= Custom Dropdown ===============**/
+
+.custom-bid-dropdown {
+  position: relative;
+  user-select: none;
+}
+
+.dropdown-header {
+  background: #ffffff;
+  padding: 10px 8%;
+  font-size: 13px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: black;
+  line-height: 17px;
+  white-space: break-spaces;
+}
+
+.arrow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-top: 2px;
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdown-item {
+  padding: 5px 30px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 13px;
+  color: black;
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+
+
+
+
+
+
+
+
+
+/**=============image uploader ===============**/
+
+.create-ad .upload-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.create-ad .upload-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.create-ad .upload-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.create-ad .upload-box {
+  width: 90px;
+  height: 90px;
+  background: rgba(232, 232, 232, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(149, 149, 149, 1);
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.create-ad .upload-box .uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.create-ad input[type="file"] {
+  display: none;
+}
+
+.create-ad .add-title,
+.create-ad .add-description {
+  font-size: 12px;
+  padding: 20px 20px;
+  background-color: rgba(232, 232, 232, 1);
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  color: black;
+}
+
+.create-ad .add-title {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**======== dialog ========**/
+.create-ad-modal.modal-dialog {
+  max-width: 800px;
+}
+
+.create-ad {
+  padding: 25px 40px;
+}
+
+.create-ad .file-uploader {
+  padding: 15px 15px;
+  border: 1px solid rgba(232, 232, 232, 1);
+  border-radius: 20px;
+}
+
+.create-ad .dropdowns-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(165, 165, 165, 1);
+  color: black;
+  padding-bottom: 20px;
+}
+
+.create-ad .custom-bid-dropdown {
+  width: 130px;
+}
+
+.create-ad .custom-bid-dropdown .dropdown-header {
+  background-color: rgba(232, 232, 232, 1);
+  font-size: 12px;
+}
+
+.create-ad .custom-bid-dropdown .dropdown-list  {
+  background-color: rgba(232, 232, 232, 1);
+}
+.create-ad .custom-bid-dropdown .dropdown-list .dropdown-item {
+  font-size: 12px;
+}
+
+.create-ad .title {
+  color: black;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px 0 10px 0;
+}
+
+
+.modal-content .input-field {
+  width: 100%;
+}
+
+
+.create-ad .input-container {
+  display: flex;
+  align-items: center;
+  background: rgba(232, 232, 232, 1);
+  padding: 0 10px;
+  border-radius: 10px;
+  width: 230px;
+}
+
+.create-ad .date-container {
+  padding: 0;
+}
+
+.create-ad .date-container .date-field {
+  width: 230px;
+  background-color: rgba(232, 232, 232, 1);
+  color: black;
+  font-size: 12px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.create-ad .date-container [type="date"] {
+  background: rgba(232, 232, 232, 1) url('../images/modals/date-logo.png')  97% 50% no-repeat ;
+}
+
+.create-ad .input-container .input-field {
+  border: none;
+  background: transparent;
+  outline: none;
+  flex: 1;
+  font-size: 12px;
+  color: black;
+}
+
+.create-ad .time-section {
+  padding-right: 0;
+}
+
+.create-ad .post-section {
+  padding-left: 5px;
+}
+
+.create-ad .input-container .input-field::placeholder {
+  color: rgba(149, 149, 149, 1);
+}
+
+.create-ad .input-container .icon {
+  margin-left: 6px;
+}
+
+
+.create-ad .check-section {
+  display: flex;
+  align-items: center; 
+  gap: 5px;
+}
+
+.create-ad .check-section a {
+  color: black;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.create-ad .check-section input {
+  width: auto;
+}
+
+
+.create-ad a:not([href]):not([class]),.create-ad a:not([href]):not([class]):hover {
+  color: black;
+  text-decoration: underline;
+}
+
+
+.create-ad .post-btn {
+  color: white;
+  background-color: rgba(228, 30, 38, 1);
+  font-size: 20px;
+  padding: 12px 18%;
+  border-radius: 50px;
+}
+star-rating svg {
+  fill: gold !important;
+  stroke: black !important;
+  width: 24px;
+  height: 24px;
+}
+
+.create-ad .post-btn:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.cross-icon {
+  position: absolute;
+  top: 15px; 
+  right: 15px;
+  border-radius: 50px;
+}
+
+.cross-icon:hover {
+  cursor: pointer;
+}
+
+
+
+.customer-lang .dropdown-header {
+  width: 50px;
+}
+
+.customer-lang .dropdown-list .dropdown-item {
+  padding: 5px 8px;
+}
+
+
+
+
+
+
 
 
 
@@ -6126,6 +6735,28 @@ div[class*=auction] .custom-button {
   .sign-up .main-section .left-section .banner {
     height: 180px;
   }
+
+  .verification-process .left-car,
+  .verification-process .right-car {
+    height: 300px;
+  }
+
+  .create-ad .date-container .date-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .create-ad .time-section {
+    padding-right: 15px;
+  }
+
+  .create-ad .post-section {
+    padding-left: 15px;
+  }
+
+  .create-ad .post-section .input-container {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -6197,6 +6828,58 @@ div[class*=auction] .custom-button {
 
   .sign-up .main-section .left-section p {
     margin-top: 0;
+  }
+
+  .verification-process .left-car,
+  .verification-process .right-car {
+    height: 200px;
+  }
+
+  .create-ad .dropdowns-section {
+    justify-content: unset;
+    gap: 10px;
+  }
+
+  .create-ad .input-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .create-ad .upload-box{
+    width: 215px;
+    height: 215px;
+  }
+
+
+
+
+
+
+
+
+  .header-top-wrapper .cart-button-area li .amount-section {
+    padding: 14px 10px;
+  }
+
+  .header-top-wrapper .cart-button-area li .amount-icon {
+    display: none;
+  }
+  
+  .header-top-wrapper .cart-button-area li .amount {
+    font-size: 15px;
+    padding: 0;
+  }
+  
+  .header-top-wrapper .cart-button-area li .sell-section {
+    padding: 15px 15px; 
+  }
+  
+  .header-top-wrapper .cart-button-area li .sell {
+    font-size: 14px;
+  }
+  
+  .header-top-wrapper .cart-button-area li .profile-icon {
+    height: 40px;
   }
 }
 
@@ -6282,6 +6965,11 @@ div[class*=auction] .custom-button {
     left: 50%;
     transform: translate(-50%, 0);
   }
+
+  .create-ad .upload-box{
+    width: 100%;
+    height: 300px;
+  }
 }
 
 @media (max-width: 470px) {
@@ -6340,6 +7028,20 @@ div[class*=auction] .custom-button {
 
   .bids-details .bid-section .certificate {
     margin-bottom: 15px;
+  }
+
+  .verification-process .left-car,
+  .verification-process .right-car {
+    height: 130px;
+  }
+
+  .create-ad .dropdowns-section {
+    display: block;
+  }
+
+  .create-ad .dropdowns-section .custom-bid-dropdown {
+    margin-bottom: 8px;
+    width: 100%;
   }
 }
 
