@@ -19,7 +19,10 @@
                         </li>
                         <li class="customer-lang">
                             <div><img src="../assets/images/dropdown-icon.png" alt=""></div>
-                            <div class="custom-select-wrapper"> 
+                            <div class="">
+                                <app-custom-dropdown [options]="['En', 'Bn', 'Rs', 'Us', 'Pk', 'Arg']"></app-custom-dropdown>
+                            </div>
+                            <!-- <div class="custom-select-wrapper"> 
                                 <select name="language" class="select-bar custom-select">
                                  <option value="en">En</option>
                                  <option value="Bn">Bn</option>
@@ -29,23 +32,23 @@
                                  <option value="Arg">Arg</option>
                                 </select>
                                 <img src="../assets/images/down-arrow.png" class="custom-arrow" />
-                            </div>
+                            </div> -->
                         </li>
                     </ul>
                     <ul class="cart-button-area">                      
                         <li>
-                            <div style="display: flex; flex-wrap: wrap; align-items: center; background: white; padding: 5px 15px; border-radius: 50px;">
-                                <img src="../assets/images/money-bucket.png" alt="">
-                                <p style="font-size: 18px;font-weight: 600;padding-top: 8px;padding-left: 8px;color: black;">$ 100</p>
+                            <div class="amount-section">
+                                <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
+                                <p class="amount">$ 100</p>
                             </div>
                         </li>
                         <li>
-                            <div style="text-align: center; background: white; padding: 15px 35px; border-radius: 50px;">
-                                <p style="font-size: 15px;color: black;">Sell</p>
+                            <div class="sell-section">
+                                <p class="sell">Sell</p>
                             </div>
                         </li>
                         <li>
-                            <img style="cursor: pointer;" (click)="changePage('user-info')" src="../assets/images/user-profile.png" alt="">
+                            <img class="profile-icon" (click)="changePage('user-info')" src="../assets/images/user-profile.png" alt="">
                         </li>
                     </ul>
                 </div>
@@ -655,8 +658,6 @@
     <!--************************** Bid Detail Page  ******************************-->
     <ng-container *ngIf="page === 'bid-detail'">
       
-
-
     <!--============= Banner Section Starts Here =============-->
     <section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
         <!-- <div class="banner-shape d-none d-lg-block">
@@ -2424,15 +2425,3 @@
         </div>
     </footer>
     <!--============= Footer Section Ends Here =============-->
-
-
-
-
-
-
-
-
-
-
-
-            
