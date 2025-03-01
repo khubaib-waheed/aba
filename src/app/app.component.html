@@ -1,3 +1,322 @@
+<div *ngIf="page === 'sign-in'" class="bg-container">
+    <img src="../assets/images/verification/auto-bid-logo.png" class="top-image" alt="">
+    <img src="../assets/images/verification/sign-in-banner.png" class="bg-image">
+
+    <div class="container">
+        <div class="sign-in-form">
+          <h3 class="title">Welcome to</h3>
+          <h3 class="title">Auto Bid Albania</h3>
+          <div style="margin-top: 15px;">
+                <input type="text" placeholder="User Name / Email" class="input-field">
+                <!-- <div class="password-container">
+                        <input 
+                          [type]="isPasswordVisible ? 'text' : 'password'" 
+                          placeholder="Password" 
+                          class="input-field"
+                        />
+                        <span class="toggle-icon" (click)="togglePassword('password')">
+                          <img [src]="isPasswordVisible ? '../assets/images/verification/eye-open-icon.png' : '../assets/images/verification/eye-icon.png'" alt="Toggle">
+                        </span>
+                    </div> -->
+                    <div class="password-container">
+                        <input type="password" placeholder="Password" class="input-field"/>
+                        <span class="toggle-icon">
+                          <img src="../assets/images/verification/eye-icon.png" alt="Toggle">
+                        </span>
+                    </div>
+            </div>
+          
+          <div class="check-section">
+            <div>
+                <input type="checkbox" class="form-check-input">
+                <a style="color: white; cursor: context-menu;">Remember me</a>
+            </div>
+            
+            <div>
+                <a class="forgot-password" data-toggle="modal" data-target="#email-modal">Forgot password?</a>
+            </div>
+          </div>
+          <div style="text-align: center;padding: 30px 10px;">
+            <a class="sign-in-btn" (click)="login()">Sign In</a>
+          </div>
+          <div style="text-align: center;padding: 10px;">
+            <a (click)="signup()" class="sign-up-link">Don’t have an account? Sign up</a>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<!--============================Email Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="email modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <img src="../assets/images/modals/bid-logo.png" alt="">
+                <h4 style="margin: 10px; margin-bottom: 2px;">Enter your email</h4>
+                <div class="subtitle">Enter the email associated with<br> Auto Bids Albania account</div>
+            </div>
+            <form action="">
+               
+                <div>
+                    <input type="text" class="input-field" placeholder="Email">
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#otp-modal">Continue</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<!--============================OTP Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="otp-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="otp modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <h3 style="margin-bottom: 2px;">OTP</h3>
+                <div class="subtitle">We have sent a 4 digit one time <br> password to your email address</div>
+            </div>
+            <form action="">
+               
+                <div style="padding: 25px;">
+                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#question-modal">Verify</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<!--============================Question Section=======================-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="question-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="question modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <img src="../assets/images/modals/bid-logo.png" alt="">
+                <h4 style="margin: 10px;">Secret Question</h4>
+            </div>
+            <form action="">
+                <div>   
+                    <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                    <input type="text" class="input-field" placeholder="Answer">
+                </div>
+                <div>
+                    <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                    <input type="text" class="input-field" placeholder="Answer">
+                </div>
+                <div style="text-align: center; padding-top: 25px;">
+                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#reset-modal">Continue</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<!--============================Reset Password Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="reset-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body reset-password" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <img src="../assets/images/modals/bid-logo.png" alt="">
+                <h4 style="margin: 10px;">Reset your password</h4>
+            </div>
+            <form action="">
+                <div>
+                    <!-- <div class="password-container">
+                        <input 
+                          [type]="isPasswordVisible ? 'text' : 'password'" 
+                          placeholder="Password" 
+                          class="input-field"
+                        />
+                        <span class="toggle-icon" (click)="togglePassword('password')">
+                          <img [src]="isPasswordVisible ? '../assets/images/modals/eye-open-icon.png' : '../assets/images/verification/eye-icon.png'" alt="Toggle">
+                        </span>
+                      </div>
+                      <div class="password-container">
+                        <input 
+                          [type]="isConfirmPasswordVisible ? 'text' : 'password'" 
+                          placeholder="Confirm Password" 
+                          class="input-field"
+                        />
+                        <span class="toggle-icon" (click)="togglePassword('confirm-password')">
+                          <img [src]="isConfirmPasswordVisible ? '../assets/images/verification/eye-open-icon.png' : '../assets/images/verification/eye-icon.png'" alt="Toggle">
+                        </span>
+                      </div> -->
+                      <div style="display: flex; justify-content: center;">
+                        <div class="password-container">
+                            <input placeholder="Password" class="input-field"/>
+                            <span class="toggle-icon" >
+                              <img src="../assets/images/modals/eye-icon.png" alt="Toggle">
+                            </span>
+                          </div>
+                      </div>
+
+                      <div style="display: flex; justify-content: center;">
+                        <div class="password-container">
+                            <input placeholder="Confirm Password" class="input-field"/>
+                            <span class="toggle-icon" >
+                              <img src="../assets/images/modals/eye-icon.png" alt="Toggle">
+                            </span>
+                          </div>
+                      </div>
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal">Done</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--****************SIGN UP SECTION******************-->
+
+<section *ngIf="page === 'signup'" class="sign-up">
+    <div class="container">
+        <div class="main-section">
+            <div class="left-section">
+                <h2>Welcome to</h2>
+                <h2>Auto Bid Albania</h2>
+                <p>Sign up to Auto Bid Albania and take control of your bids</p>
+                <img class="banner" src="../assets/images/verification/sign-up-banner.png" alt="">
+            </div>
+            <div class="right-section">
+                <div style="margin: 10px auto 15px auto;">
+                    <img src="../assets/images/verification/auto-bid-logo-2.png" alt="">
+                </div>
+                <form class="signup-form">
+                    <div class="row fields">
+                        <div class="col-lg-6">
+                           <input type="text" placeholder="First name" required>
+                        </div>
+
+                        <div class="col-lg-6">
+                           <input type="text" placeholder="Last name" required>
+                        </div>
+
+                        <div class="col-lg-6">
+                           <input type="email" placeholder="Email" required>
+                        </div>
+
+                        <div class="col-lg-6">
+                           <input type="tel" placeholder="Phone Number" required>
+                        </div>
+
+                        <div class="col-lg-6">
+                           <input type="password" placeholder="Password" required>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <input type="password" placeholder="Confirm Password" required>
+                         </div>
+                    </div>
+                    <div class="dropdown">
+                        <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                    </div>
+                    <div class="check-section">
+                        <input type="checkbox" class="form-check-input"> 
+                        <a style="cursor: context-menu;">I agree to the terms of service</a>
+                    </div>
+                    <div>
+                        <a type="submit" class="sign-up-btn">Sign up</a>
+                    </div>
+                    <div>
+                        <a class="sign-in-link" (click)="goToSignInPage()">Already have an account? Sign in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+ </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="loggedIn">
 <!--============= ScrollToTop Section Starts Here =============-->
     <!-- <div class="overlayer" id="overlayer">
         <div class="loader">
@@ -19,20 +338,9 @@
                         </li>
                         <li class="customer-lang">
                             <div><img src="../assets/images/dropdown-icon.png" alt=""></div>
-                            <div class="">
+                            <div>
                                 <app-custom-dropdown [options]="['En', 'Bn', 'Rs', 'Us', 'Pk', 'Arg']"></app-custom-dropdown>
                             </div>
-                            <!-- <div class="custom-select-wrapper"> 
-                                <select name="language" class="select-bar custom-select">
-                                 <option value="en">En</option>
-                                 <option value="Bn">Bn</option>
-                                 <option value="Rs">Rs</option>
-                                 <option value="Us">Us</option>
-                                 <option value="Pk">Pk</option>
-                                 <option value="Arg">Arg</option>
-                                </select>
-                                <img src="../assets/images/down-arrow.png" class="custom-arrow" />
-                            </div> -->
                         </li>
                     </ul>
                     <ul class="cart-button-area">                      
@@ -632,6 +940,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+ 
 
 
 
@@ -2425,3 +2743,23 @@
         </div>
     </footer>
     <!--============= Footer Section Ends Here =============-->
+
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+

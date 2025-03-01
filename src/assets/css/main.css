@@ -5861,7 +5861,7 @@ div[class*=auction] .custom-button {
 .bg-image {
   width: 100%;
   height: 100vh;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .top-image {
@@ -5877,8 +5877,9 @@ div[class*=auction] .custom-button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 50px 30px 5px 30px;
+  padding: 50px 80px 5px 80px;
   border-radius: 15px;
+  width: 550px;
   border: 3px solid white;
   box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
   background: linear-gradient(139.98deg, rgba(228, 30, 38, 0.8) 2.22%, rgba(196, 35, 37, 0.8) 98.75%);
@@ -5892,7 +5893,7 @@ div[class*=auction] .custom-button {
 .sign-in-form .check-section {
   display: flex; 
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 14px;
   color: white;
 }
 
@@ -5905,10 +5906,6 @@ div[class*=auction] .custom-button {
 .sign-in-form .check-section .forgot-password {
   color: white;
   text-decoration: underline;
-}
-
-.sign-in-form input {
-  height: unset;
 }
 
 .sign-in-form .input-field {
@@ -5931,16 +5928,16 @@ div[class*=auction] .custom-button {
 .sign-in-form .sign-in-btn {
   background-color: rgba(255, 200, 87, 1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 5px 30%;
+  padding: 8px 30%;
   color: black;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .sign-in-form .sign-up-link {
   color: white;
-  font-size: 13px;
+  font-size: 14px;
   text-decoration: underline;
 }
 
@@ -6006,11 +6003,7 @@ div[class*=auction] .custom-button {
 .signup-form button {
   width: 100%;
   margin: 10px 0;
-  padding: 10px;
-}
-
-.sign-up .main-section input {
-  height: unset;
+  padding: 0 15px;
 }
 
 .sign-up .signup-form .fields input {
@@ -6036,21 +6029,22 @@ div[class*=auction] .custom-button {
 
 .sign-up .signup-form .check-section a {
   color: black;
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: underline;
 }
 
 .sign-up .signup-form .check-section input {
   width: auto;
+  padding: 8px;
 }
 
 .sign-up .signup-form .sign-up-btn {
   background-color: rgba(255, 200, 87, 1);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 5px 20%;
+  padding: 8px 20%;
   color: black;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   margin: 40px auto 5px auto;
 }
@@ -6058,7 +6052,7 @@ div[class*=auction] .custom-button {
 
 .sign-up .signup-form .sign-in-link {
   color: black;
-  font-size: 13px;
+  font-size: 15px;
   text-decoration: underline;
 }
 
@@ -6450,6 +6444,11 @@ div[class*=auction] .custom-button {
 
 
 /**======== dialog ========**/
+.modal-dialog .modal-content {
+  border-radius: 20px;
+}
+
+
 .create-ad-modal.modal-dialog {
   max-width: 800px;
 }
@@ -6585,12 +6584,6 @@ div[class*=auction] .custom-button {
   padding: 12px 18%;
   border-radius: 50px;
 }
-star-rating svg {
-  fill: gold !important;
-  stroke: black !important;
-  width: 24px;
-  height: 24px;
-}
 
 .create-ad .post-btn:hover {
   cursor: pointer;
@@ -6616,6 +6609,228 @@ star-rating svg {
 
 .customer-lang .dropdown-list .dropdown-item {
   padding: 5px 8px;
+}
+
+
+
+
+
+/** =================== Dispute Section ================ **/
+
+.dispute .input-field,
+.question .input-field {
+  background-color: rgba(237, 237, 237, 1);
+  font-size: 13px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 10px auto;
+  border: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.dispute .dispute-file-uploader {
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  background-color: rgba(237, 237, 237, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 20px 5px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.dispute .dispute-file-uploader:hover {
+  background: #eaeaea;
+  border: 1px dashed rgba(0, 0, 0, 1);
+}
+
+.dispute .dispute-file-uploader img {
+  margin-bottom: 5px;
+}
+
+.dispute .dispute-file-uploader input {
+  display: none;
+}
+
+.dispute .continue-btn,
+.email .continue-btn,
+.reset-password .continue-btn,
+.otp .continue-btn,
+.question .continue-btn {
+  color: white;
+  background-color: rgba(255, 9, 9, 1);
+  font-size: 14px;
+  padding: 8px 16%;
+  border-radius: 50px;
+}
+
+.dispute .continue-btn:hover,
+.otp .continue-btn:hover,
+.reset-password .continue-btn:hover,
+.email .continue-btn:hover,
+.question .continue-btn:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+/**=============== Question Section =============**/
+
+.question .input-field,
+.email .input-field {
+  background-color: rgba(237, 237, 237, 1);
+  font-size: 13px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 10px auto;
+  border: none;
+  color: black;
+}
+
+.question .custom-bid-dropdown .dropdown-header {
+  background-color: rgba(237, 237, 237, 1);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.question .custom-bid-dropdown .dropdown-list {
+  background-color: rgba(237, 237, 237, 1);
+}
+
+.question .custom-bid-dropdown .dropdown-list .dropdown-item {
+  padding: 5px 20px;
+}
+
+
+
+
+/**=============== Confirmation message Section =============**/
+
+.confirmation .message {
+  font-size: 14px;
+  color: black;
+  line-height: 20px;
+}
+
+.confirmation h4 {
+  margin-bottom: 10px;
+}
+
+
+.confirmation .btn-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+.confirmation .btn-section .yes {
+  font-size: 13px;
+  color: white;
+  padding: 5px 50px;
+  border-radius: 50px;
+  margin-right: 10px;
+  background-color: rgba(255, 9, 9, 1);
+}
+
+.confirmation .btn-section .no {
+  font-size: 13px;
+  color: black;
+  padding: 5px 50px;
+  border-radius: 50px;
+  background-color: rgba(211, 211, 211, 1);
+}
+
+.confirmation .btn-section .yes:hover,
+.confirmation .btn-section .no:hover {
+  box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+
+
+/**=============== email Section =============**/
+
+.email .subtitle,
+.otp .subtitle {
+  color: black;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.email.modal-body {
+  padding: 30px 70px;
+}
+
+/**=============== OTP Section =============**/
+
+.otp.modal-body {
+  padding: 30px 70px;
+}
+
+.n-o-c {
+  justify-content: center;
+}
+
+
+.otp-input {
+  border-radius: 10px !important;
+  border: solid 1px rgba(202, 202, 202, 1) !important;
+  background-color: rgba(236, 236, 236, 1) !important;
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/**================Question Modal==============**/
+
+.question.modal-body {
+  padding: 30px 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**=============== Reset Password Section =============**/
+
+.reset-password .password-container {
+  position: relative;
+  width: 70%;
+}
+
+.reset-password .toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.reset-password .input-field {
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(231, 231, 231, 1);
+  margin: 8px 0;
 }
 
 
@@ -6690,8 +6905,15 @@ star-rating svg {
 
   .sign-up .main-section .left-section .banner {
     height: 280px;
+  }   
+}
+
+
+@media (max-width: 1100px) {
+  .top-image {
+    height: 100px;
+    left: 30px;
   }
-    
 }
 
 
@@ -6756,6 +6978,11 @@ star-rating svg {
 
   .create-ad .post-section .input-container {
     width: 100%;
+  }
+
+  .top-image {
+    height: 70px;
+    left: 20px;
   }
 }
 
@@ -6850,13 +7077,6 @@ star-rating svg {
     height: 215px;
   }
 
-
-
-
-
-
-
-
   .header-top-wrapper .cart-button-area li .amount-section {
     padding: 14px 10px;
   }
@@ -6880,6 +7100,10 @@ star-rating svg {
   
   .header-top-wrapper .cart-button-area li .profile-icon {
     height: 40px;
+  }
+
+  .top-image {
+    display: none;
   }
 }
 
@@ -6957,18 +7181,13 @@ star-rating svg {
     transform: translate(0, -50%);
   }
 
-  .bg-image {
-    object-fit: cover;
-  }
-
-  .top-image {
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-
   .create-ad .upload-box{
     width: 100%;
     height: 300px;
+  }
+
+  .sign-in-form {
+    padding: 50px 40px 5px 40px;
   }
 }
 
@@ -7042,6 +7261,10 @@ star-rating svg {
   .create-ad .dropdowns-section .custom-bid-dropdown {
     margin-bottom: 8px;
     width: 100%;
+  }
+
+  .email.modal-body {
+    padding: 30px 30px;
   }
 }
 
