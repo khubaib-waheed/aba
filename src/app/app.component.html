@@ -224,12 +224,6 @@
 
 
 
-
-
-
-
-
-
 <!--****************SIGN UP SECTION******************-->
 
 <section *ngIf="page === 'signup'" class="sign-up">
@@ -279,7 +273,7 @@
                         <a style="cursor: context-menu;">I agree to the terms of service</a>
                     </div>
                     <div>
-                        <a type="submit" class="sign-up-btn">Sign up</a>
+                        <a class="sign-up-btn" data-toggle="modal" data-target="#otp2-modal">Sign up</a>
                     </div>
                     <div>
                         <a class="sign-in-link" (click)="goToSignInPage()">Already have an account? Sign in</a>
@@ -288,6 +282,63 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <!--============================OTP Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="otp2-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="otp modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <h3 style="margin-bottom: 2px;">OTP</h3>
+                <div class="subtitle">We have sent a 4 digit one time <br> password to your email address</div>
+            </div>
+            <form action="">
+               
+                <div style="padding: 25px;">
+                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#email-verified-modal">Verify</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+ <!--============================Email Verified Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="email-verified-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="email-verify modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div>
+                <h2>Email Verified</h2>
+            </div>
+                <div class="message">  
+                    Congratulations! Your email is verified. Let’s get you started! Please complete your profile to access all system features.
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" (click)="goToSecretQuestion()">Done</a>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
  </section>
 
 
@@ -295,6 +346,262 @@
 
 
 
+ 
+
+
+
+
+<!--****************SECRET QUESTION SECTION******************-->
+
+<ng-container *ngIf="page === 'secret-question'">
+    <div class="bg-container secret-question">
+        <div class="container">
+            <div class="secret-question-form">
+              <h3 class="title">Secret Questions</h3>
+              <div style="margin-top: 15px; display: flex; justify-content: center;">
+                <form action="">
+                    <div>   
+                        <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                        <input type="text" class="input-field" placeholder="Answer">
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                        <input type="text" class="input-field" placeholder="Answer">
+                    </div>
+                    <div style="text-align: center; padding-top: 50px;">
+                        <a class="continue-btn" (click)="goToVerificationProcess()">Done</a>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+</div>    
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+<!--****************VERIFICATION PROCESS SECTION******************-->
+
+<ng-container *ngIf="page === 'verification'">
+    <section class="verification-process">
+        <img style="position: absolute; top: 0; width: 100%;" src="../assets/images/verification/verification-top-banner.png" alt="">
+        <img class="left-car" src="../assets/images/verification/left-banner-car.png" alt="">
+        <img class="right-car" src="../assets/images/verification/right-banner-car.png" alt="">
+        <div class="container" style="z-index: 1;">
+            <div style="display: flex; justify-content: center;">
+
+
+
+
+
+                <div class="main-section" *ngIf="verificationPage === 'address'">
+                    <h4 class="title">Address Information</h4>
+                    <form class="verification-form">
+                        <div class="row fields">
+                            <div class="col-lg-12">
+                                <div class="custom-select-wrapper">
+                                    <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-12">
+                               <input type="text" placeholder="Street" required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="text" placeholder="House No." required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="email" placeholder="Address" required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="tel" placeholder="Postal Code" required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="password" placeholder="City" required>
+                            </div>
+                        </div>
+                        <div>
+                            <a (click)="goToVerificationProcess('documents')" class="verification-btn">Continue</a>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="main-section documents" *ngIf="verificationPage === 'documents'">
+                    <h4 class="title">Verification Documents</h4>
+                    <div class="subtitle">
+                        Please upload these supportive documents to verfiy your data
+                    </div>
+                    <form class="verification-form">
+                        <div class="files-section">
+                            <div class="file-uploader">
+                                <label for="fileInput">
+                                    <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                                    <div class="upload-text">
+                                        <strong>Identity Verification</strong>
+                                        <p>(E.g. Driving License, ID Card, Passport)</p>
+                                    </div>
+                                </label>
+                                <input type="file" id="fileInput" hidden>
+                            </div>
+                            <div class="file-uploader">
+                                <label for="fileInput">
+                                    <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                                    <div class="upload-text">
+                                        <strong>Address Verification</strong>
+                                        <p>(E.g.utility bill)</p>
+                                    </div>
+                                </label>
+                                <input type="file" id="fileInput" hidden>
+                            </div>
+                        </div>
+                        <div>
+                            <a (click)="goToVerificationProcess('business')" class="verification-btn">Continue</a>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="main-section business-info" *ngIf="verificationPage === 'business'">
+                    <h4 class="title">Business Information</h4>
+                    <form class="verification-form">
+                        <div class="row fields">
+                            <div class="col-lg-12">
+                               <input type="text" placeholder="Company Name" required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="text" placeholder="Company Phone Number" required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="email" placeholder="Company Email" required>
+                            </div>
+        
+                            <div class="col-lg-12">
+                               <input type="tel" placeholder="Company Address" required>
+                            </div>
+    
+                            <div class="col-lg-12">
+                                <div class="file-uploader">
+                                    <label for="fileInput">
+                                        <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                                        <div class="upload-text">
+                                            <strong>Business Verification</strong>
+                                            <p>(E.g.Tax Verification Document)</p>
+                                        </div>
+                                    </label>
+                                    <input type="file" id="fileInput" hidden>
+                                </div>
+                             </div>
+                        </div>
+                        <div style="margin: 10px 0px 30px 0px;">
+                            <div>
+                                <a (click)="goToVerificationProcess('subscription')" class="verification-skip-btn">Skip</a>
+                            </div>
+                            <div>
+                                <a (click)="goToVerificationProcess('subscription')" class="verification-btn">Continue</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+
+
+
+
+                <div class="main-section subscription" *ngIf="verificationPage === 'subscription'">
+                    <h4 class="title">Subscription</h4>
+                    <div class="subtitle">
+                        Select the subscription you want to go with
+                    </div>
+                    <form class="verification-form">
+                        <div class="row plans">
+                            <div class="col-lg-12">
+                               <a>Free</a>
+                            </div>
+        
+                            <div class="col-lg-12">
+                                <a>Basic</a>
+                            </div>
+        
+                            <div class="col-lg-12">
+                                <a>Pro</a>
+                            </div>
+    
+                            <div class="col-lg-12">
+                                <a>Business</a>
+                             </div>
+        
+                            <div class="col-lg-12">
+                                <a>Enterprise</a>
+                            </div>
+                        </div>
+                        <div style="margin: 10px 0px 10px 0px;">
+                            <div>
+                                <a class="verification-btn" data-toggle="modal" data-target="#registration-modal">Complete</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+<!--============================Email Verified Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="registration-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="registration-modal modal-body" style="position: relative;">
+            <h3>Registration Complete</h3>
+            <div class="message">  
+                Welcome to Auto Bid Albania! Your registration is successful. Your documents are now being reviewed by our team. You can start using the website and place bids while you wait for verification.
+            </div>
+            <div style="text-align: center; padding-top: 10px;">
+                <a class="continue-btn" data-dismiss="modal" (click)="login()">Done</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    </section>
+         
+
+</ng-container>
 
 
 
@@ -308,14 +615,7 @@
 
 
 
-
-
-
-
-
-
-
-
+<!--****************HOME PAGE SECTION******************-->
 <ng-container *ngIf="loggedIn">
 <!--============= ScrollToTop Section Starts Here =============-->
     <!-- <div class="overlayer" id="overlayer">
@@ -323,7 +623,7 @@
             <div class="loader-inner"></div>
         </div>
     </div> -->
-    <a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <a  class="scrollToTop"><i class="fas fa-angle-up"></i></a>
     <div class="overlay"></div>
 <!--============= ScrollToTop Section Ends Here =============-->
 
@@ -334,7 +634,7 @@
                 <div class="header-top-wrapper">
                     <ul class="customer-support">
                         <li class="cmn-support-text">
-                            <a href="#0" class="mr-3"><i class="fas fa-phone-alt"></i><span class="ml-2 d-none d-sm-inline-block">Customer Support</span></a>
+                            <a class="mr-3"><i class="fas fa-phone-alt"></i><span class="ml-2 d-none d-sm-inline-block">Customer Support</span></a>
                         </li>
                         <li class="customer-lang">
                             <div><img src="../assets/images/dropdown-icon.png" alt=""></div>
@@ -345,18 +645,18 @@
                     </ul>
                     <ul class="cart-button-area">                      
                         <li>
-                            <div class="amount-section">
+                            <div class="amount-section" (click)="changePage('user-info');setActiveMenu('wallet')">
                                 <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
                                 <p class="amount">$ 100</p>
                             </div>
                         </li>
                         <li>
-                            <div class="sell-section">
+                            <div class="sell-section" data-toggle="modal" data-target="#post-ad-modal">
                                 <p class="sell">Sell</p>
                             </div>
                         </li>
                         <li>
-                            <img class="profile-icon" (click)="changePage('user-info')" src="../assets/images/user-profile.png" alt="">
+                            <img class="profile-icon" (click)="changePage('user-info');setActiveMenu('profile')" src="../assets/images/user-profile.png" alt="">
                         </li>
                     </ul>
                 </div>
@@ -376,7 +676,7 @@
                             <a (click)="changePage('landing')">Home</a>
                         </li>
                         <li>
-                            <a href="#0">Auction</a>
+                            <a (click)="changePage('auction')">Auction</a>
                         </li>
                         <li>
                             <a (click)="changePage('new-cars')">New Cars</a>
@@ -390,7 +690,7 @@
                         <button type="submit"><img src="../assets/images/search-icon.png" alt=""></button>
                     </form>
                     <div class="search-bar d-md-none">
-                        <a href="#0"><i class="fas fa-search"></i></a>
+                        <a ><i class="fas fa-search"></i></a>
                     </div>
                     <div class="header-bar d-lg-none">
                         <span></span>
@@ -402,43 +702,6 @@
         </div>
     </header>
     <!--============= Header Section Ends Here =============-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -470,7 +733,7 @@
                             <p class="pras" data-aos="zoom-out-down" data-aos-duration="1300">
                                 The ultimate online car auction platform to buy, sell, and discover unbeatable deals with ease and transparency.
                             </p>
-                            <a class="get-start-btn" data-aos="zoom-out-up" data-aos-duration="1500">Get Started</a>
+                            <a class="get-start-btn" data-aos="zoom-out-up" data-aos-duration="1500" (click)="changePage('auction')">Get Started</a>
                         </div>
                     </div>
                     <div class="d-none d-lg-block col-lg-6" data-aos="fade-right" data-aos-duration="1200">
@@ -494,33 +757,33 @@
                 <div class="container">
                     <div class="mb-4" style="text-align: -webkit-center;">
                         <div class="slider-nav">
-                            <a href="#0" class="bro-prev"><i class="flaticon-left-arrow"></i></a>
-                            <a href="#0" class="bro-next active"><i class="flaticon-right-arrow"></i></a>
+                            <a  class="bro-prev"><i class="flaticon-left-arrow"></i></a>
+                            <a  class="bro-next active"><i class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                     <div class="m--15">
                         <div class="browse-slider owl-theme owl-carousel">
-                            <a href="#0" class="browse-item">
+                            <a  class="browse-item">
                                 <img src="../assets/images/slide-car-all.png" alt="auction">
                                 <span class="info">All</span>
                             </a>
-                            <a href="#0" class="browse-item">
+                            <a  class="browse-item">
                                 <img src="../assets/images/slide-car-honda.png" alt="auction">
                                 <span class="info">Honda</span>
                             </a>
-                            <a href="#0" class="browse-item">
+                            <a  class="browse-item">
                                 <img src="../assets/images/slide-car-toyota.png" alt="auction">
                                 <span class="info">Toyota</span>
                             </a>
-                            <a href="#0" class="browse-item">
+                            <a  class="browse-item">
                                 <img src="../assets/images/slide-car-ford.png" alt="auction">
                                 <span class="info">Ford F</span>
                             </a>
-                            <a href="#0" class="browse-item">
+                            <a  class="browse-item">
                                 <img src="../assets/images/slide-car-bmw.png" alt="auction">
                                 <span class="info">BMW</span>
                             </a>
-                            <a href="#0" class="browse-item">
+                            <a  class="browse-item">
                                 <img src="../assets/images/slide-car-rover.png" alt="auction">
                                 <span class="info">Land Rover</span>
                             </a>
@@ -548,7 +811,7 @@
                                 <h6>Start winning cars with comfort</h6>
                             </div>
                         </div>
-                        <a href="#0" class="normal-button">View All</a>
+                        <a (click)="changePage('auction')" class="normal-button">View All</a>
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <div class="col-sm-10 col-md-6 col-lg-4">
@@ -560,7 +823,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
+                                        <a>2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -589,7 +852,7 @@
                                         <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
@@ -603,7 +866,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
+                                        <a>2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -632,7 +895,7 @@
                                         <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
@@ -646,7 +909,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
+                                        <a>2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -675,7 +938,7 @@
                                         <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
@@ -698,7 +961,7 @@
                                 <h6>We offer affordable Vehicles</h6>
                             </div>
                         </div>
-                        <a href="#0" class="normal-button">View All</a>
+                        <a (click)="changePage('auction')" class="normal-button">View All</a>
                     </div>
                     <div class="row justify-content-center mb-30-none">
                         <div class="col-sm-10 col-md-6 col-lg-4">
@@ -710,7 +973,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
+                                        <a>2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -739,7 +1002,7 @@
                                         <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
@@ -753,7 +1016,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
+                                        <a>2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -782,7 +1045,7 @@
                                         <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
@@ -796,7 +1059,7 @@
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a (click)="changePage('bid-detail')">2018 Hyundai Sonata</a>
+                                        <a>2018 Hyundai Sonata</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -825,7 +1088,7 @@
                                         <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
@@ -949,27 +1212,6 @@
 
 
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1064,11 +1306,7 @@
                     <i class="fas fa-angle-right"></i>
                 </span>
             </div>
-            
-
-
-
-
+        
 
             <div class="row mt-40-60-80">
                 <div class="col-lg-6">
@@ -1152,8 +1390,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="shipping">
-                          <a>(Shipping Rates)</a>
+                        <div class="shipping" data-toggle="modal" data-target="#shipping-modal">
+                          <a class="shipping-rates">(Shipping Rates)</a>
                         </div>
                     </div>
                     <div class="social-section">
@@ -1273,7 +1511,7 @@
                         </tbody>
                     </table>
                     <div class="text-center mb-3 mt-4">
-                        <a href="#0" class="button-3">Load More</a>
+                        <a  class="button-3">Load More</a>
                     </div>
                 </div>
             </div>
@@ -1281,26 +1519,6 @@
     </section>
     <!--============= Product Details Section Ends Here =============-->
     </ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1364,22 +1582,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--************************** New Cars Page  ******************************-->
 <ng-container *ngIf="page === 'new-cars'">
 <!--============= Banner Section Starts Here =============-->
@@ -1397,33 +1599,33 @@
         <div class="container">
             <div class="mb-4" style="text-align: -webkit-center;">
                 <div class="slider-nav">
-                    <a href="#0" class="bro-prev"><i class="flaticon-left-arrow"></i></a>
-                    <a href="#0" class="bro-next active"><i class="flaticon-right-arrow"></i></a>
+                    <a  class="bro-prev"><i class="flaticon-left-arrow"></i></a>
+                    <a  class="bro-next active"><i class="flaticon-right-arrow"></i></a>
                 </div>
             </div>
             <div class="m--15">
                 <div class="browse-slider owl-theme owl-carousel">
-                    <a href="#0" class="browse-item">
+                    <a  class="browse-item">
                         <img src="../assets/images/slide-car-all.png" alt="auction">
                         <span class="info">All</span>
                     </a>
-                    <a href="#0" class="browse-item">
+                    <a  class="browse-item">
                         <img src="../assets/images/slide-car-honda.png" alt="auction">
                         <span class="info">Honda</span>
                     </a>
-                    <a href="#0" class="browse-item">
+                    <a  class="browse-item">
                         <img src="../assets/images/slide-car-toyota.png" alt="auction">
                         <span class="info">Toyota</span>
                     </a>
-                    <a href="#0" class="browse-item">
+                    <a  class="browse-item">
                         <img src="../assets/images/slide-car-ford.png" alt="auction">
                         <span class="info">Ford F</span>
                     </a>
-                    <a href="#0" class="browse-item">
+                    <a  class="browse-item">
                         <img src="../assets/images/slide-car-bmw.png" alt="auction">
                         <span class="info">BMW</span>
                     </a>
-                    <a href="#0" class="browse-item">
+                    <a  class="browse-item">
                         <img src="../assets/images/slide-car-rover.png" alt="auction">
                         <span class="info">Land Rover</span>
                     </a>
@@ -1441,51 +1643,27 @@
         <div class="container">
             <div class="row bid-list">
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <select class="custom-select bid-list-dropdown">
-                        <option value="en">En</option>
-                        <option value="Bn">Bn</option>
-                    </select>
-                    <img src="../assets/images/down-arrow.png" class="custom-arrow" />
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <select class="custom-select bid-list-dropdown">
-                        <option value="en">En</option>
-                        <option value="Bn">Bn</option>
-                    </select>
-                    <img src="../assets/images/down-arrow.png" class="custom-arrow" />
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <select class="custom-select bid-list-dropdown">
-                        <option value="en">En</option>
-                        <option value="Bn">Bn</option>
-                    </select>
-                    <img src="../assets/images/down-arrow.png" class="custom-arrow" />
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <select class="custom-select bid-list-dropdown">
-                        <option value="en">En</option>
-                        <option value="Bn">Bn</option>
-                    </select>
-                    <img src="../assets/images/down-arrow.png" class="custom-arrow" />
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <select class="custom-select bid-list-dropdown">
-                        <option value="en">En</option>
-                        <option value="Bn">Bn</option>
-                    </select>
-                    <img src="../assets/images/down-arrow.png" class="custom-arrow" />
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <select class="custom-select bid-list-dropdown">
-                        <option value="en">En</option>
-                        <option value="Bn">Bn</option>
-                    </select>
-                    <img src="../assets/images/down-arrow.png" class="custom-arrow" />
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
             </div>
         </div>
@@ -1513,7 +1691,7 @@
                                 <img class="bid" src="../assets/images/auction-bid-red.png" alt="">
                             </div>
                             <div class="auction-content">
-                                <h5 class="title">Hyundai Sonata</h5>
+                                <h4 class="title">Hyundai Sonata</h4>
                                 <div class="information-section">
                                     <div class="item-information">
                                         <span>Maker</span><span>:</span><span>BMW</span>
@@ -1526,13 +1704,75 @@
                                         <span>Price: $2000</span>
                                     </div>
                                 </div>                                           
-                                <div style="text-align: center; padding-top: 30px;">
-                                    <a class="buy-now">BUY NOW</a>
+                                <div style="text-align: center; padding-top: 70px;">
+                                    <a (click)="changePage('bid-detail')" class="buy-now">BUY NOW</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-12">
+                    <div class="auction-item-6 new-cars">
+                        <div class="auction-inner">
+                            <div class="auction-thumb">
+                                <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
+                                <img class="rating" src="../assets/images/auction-star.png" alt="">
+                                <img class="bid" src="../assets/images/auction-bid-red.png" alt="">
+                            </div>
+                            <div class="auction-content">
+                                <h4 class="title">Hyundai Sonata</h4>
+                                <div class="information-section">
+                                    <div class="item-information">
+                                        <span>Maker</span><span>:</span><span>BMW</span>
+                                        <span>Posted on</span><span>:</span><span>Dec 25, 2024</span>
+                                        <span>Country</span><span>:</span><span>Albania</span>
+                                        <span>Transmission</span><span>:</span><span>ABCD</span>
+                                        <span>Engine Type</span><span>:</span><span>Solid</span>
+                                    </div>
+                                    <div class="price-information">
+                                        <span>Price: $2000</span>
+                                    </div>
+                                </div>                                           
+                                <div style="text-align: center; padding-top: 70px;">
+                                    <a (click)="changePage('bid-detail')" class="buy-now">BUY NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="auction-item-6 new-cars">
+                        <div class="auction-inner">
+                            <div class="auction-thumb">
+                                <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
+                                <img class="rating" src="../assets/images/auction-star.png" alt="">
+                                <img class="bid" src="../assets/images/auction-bid-red.png" alt="">
+                            </div>
+                            <div class="auction-content">
+                                <h4 class="title">Hyundai Sonata</h4>
+                                <div class="information-section">
+                                    <div class="item-information">
+                                        <span>Maker</span><span>:</span><span>BMW</span>
+                                        <span>Posted on</span><span>:</span><span>Dec 25, 2024</span>
+                                        <span>Country</span><span>:</span><span>Albania</span>
+                                        <span>Transmission</span><span>:</span><span>ABCD</span>
+                                        <span>Engine Type</span><span>:</span><span>Solid</span>
+                                    </div>
+                                    <div class="price-information">
+                                        <span>Price: $2000</span>
+                                    </div>
+                                </div>                                           
+                                <div style="text-align: center; padding-top: 70px;">
+                                    <a (click)="changePage('bid-detail')" class="buy-now">BUY NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
             </div>
         </div>
     </section>
@@ -1548,17 +1788,386 @@
 
 
 
+<ng-container *ngIf="page === 'auction'">
+
+    <!--============= Banner Section Starts Here =============-->
+    <section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
+    </section>
+    <!--============= Banner Section Ends Here =============-->
+
+    <div class="browse-section ash-bg">
+        <!--============= Hightlight Slider Section Starts Here =============-->
+        <div class="browse-slider-section bid-list-slider">
+            <div class="container">
+                <div class="mb-4" style="text-align: -webkit-center;">
+                    <div class="slider-nav">
+                        <a  class="bro-prev"><i class="flaticon-left-arrow"></i></a>
+                        <a  class="bro-next active"><i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+                <div class="m--15">
+                    <div class="browse-slider owl-theme owl-carousel">
+                        <a  class="browse-item">
+                            <img src="../assets/images/slide-car-all.png" alt="auction">
+                            <span class="info">All</span>
+                        </a>
+                        <a  class="browse-item">
+                            <img src="../assets/images/slide-car-honda.png" alt="auction">
+                            <span class="info">Honda</span>
+                        </a>
+                        <a  class="browse-item">
+                            <img src="../assets/images/slide-car-toyota.png" alt="auction">
+                            <span class="info">Toyota</span>
+                        </a>
+                        <a  class="browse-item">
+                            <img src="../assets/images/slide-car-ford.png" alt="auction">
+                            <span class="info">Ford F</span>
+                        </a>
+                        <a  class="browse-item">
+                            <img src="../assets/images/slide-car-bmw.png" alt="auction">
+                            <span class="info">BMW</span>
+                        </a>
+                        <a  class="browse-item">
+                            <img src="../assets/images/slide-car-rover.png" alt="auction">
+                            <span class="info">Land Rover</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--============= Hightlight Slider Section Ends Here =============-->
+        
 
 
+        <!--============= Car Auction Section Starts Here =============-->
 
+        <section style="background-color: #f5f5f5;" class="bid-list-car-auction car-auction-section padding-bottom pos-rel oh">
+            <div class="container">
+                <div class="row bid-list">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    </div>
+    
+                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    </div>
+    
+                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    </div>
+    
+                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    </div>
+    
+                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    </div>
+    
+                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="section-header-3">
+                    <div class="left">
+                        <div class="thumb">
+                            <img style="margin-top: 10px;" src="../assets/images/feature-bid-car-logo.png" alt="header-icons">
+                        </div>
+                        <div class="title-area">
+                            <h2 class="title">Featured Bids</h2>
+                            <h6>Start winning cars with comfort</h6>
+                        </div>
+                    </div>
+                    <a  class="normal-button">View All</a>
+                </div>
+                <div class="row justify-content-center mb-30-none">
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="auction-item-2" >
+                            <div class="auction-thumb">
+                                <a href="./product-details.html"><img src="../assets/images/car-1.png" alt="car"></a>
+                                <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                            </div>
+                            <div class="auction-content">
+                                <h6 class="title">
+                                    <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                </h6>
+                                <div class="bid-area">
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-green.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Current Bid</div>
+                                            <div class="amount">$876.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-amount.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Buy Now</div>
+                                            <div class="amount">$5,00.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="countdown-area">
+                                    <div class="countdown">
+                                        <div id="bid_counter26"></div>
+                                    </div>
+                                    <span class="total-bids">30 Bids</span>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="auction-item-2">
+                            <div class="auction-thumb">
+                                <a href="./product-details.html"><img src="../assets/images/car-1.png" alt="car"></a>
+                                <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                            </div>
+                            <div class="auction-content">
+                                <h6 class="title">
+                                    <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                </h6>
+                                <div class="bid-area">
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-green.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Current Bid</div>
+                                            <div class="amount">$876.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-amount.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Buy Now</div>
+                                            <div class="amount">$5,00.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="countdown-area">
+                                    <div class="countdown">
+                                        <div id="bid_counter26"></div>
+                                    </div>
+                                    <span class="total-bids">30 Bids</span>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="auction-item-2">
+                            <div class="auction-thumb">
+                                <a href="./product-details.html"><img src="../assets/images/car-1.png" alt="car"></a>
+                                <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                            </div>
+                            <div class="auction-content">
+                                <h6 class="title">
+                                    <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                </h6>
+                                <div class="bid-area">
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-green.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Current Bid</div>
+                                            <div class="amount">$876.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-amount.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Buy Now</div>
+                                            <div class="amount">$5,00.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="countdown-area">
+                                    <div class="countdown">
+                                        <div id="bid_counter26"></div>
+                                    </div>
+                                    <span class="total-bids">30 Bids</span>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-
-
-
-
-
-
-
+        <section class="car-auction-section padding-bottom padding-top pos-rel oh">
+            <!-- <div class="car-bg"><img src="../assets/images/auction/car/car-bg.png" alt="car"></div> -->
+            <div class="car-bg"><img src="../assets/images/cars-road-bg.png" alt="car"></div>
+            <div class="container">
+                <div class="section-header-3">
+                    <div class="left">
+                        <div class="thumb">
+                            <img style="margin-top: 10px;" src="../assets/images/Bid-logo.png" alt="header-icons">
+                        </div>
+                        <div class="title-area">
+                            <h2 class="title">Bids</h2>
+                            <h6>We offer affordable Vehicles</h6>
+                        </div>
+                    </div>
+                    <a  class="normal-button">View All</a>
+                </div>
+                <div class="row justify-content-center mb-30-none">
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="auction-item-2">
+                            <div class="auction-thumb">
+                                <a href="./product-details.html"><img src="../assets/images/car-1.png" alt="car"></a>
+                                <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                            </div>
+                            <div class="auction-content">
+                                <h6 class="title">
+                                    <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                </h6>
+                                <div class="bid-area">
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-green.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Current Bid</div>
+                                            <div class="amount">$876.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-amount.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Buy Now</div>
+                                            <div class="amount">$5,00.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="countdown-area">
+                                    <div class="countdown">
+                                        <div id="bid_counter26"></div>
+                                    </div>
+                                    <span class="total-bids">30 Bids</span>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="auction-item-2">
+                            <div class="auction-thumb">
+                                <a href="./product-details.html"><img src="../assets/images/car-1.png" alt="car"></a>
+                                <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                            </div>
+                            <div class="auction-content">
+                                <h6 class="title">
+                                    <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                </h6>
+                                <div class="bid-area">
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-green.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Current Bid</div>
+                                            <div class="amount">$876.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-amount.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Buy Now</div>
+                                            <div class="amount">$5,00.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="countdown-area">
+                                    <div class="countdown">
+                                        <div id="bid_counter26"></div>
+                                    </div>
+                                    <span class="total-bids">30 Bids</span>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10 col-md-6 col-lg-4">
+                        <div class="auction-item-2">
+                            <div class="auction-thumb">
+                                <a href="./product-details.html"><img src="../assets/images/car-1.png" alt="car"></a>
+                                <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                            </div>
+                            <div class="auction-content">
+                                <h6 class="title">
+                                    <a href="../assets/images/car-1.png">2018 Hyundai Sonata</a>
+                                </h6>
+                                <div class="bid-area">
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-green.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Current Bid</div>
+                                            <div class="amount">$876.00</div>
+                                        </div>
+                                    </div>
+                                    <div class="bid-amount">
+                                        <div class="icon">
+                                            <img src="../assets/images/auction-bid-amount.png" alt="">
+                                        </div>
+                                        <div class="amount-content">
+                                            <div class="current">Buy Now</div>
+                                            <div class="amount">$5,00.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="countdown-area">
+                                    <div class="countdown">
+                                        <div id="bid_counter26"></div>
+                                    </div>
+                                    <span class="total-bids">30 Bids</span>
+                                </div>
+                                <div class="text-center">
+                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--============= Car Auction Section Ends Here =============-->
+    </div>
+</ng-container>
 
 
 
@@ -1589,7 +2198,7 @@
                                 </div>
                             </div>
                             <div class="content" style="line-height: 15px;">
-                                <h5 class="title"><a href="#0">Percy Reed</a></h5>
+                                <h5 class="title"><a >Percy Reed</a></h5>
                                 <span style="font-size: 13px; color: rgba(0, 0, 0, 1);">johngmail.com</span>
                             </div>
                         </div>
@@ -2352,7 +2961,7 @@
                                                     <span class="total-bids">30 Bids</span>
                                                 </div>
                                                 <div class="text-center">
-                                                    <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -2395,7 +3004,7 @@
                                                     <span class="total-bids">30 Bids</span>
                                                 </div>
                                                 <div class="text-center">
-                                                    <a href="#0" class="submit-bid-btn">SUBMIT A BID</a>
+                                                    <a (click)="changePage('bid-detail')" class="submit-bid-btn">SUBMIT A BID</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -2583,8 +3192,138 @@
 
 
 
+<!--************************** Create AD Modal  ******************************-->
+  <div class="modal fade" id="post-ad-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="create-ad-modal modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body create-ad" style="position: relative;">
+            <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon">
+            <div style="text-align: center; border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 10px;">
+                <h4>Create Ad</h4>
+            </div>
+            <ng-container *ngIf="createAdPage === 'create-ad-first-page'">
+                <div class="title">
+                    Upload image
+                </div>
+                <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
+                    <div class="upload-container">
+                        <div class="upload-grid">
+                          <div class="upload-box" *ngFor="let preview of imagePreviews; let i = index" (click)="openFileSelector(i)">
+                            <input #fileInputs type="file" accept="image/*" (change)="onFileSelected($event, i)">
+                            <img *ngIf="preview" class="uploaded-image" [src]="preview" alt="Uploaded Image">
+                            <div *ngIf="!preview">
+                                <img src="../assets/images/modals/image-icon.png" alt="">
+                                <div>Add Image</div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="">
+                    <div class="title">Ad Title</div>
+                    <div>
+                        <input class="add-title" type="text" placeholder="Ad Title">
+                        <textarea class="add-description" placeholder="Ad Description"></textarea>
+                    </div>
+                    <div style="text-align: center; padding-top: 25px;">
+                        <a class="post-btn" (click)="goToNextCreateAdPage()">Next</a>
+                    </div>
+                </form>
+            </ng-container>
 
+            <ng-container *ngIf="createAdPage === 'create-ad-second-page'">
+                <div class="title">
+                    Upload Vehicle Verification Document
+                </div>
+                <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
+                    <div class="file-uploader">
+                        <label for="fileInput">
+                            <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                            <div class="upload-text">
+                                <strong>Business Verification</strong>
+                                <p>(E.g.Tax Verification Document)</p>
+                            </div>
+                        </label>
+                        <input type="file" id="fileInput" hidden>
+                    </div>
+                </div>
+                <form action="">
+                    <div class="title">Vehicle information</div>
+                    <div class="dropdowns-section">
+                       <div>
+                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                       </div>
+                       <div>
+                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                       </div>
+                       <div>
+                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                       </div>
+                       <div>
+                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                       </div>
+                       <div>
+                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                       </div>
+                    </div>
+                    <div class="title">
+                        Pricing
+                    </div>
+                    <div class="row" style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px; margin: 0; justify-content: space-between;">
+                        <div class="col-lg-4 input-container">
+                            <input type="text" class="input-field" placeholder="Starting Price">
+                            <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                        </div>
+                        <div class="col-lg-4 input-container">
+                            <input type="text" class="input-field" placeholder="Reserve Price">
+                            <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                        </div>
+                        <div class="col-lg-4 input-container">
+                            <input type="text" class="input-field" placeholder="Buy now price">
+                            <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 time-section">
+                            <div class="title">
+                                Time
+                            </div>
+                            <div class="row" style="margin: 0;">
+                                <div class="col-lg-6 date-container">
+                                    <input type="date" class="date-field" placeholder="Auction Start">
+                                </div>
+                                <div class="col-lg-6 date-container">
+                                    <input type="date" class="date-field" placeholder="Auction End">
+                                </div>
+                            </div>
+                        </div>
     
+                        <div class="col-lg-4 post-section">
+                            <div class="title">
+                                Promote Ad
+                            </div>
+                            <div>
+                                <div class="input-container">
+                                    <input type="text" class="input-field" placeholder="$10">
+                                    <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                                </div>
+                            </div>
+                            <div class="check-section">
+                                <input type="checkbox" required> 
+                                <a>Are you sure promote your ad</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding-top: 25px;">
+                        <a class="post-btn" data-toggle="modal" data-target="#confirmation-modal">Post Ad</a>
+                    </div>
+                </form>
+            </ng-container>
+            
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -2594,6 +3333,26 @@
 
 
 
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="confirmation modal-body" style="position: relative;">
+            <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon">
+            <div>
+                <h4>Confirmation</h4>
+            </div>
+                <div class="message">  
+                    Are you sure you want to upload this car post? Once uploaded, it will be visible to buyers 
+                </div>
+                <div class="btn-section">
+                    <a class="yes" data-dismiss="modal">Yes</a>
+                    <a class="no" data-dismiss="modal">No</a>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -2603,18 +3362,27 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+   <!-- Shipping Modal -->
+   <div class="modal fade" id="shipping-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="shipping modal-body" style="position: relative;">
+            <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon">
+            <div>
+                <h4 class="title">Shipment Price:</h4>
+            </div>
+                <div class="message">  
+                    <div>Albania : $150 </div>
+                    <div>USA: $75 </div>
+                    <div>France : $20 </div>
+                    <div>China : $45</div>
+                    <div>Japan : $75</div>
+                    <div>Pakistan : $25</div>
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -2677,19 +3445,19 @@
                             <h5 class="title">Auction Categories</h5>
                             <ul class="links-list">
                                 <li>
-                                    <a href="#0">Honda</a>
+                                    <a >Honda</a>
                                 </li>
                                 <li>
-                                    <a href="#0">BMW</a>
+                                    <a >BMW</a>
                                 </li>
                                 <li>
-                                    <a href="#0">Land Rover</a>
+                                    <a >Land Rover</a>
                                 </li>
                                 <li>
-                                    <a href="#0">Toyota</a>
+                                    <a >Toyota</a>
                                 </li>
                                 <li>
-                                    <a href="#0">Ford F</a>
+                                    <a >Ford F</a>
                                 </li>
                             </ul>
                         </div>
@@ -2699,16 +3467,16 @@
                             <h5 class="title">Follow Up</h5>
                             <ul class="links-list">
                                 <li>
-                                    <a href="#0"><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 663-4575</a>
+                                    <a ><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 663-4575</a>
                                 </li>
                                 <li>
-                                    <a href="#0"><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 968-0608</a>
+                                    <a ><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 968-0608</a>
                                 </li>
                                 <li>
-                                    <a href="#0"><img style="margin-right: 15px;" src="../assets/images/email-icon.png"/>helpengotheme.com</a>
+                                    <a ><img style="margin-right: 15px;" src="../assets/images/email-icon.png"/>helpengotheme.com</a>
                                 </li>
                                 <li>
-                                    <a href="#0" style="margin-left: 30px;">1201 Broadway Suite</a>
+                                    <a  style="margin-left: 30px;">1201 Broadway Suite</a>
                                 </li>
                             </ul>
                             <ul class="social-icons">

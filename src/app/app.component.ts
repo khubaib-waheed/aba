@@ -68,7 +68,9 @@ export class CustomDropdownComponent {
 export class AppComponent implements OnInit {
 
   landingPage: boolean = true;
-  page = 'sign-in'
+  page = 'sign-in';
+  verificationPage = 'address';
+  createAdPage = 'create-ad-first-page';
   headerColor = 'default-header';
 
   activeMenu: string = 'profile'; // Default active menu
@@ -174,6 +176,19 @@ export class AppComponent implements OnInit {
       window.history.replaceState({}, '', window.location.pathname);
       window.location.reload();
     }
+  }
+
+  goToSecretQuestion() {
+    this.page = 'secret-question';
+  }
+
+  goToVerificationProcess(pageType: any = 'address') {
+    this.page = 'verification';
+    this.verificationPage = pageType;
+  }
+
+  goToNextCreateAdPage() {
+    this.createAdPage = 'create-ad-second-page'
   }
 
   signup() {
