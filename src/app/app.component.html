@@ -1704,7 +1704,7 @@
                                         <span>Price: $2000</span>
                                     </div>
                                 </div>                                           
-                                <div style="text-align: center; padding-top: 70px;">
+                                <div style="text-align: center; padding-top: 70px; padding-bottom: 10px;">
                                     <a (click)="changePage('bid-detail')" class="buy-now">BUY NOW</a>
                                 </div>
                             </div>
@@ -1734,7 +1734,7 @@
                                         <span>Price: $2000</span>
                                     </div>
                                 </div>                                           
-                                <div style="text-align: center; padding-top: 70px;">
+                                <div style="text-align: center; padding-top: 70px; padding-bottom: 10px;">
                                     <a (click)="changePage('bid-detail')" class="buy-now">BUY NOW</a>
                                 </div>
                             </div>
@@ -1764,7 +1764,7 @@
                                         <span>Price: $2000</span>
                                     </div>
                                 </div>                                           
-                                <div style="text-align: center; padding-top: 70px;">
+                                <div style="text-align: center; padding-top: 70px; padding-bottom: 10px;">
                                     <a (click)="changePage('bid-detail')" class="buy-now">BUY NOW</a>
                                 </div>
                             </div>
@@ -2416,7 +2416,7 @@
 
 
                 <ng-container *ngIf="activeMenu === 'my-ads'">
-                    <div class="col-sm-12 col-md-12 col-lg-8">
+                    <div class="col-sm-12 col-md-12 col-lg-8 my-ads">
                         <div class="row justify-content-center auction-box">
                             <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                                 <div class="auction-item-6" style="border-radius: 10px;">
@@ -2645,7 +2645,7 @@
                                         <div class="footer">
                                             <img src="../assets/images/my-ads/bid-green.png" alt="">
                                             <a  style="color: rgba(44, 110, 73, 1); font-size: 15px; font-weight: 500;">Last Bid: $876.00</a>
-                                            <a  class="rate-seller">Rate Seller</a>
+                                            <a  class="rate-seller" data-toggle="modal" data-target="#rating-modal">Rate Seller</a>
                                         </div>
                                     </div>
                                 </div>
@@ -3170,13 +3170,6 @@
 
 
 
-
-
-
-
-
-
-
             </div>
         </div>
     </section>
@@ -3384,6 +3377,8 @@
     </div>
   </div>
 
+  
+
 
 
 
@@ -3420,6 +3415,36 @@
     </div>
   </div>
 
+
+
+
+
+
+
+
+
+<!-- Rate Seller Modal -->
+  <div class="modal fade" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="rating modal-body" style="position: relative;">
+            <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon">
+            <div style="text-align: center;">
+                <h3>Rate Seller</h3>
+            </div>
+            <form action="">
+                <div>
+                    <img style="margin-top: 10px; margin-bottom: 10px;" src="../assets/images/modals/rating-stars.png" alt="">
+                    <textarea class="input-field" placeholder="Review"></textarea>
+                </div>
+                <div style="text-align: center; padding-top: 5px;">
+                    <a class="continue-btn">Continue</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
