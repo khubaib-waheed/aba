@@ -131,11 +131,11 @@
             </div>
             <form action="">
                 <div>   
-                    <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
                     <input type="text" class="input-field" placeholder="Answer">
                 </div>
                 <div>
-                    <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
                     <input type="text" class="input-field" placeholder="Answer">
                 </div>
                 <div style="text-align: center; padding-top: 25px;">
@@ -266,7 +266,7 @@
                          </div>
                     </div>
                     <div class="dropdown">
-                        <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                        <app-custom-dropdown selectedOption="How did you hear about us?" [options]="['Facebook', 'Instagram', 'Google', 'Linkedin']"></app-custom-dropdown>
                     </div>
                     <div class="check-section">
                         <input type="checkbox" class="form-check-input"> 
@@ -361,11 +361,11 @@
               <div style="margin-top: 15px; display: flex; justify-content: center;">
                 <form action="">
                     <div>   
-                        <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
                         <input type="text" class="input-field" placeholder="Answer">
                     </div>
                     <div style="margin-top: 30px;">
-                        <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['Select a Secret Question', 'Select a Secret Question 2', 'Question 2', 'Us', 'Question 3', 'Arg']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
                         <input type="text" class="input-field" placeholder="Answer">
                     </div>
                     <div style="text-align: center; padding-top: 50px;">
@@ -408,7 +408,7 @@
                         <div class="row fields">
                             <div class="col-lg-12">
                                 <div class="custom-select-wrapper">
-                                    <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
+                                    <app-custom-dropdown selectedOption="Country" [options]="['Albania','USA','Canada','Australia','Brazil','India','Pakistan','Bahrain','Dubai']"></app-custom-dropdown>
                                 </div>
                             </div>
                            
@@ -453,27 +453,56 @@
                     </div>
                     <form class="verification-form">
                         <div class="files-section">
+                            <!-- Identity Verification -->
                             <div class="file-uploader">
-                                <label for="fileInput">
-                                    <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
-                                    <div class="upload-text">
-                                        <strong>Identity Verification</strong>
-                                        <p>(E.g. Driving License, ID Card, Passport)</p>
+                              <label for="identityFileInput" *ngIf="!identityFile">
+                                <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                                <div class="upload-text">
+                                  <strong>Identity Verification</strong>
+                                  <p>(E.g. Driving License, ID Card, Passport)</p>
+                                </div>
+                              </label>
+                              <input type="file" id="identityFileInput" hidden (change)="onFileSelect($event, 'identity')">
+                              
+                              <!-- Show selected file name -->
+                              <div class="file-name" *ngIf="identityFile">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div class="name">
+                                        {{ identityFile }}
                                     </div>
-                                </label>
-                                <input type="file" id="fileInput" hidden>
+                                    <div>
+                                        <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('identity')" alt="">
+                                    </div>
+                                </div>
+                              </div>
                             </div>
+                          
+                            <!-- Address Verification -->
                             <div class="file-uploader">
-                                <label for="fileInput">
-                                    <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
-                                    <div class="upload-text">
-                                        <strong>Address Verification</strong>
-                                        <p>(E.g.utility bill)</p>
+                              <label for="addressFileInput" *ngIf="!addressFile">
+                                <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                                <div class="upload-text">
+                                  <strong>Address Verification</strong>
+                                  <p>(E.g. Utility Bill)</p>
+                                </div>
+                              </label>
+                              <input type="file" id="addressFileInput" hidden (change)="onFileSelect($event, 'address')">
+                              
+                              <!-- Show selected file name -->
+                              <div class="file-name" *ngIf="addressFile">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div class="name">
+                                        {{ addressFile }}
                                     </div>
-                                </label>
-                                <input type="file" id="fileInput" hidden>
+                                    <div>
+                                        <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('address')" alt="">
+                                    </div>
+                                </div>
+                              </div>
                             </div>
-                        </div>
+                          </div>
+                          
+                          
                         <div>
                             <a (click)="goToVerificationProcess('business')" class="verification-btn">Continue</a>
                         </div>
@@ -509,15 +538,27 @@
     
                             <div class="col-lg-12">
                                 <div class="file-uploader">
-                                    <label for="fileInput">
-                                        <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
-                                        <div class="upload-text">
-                                            <strong>Business Verification</strong>
-                                            <p>(E.g.Tax Verification Document)</p>
-                                        </div>
+                                    <label for="businessFileInput" *ngIf="!businessFile">
+                                      <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                                      <div class="upload-text">
+                                        <strong>Business Verification</strong>
+                                        <p>(E.g.Tax Verification Document)</p>
+                                      </div>
                                     </label>
-                                    <input type="file" id="fileInput" hidden>
+                                    <input type="file" id="businessFileInput" hidden (change)="onFileSelect($event, 'business')">
+
+                                    <!-- Show selected file name -->
+                              <div class="file-name" *ngIf="businessFile">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div class="name">
+                                        {{ businessFile }}
+                                    </div>
+                                    <div>
+                                        <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('business')" alt="">
+                                    </div>
                                 </div>
+                              </div>
+                                  </div>
                              </div>
                         </div>
                         <div style="margin: 10px 0px 30px 0px;">
@@ -639,7 +680,7 @@
                         <li class="customer-lang">
                             <div><img src="../assets/images/dropdown-icon.png" alt=""></div>
                             <div>
-                                <app-custom-dropdown [options]="['En', 'Bn', 'Rs', 'Us', 'Pk', 'Arg']"></app-custom-dropdown>
+                                <app-custom-dropdown selectedOption="AL" [options]="['EN', 'AL']"></app-custom-dropdown>
                             </div>
                         </li>
                     </ul>
@@ -749,20 +790,20 @@
             </div>
         </section>
         <!--============= Banner Section Ends Here =============-->
-    
-
         <div class="browse-section ash-bg">
             <!--============= Hightlight Slider Section Starts Here =============-->
             <div class="browse-slider-section mt--140">
                 <div class="container">
                     <div class="mb-4" style="text-align: -webkit-center;">
                         <div class="slider-nav">
-                            <a  class="bro-prev"><i class="flaticon-left-arrow"></i></a>
-                            <a  class="bro-next active"><i class="flaticon-right-arrow"></i></a>
+                            <a  class="swiper-button-prev bro-prev"><i class="flaticon-left-arrow"></i></a>
+                            <a  class="swiper-button-next bro-next active"><i class="flaticon-right-arrow"></i></a>
+                            <!-- <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div> -->
                         </div>
                     </div>
-                    <div class="m--15">
-                        <div class="browse-slider owl-theme owl-carousel">
+                    <div class="m--15" style=" display: flex;justify-content: center;">
+                        <!-- <div class="browse-slider owl-theme owl-carousel">
                             <a  class="browse-item">
                                 <img src="../assets/images/slide-car-all.png" alt="auction">
                                 <span class="info">All</span>
@@ -787,6 +828,52 @@
                                 <img src="../assets/images/slide-car-rover.png" alt="auction">
                                 <span class="info">Land Rover</span>
                             </a>
+                        </div> -->
+                        <div class="carousel-container">
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <img src="../assets/images/slide-car-all.png" alt="auction">
+                                            <span class="info">All</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <img src="../assets/images/slide-car-honda.png" alt="auction">
+                                            <span class="info">Honda</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <img src="../assets/images/slide-car-toyota.png" alt="auction">
+                                            <span class="info">Toyota</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <img src="../assets/images/slide-car-ford.png" alt="auction">
+                                            <span class="info">Ford F</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <img src="../assets/images/slide-car-bmw.png" alt="auction">
+                                            <span class="info">BMW</span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card">
+                                            <img src="../assets/images/slide-car-rover.png" alt="auction">
+                                            <span class="info">Land Rover</span>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <!-- Navigation Buttons -->
+                                <!-- <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1159,7 +1246,7 @@
                     <p style="color: black;">Our hard work is paying off. Great reviews from amazing customers.</p>
                 </div>
             </div>
-            <div style="display: flex;height: 340px;margin-left: 60px; margin-right: 60px;">
+            <div class="client-review-section">
                 <div class="client-review-bg-sm">
                     <img src="../assets/images/client-1.png" alt="client-photo">
                     <h5 style="font-weight: 700; font-family: system-ui; margin-top: 10px; margin-bottom: 15px;">Tom Powell</h5>
@@ -1230,7 +1317,7 @@
     <!--============= Product Details Section Starts Here =============-->
     <section class="product-details bids-details padding-bottom mt--240">
         <div class="container">
-            <div class="product-details-slider-top-wrapper">
+            <!-- <div class="product-details-slider-top-wrapper">
                 <div class="product-details-slider owl-theme owl-carousel" id="sync1">
                     <div class="slide-top-item">
                         <img class="star" src="../assets/images/bids-details/star.png" alt="">
@@ -1305,8 +1392,53 @@
                 <span class="det-next det-nav active">
                     <i class="fas fa-angle-right"></i>
                 </span>
-            </div>
+            </div> -->
         
+
+            <div class="slider-container">
+                <div class="main-image">
+                    <img class="star" src="../assets/images/bids-details/star.png" alt="">
+                    <div class="status">Promote Ad</div>
+                    <img id="mainImg" src="../assets/images/bids-details/main-car.png" alt="Main Image">
+                </div>
+                
+            </div>
+
+        
+            <div class="bid-details">
+                <div class="thumbnails">
+                    <img src="../assets/images/bids-details/main-car.png" onclick="changeImage(this.src)" alt="Thumbnail 1">
+                    <img src="../assets/images/bids-details/car-2.png" onclick="changeImage(this.src)" alt="Thumbnail 2">
+                    <img src="../assets/images/bids-details/main-car.png" onclick="changeImage(this.src)" alt="Thumbnail 3">
+                    <img src="../assets/images/bids-details/car-2.png" onclick="changeImage(this.src)" alt="Thumbnail 4">
+                </div>
+            </div>
+                
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <div class="row mt-40-60-80">
                 <div class="col-lg-6">
@@ -1428,9 +1560,23 @@
                 <button class="buy-btn">Buy Now $24,000</button>
                 <div class="timer">
                     <div style="font-size: 10px; color: black;">This Auction Ends In:</div>
-                    <div class="countdown">
+                    <!-- <div class="countdown">
                         <div id="bid_counter1"></div>
-                    </div>
+                    </div> -->
+                    <div class="countdown-area">
+                        <div class="">
+                            <div class="times">
+                                <!-- <p #days></p><span style="color: red; font-weight: 700;">:</span>
+                                <p #hours></p> <span style="color: red; font-weight: 700;">:</span>
+                                <p #minutes></p> <span style="color: red; font-weight: 700;">:</span>
+                                <p #seconds></p> -->
+                                <p>{{days}}d</p><span style="font-weight: 700;">:</span>
+                                <p>{{hours}}h</p> <span style="font-weight: 700;">:</span>
+                                <p>{{minutes}}m</p> <span style="font-weight: 700;">:</span>
+                                <p>{{seconds}}s</p>
+                            </div>                                                  
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -1511,7 +1657,7 @@
                         </tbody>
                     </table>
                     <div class="text-center mb-3 mt-4">
-                        <a  class="button-3">Load More</a>
+                        <!-- <a  class="button-3">Load More</a> -->
                     </div>
                 </div>
             </div>
@@ -1595,42 +1741,58 @@
 
 <div class="browse-section ash-bg">
     <!--============= Hightlight Slider Section Starts Here =============-->
-    <div class="browse-slider-section bid-list-slider">
+    <div class="browse-slider-section mt--140">
         <div class="container">
             <div class="mb-4" style="text-align: -webkit-center;">
-                <div class="slider-nav">
-                    <a  class="bro-prev"><i class="flaticon-left-arrow"></i></a>
-                    <a  class="bro-next active"><i class="flaticon-right-arrow"></i></a>
-                </div>
+                <!-- <div class="slider-nav">
+                    <a  class="swiper-button-prev bro-prev"><i class="flaticon-left-arrow"></i></a>
+                    <a  class="swiper-button-next bro-next active"><i class="flaticon-right-arrow"></i></a>
+                </div> -->
             </div>
-            <div class="m--15">
-                <div class="browse-slider owl-theme owl-carousel">
-                    <a  class="browse-item">
-                        <img src="../assets/images/slide-car-all.png" alt="auction">
-                        <span class="info">All</span>
-                    </a>
-                    <a  class="browse-item">
-                        <img src="../assets/images/slide-car-honda.png" alt="auction">
-                        <span class="info">Honda</span>
-                    </a>
-                    <a  class="browse-item">
-                        <img src="../assets/images/slide-car-toyota.png" alt="auction">
-                        <span class="info">Toyota</span>
-                    </a>
-                    <a  class="browse-item">
-                        <img src="../assets/images/slide-car-ford.png" alt="auction">
-                        <span class="info">Ford F</span>
-                    </a>
-                    <a  class="browse-item">
-                        <img src="../assets/images/slide-car-bmw.png" alt="auction">
-                        <span class="info">BMW</span>
-                    </a>
-                    <a  class="browse-item">
-                        <img src="../assets/images/slide-car-rover.png" alt="auction">
-                        <span class="info">Land Rover</span>
-                    </a>
+            <!-- <div class="m--15" style=" display: flex;justify-content: center;">
+                <div class="carousel-container">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="../assets/images/slide-car-all.png" alt="auction">
+                                    <span class="info">All</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="../assets/images/slide-car-honda.png" alt="auction">
+                                    <span class="info">Honda</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="../assets/images/slide-car-toyota.png" alt="auction">
+                                    <span class="info">Toyota</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="../assets/images/slide-car-ford.png" alt="auction">
+                                    <span class="info">Ford F</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="../assets/images/slide-car-bmw.png" alt="auction">
+                                    <span class="info">BMW</span>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="card">
+                                    <img src="../assets/images/slide-car-rover.png" alt="auction">
+                                    <span class="info">Land Rover</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!--============= Hightlight Slider Section Ends Here =============-->
@@ -1647,23 +1809,23 @@
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
                 </div>
 
                 <div class="custom-select-wrapper col-md-4 col-lg-2">
-                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                    <app-custom-dropdown [selectedOption]="'Price'" [options]="['Less than $1000', '$1000 - $2000', '$2000 - $3000', '$3000 - $4000', '$4000 - $5000', '$5000 - $7000', '$7000 - $10,000', '$10,000 - $15,000', '$15,000 - $20,000', '$20,000 - $25,000']"></app-custom-dropdown>
                 </div>
             </div>
         </div>
@@ -1791,13 +1953,13 @@
 <ng-container *ngIf="page === 'auction'">
 
     <!--============= Banner Section Starts Here =============-->
-    <section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
-    </section>
+    <!-- <section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
+    </section> -->
     <!--============= Banner Section Ends Here =============-->
 
-    <div class="browse-section ash-bg">
+    <div class="browse-section ash-bg" style="padding-top: 30px;">
         <!--============= Hightlight Slider Section Starts Here =============-->
-        <div class="browse-slider-section bid-list-slider">
+        <!-- <div class="browse-slider-section bid-list-slider">
             <div class="container">
                 <div class="mb-4" style="text-align: -webkit-center;">
                     <div class="slider-nav">
@@ -1834,7 +1996,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--============= Hightlight Slider Section Ends Here =============-->
         
 
@@ -1849,23 +2011,23 @@
                     </div>
     
                     <div class="custom-select-wrapper col-md-4 col-lg-2">
-                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
                     </div>
     
                     <div class="custom-select-wrapper col-md-4 col-lg-2">
-                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
                     </div>
     
                     <div class="custom-select-wrapper col-md-4 col-lg-2">
-                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
                     </div>
     
                     <div class="custom-select-wrapper col-md-4 col-lg-2">
-                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
                     </div>
     
                     <div class="custom-select-wrapper col-md-4 col-lg-2">
-                        <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                        <app-custom-dropdown [selectedOption]="'Price'" [options]="['Less than $1000', '$1000 - $2000', '$2000 - $3000', '$3000 - $4000', '$4000 - $5000', '$5000 - $7000', '$7000 - $10,000', '$10,000 - $15,000', '$15,000 - $20,000', '$20,000 - $25,000']"></app-custom-dropdown>
                     </div>
                 </div>
             </div>
@@ -2222,7 +2384,7 @@
                                 <a><img src="../assets/images/my-ads/wallet-logo.png" alt="">Wallet</a>
                             </li>
                             <li [class.active]="activeMenu === 'logout'" (click)="setActiveMenu('logout')">
-                                <a><img src="../assets/images/my-ads/logout-logo.png" alt="">Referrals</a>
+                                <a><img src="../assets/images/my-ads/logout-logo.png" alt="">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -3230,34 +3392,50 @@
                 </div>
                 <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
                     <div class="file-uploader">
-                        <label for="fileInput">
-                            <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
-                            <div class="upload-text">
-                                <strong>Business Verification</strong>
+                        <label for="vehicleFileInput" *ngIf="!vehicleFile">
+                          <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                          <div class="upload-text">
+                            <strong>Business Verification</strong>
                                 <p>(E.g.Tax Verification Document)</p>
-                            </div>
+                          </div>
                         </label>
-                        <input type="file" id="fileInput" hidden>
-                    </div>
+                        <input type="file" id="vehicleFileInput" hidden (change)="onFileSelect($event, 'vehicle')">
+                        
+                        <!-- Show selected file name -->
+                        <div class="file-name" *ngIf="vehicleFile">
+                          <div style="display: flex; justify-content: space-between;">
+                              <div class="name">
+                                  {{ vehicleFile }}
+                              </div>
+                              <div>
+                                  <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('vehicle')" alt="">
+                              </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
                 <form action="">
                     <div class="title">Vehicle information</div>
                     <div class="dropdowns-section">
-                       <div>
-                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
-                       </div>
-                       <div>
-                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
-                       </div>
-                       <div>
-                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
-                       </div>
-                       <div>
-                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
-                       </div>
-                       <div>
-                           <app-custom-dropdown [options]="['Country', 'Social Media', 'Friends', 'Advertisement']"></app-custom-dropdown>
-                       </div>
+                        <div>
+                            <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
+                        </div>
                     </div>
                     <div class="title">
                         Pricing
@@ -3533,10 +3711,12 @@
                                     <a ><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 968-0608</a>
                                 </li>
                                 <li>
-                                    <a ><img style="margin-right: 15px;" src="../assets/images/email-icon.png"/>helpengotheme.com</a>
+                                    <a ><img style="margin-right: 15px;" src="../assets/images/email-icon.png"/>{{ 'autobidalbania@gmail.com' }}</a>
                                 </li>
                                 <li>
-                                    <a  style="margin-left: 30px;">1201 Broadway Suite</a>
+                                    <a  style="margin-left: 30px;">Street "Aleksandër Moisiu" Nr. 76
+                                        Ish - Kinostudio
+                                        Tirana Albania</a>
                                 </li>
                             </ul>
                             <ul class="social-icons">
