@@ -6,8 +6,68 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 </head>
 <body>
   <app-root></app-root>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+   var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 5,  // Show 6 slides at a time
+    spaceBetween: 5,  // Adjust spacing between slides
+    loop: true,        // Enable infinite loop
+    centeredSlides: false, // Keeps slides aligned
+    speed: 600,       // Smooth transition speed
+    autoplay: {
+        delay: 2000,  // Auto-slide every 2 seconds
+        pauseOnMouseEnter: true
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        320: { slidesPerView: 1 },  // On small screens, show 1 slide
+        480: { slidesPerView: 2 },
+        640: { slidesPerView: 3 },
+        768: { slidesPerView: 4 },
+        1024: { slidesPerView: 5 }  // Show 6 slides on large screens
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".swiper-slide");
+
+    slides.forEach(slide => {
+        slide.addEventListener("click", function () {
+            // Remove 'active' class from all slides
+            slides.forEach(s => s.classList.remove("active"));
+
+            // Add 'active' class to the clicked slide
+            this.classList.add("active");
+        });
+    });
+});
+
+        function changeImage(src) {
+          const mainImg = document.getElementById('mainImg');
+
+    // Fade out the current image
+    mainImg.style.opacity = '0';
+
+    setTimeout(() => {
+        // Change the image source
+        mainImg.src = src;
+
+        // Fade in the new image
+        mainImg.style.opacity = '1';
+    }, 500); 
+        }
+
+
+  </script>
 </body>
 </html>

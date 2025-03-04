@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, Inject, Input, NgZone, OnInit, PLATFORM_ID, QueryList, ViewChild, ViewChildren, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Inject, Input, NgZone, OnInit, PLATFORM_ID, QueryList, ViewChild, ViewChildren, viewChildren } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -65,8 +65,7 @@ export class CustomDropdownComponent {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
-
+export class AppComponent implements OnInit, AfterViewInit {
   landingPage: boolean = true;
   page = 'sign-in';
   verificationPage = 'address';
@@ -114,10 +113,10 @@ export class AppComponent implements OnInit {
   } ${this.targetDate.getDate()}, ${this.targetDate.getFullYear()}`;
   
 
-  @ViewChild('days', { static: true }) days!: ElementRef;
-  @ViewChild('hours', { static: true }) hours!: ElementRef;
-  @ViewChild('minutes', { static: true }) minutes!: ElementRef;
-  @ViewChild('seconds', { static: true }) seconds!: ElementRef;
+  days: any;
+  hours: any;
+  minutes: any;
+  seconds: any;
 
   paramValue: any = '';
 
@@ -135,11 +134,15 @@ export class AppComponent implements OnInit {
     }
   };
 
+  isBrowser: boolean = false;
+
   constructor(
     private ngZone: NgZone, 
     @Inject(PLATFORM_ID) private platformId: Object,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
   
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -211,12 +214,14 @@ export class AppComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    // this.ngZone.runOutsideAngular(() => setInterval(() => {
-    //   this.tickTock();
-    //   this.difference = this.targetTime - this.now;
-    //   this.difference = this.difference / (1000 * 60 * 60 * 24);
-    //   this.days.nativeElement.innerText = `${Math.floor(this.difference)}d`
-    // }, 1000));
+    if (isPlatformBrowser(this.platformId)) {
+      setInterval(() => {
+      this.tickTock();
+      this.difference = this.targetTime - this.now;
+      this.difference = this.difference / (1000 * 60 * 60 * 24);
+      this.days = Math.floor(this.difference)
+    }, 1000)
+    }
   }
 
   setActiveMenu(menu: string) {
@@ -243,6 +248,45 @@ export class AppComponent implements OnInit {
     }
   }
 
+  identityFile: string | null = null;
+  addressFile: string | null = null;
+  businessFile: string | null = null;
+  vehicleFile: string | null = null;
+
+  onFileSelect(event: Event, type: any): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const fileName = input.files[0].name;
+      if (type === 'identity') {
+        this.identityFile = fileName;
+      } 
+      else if((type === 'address')) {
+        this.addressFile = fileName;
+      }
+      else if((type === 'business')) {
+        this.businessFile = fileName;
+      }
+      else if((type === 'vehicle')) {
+        this.vehicleFile = fileName;
+      }
+    }
+  }
+  
+  removeFile(type: any): void {
+    if (type === 'identity') {
+      this.identityFile = null;
+    } 
+    else if((type === 'address')) {
+      this.addressFile = null;
+    }
+    else if((type === 'business')) {
+      this.businessFile = null;
+    }
+    else if((type === 'vehicle')) {
+      this.vehicleFile = null;
+    }
+  }
+
   togglePassword(type: any): void {
     if(type === 'password') {
       this.isPasswordVisible = !this.isPasswordVisible;
@@ -256,9 +300,9 @@ export class AppComponent implements OnInit {
   tickTock() {
     this.date = new Date();
     this.now = this.date.getTime();
-    this.days.nativeElement.innerText = `${Math.floor(this.difference)}d`;
-    this.hours.nativeElement.innerText = `${23 - this.date.getHours()}h`;
-    this.minutes.nativeElement.innerText = `${60 - this.date.getMinutes()}m`;
-    this.seconds.nativeElement.innerText = `${60 - this.date.getSeconds()}s`;
+    this.days = Math.floor(this.difference);
+    this.hours = 23 - this.date.getHours();
+    this.minutes = 60 - this.date.getMinutes();
+    this.seconds = 60 - this.date.getSeconds();
   }
 }

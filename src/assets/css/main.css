@@ -2264,6 +2264,15 @@ header {
   bottom: 0;
 }
 
+.client-review-section {
+  display: flex; 
+  justify-content: space-between; 
+  height: 340px;
+  margin-left: 60px; 
+  margin-right: 60px;
+}
+
+
 .client-review-bg-sm {
   background-image: url('../images/client-review-bg-sm.png');
   background-repeat: no-repeat;
@@ -2277,7 +2286,6 @@ header {
   background-image: url('../images/client-review-bg-lg.png');
   background-repeat: no-repeat;
   width: 500px;
-  text-align: center;
   text-align: center;
   padding: 40px 62px;
   background-position: center;
@@ -5227,8 +5235,9 @@ div[class*=auction] .custom-button {
 /**================= Bid List Page Css =====================**/
 .bid-list-banner-section {
   position: relative;
-  padding: 220px 0 270px;
+  padding: 150px 0 270px;
   overflow: hidden;
+  z-index: -1;
 }
 
 .bid-list {
@@ -5253,7 +5262,7 @@ div[class*=auction] .custom-button {
 }
 
 .bid-list-car-auction {
-  margin-top: 130px;
+  margin-top: 110px;
 }
 
 .bid-list-car-auction.pos-rel .container  {
@@ -5454,6 +5463,26 @@ div[class*=auction] .custom-button {
   border-radius: 5px;
 }
 
+
+.bids-details .times {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  text-align: center;
+  color: rgba(196, 35, 37, 1);
+}
+
+.bids-details .countdown-area .times p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    font: 700 20px courier, sans-serif;
+}
+
+.bids-details .countdown-area .times p:last-child {
+  margin: 0 !important;
+}
+
 .bids-details .auction-container .bid-btn {
   background-color: rgba(44, 110, 73, 1);
   color: white;
@@ -5513,6 +5542,31 @@ div[class*=auction] .custom-button {
   padding-bottom: 5px;
 }
 
+
+
+.preview {
+  margin-top: 10px;
+  position: relative;
+  display: inline-block;
+}
+.preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.remove-btn:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+}
+.file-name .name {
+  width: 300px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 
 .bids-details .product-sidebar-details {
@@ -6242,6 +6296,10 @@ div[class*=auction] .custom-button {
   transition: 0.3s;
   background: rgba(255, 255, 255, 1);
   text-align: left;
+}
+
+.file-uploader .file-name {
+  width: 100%;
 }
 
 .verification-process .documents .files-section:hover {
@@ -6984,6 +7042,176 @@ div[class*=auction] .custom-button {
 
 
 
+
+
+
+
+/*===============Custom Carousal============*/
+
+.carousel-container {
+  width: 80%;
+  padding: 20px;
+  position: relative;
+}
+
+.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  /* width: 200px !important; */
+}
+
+.swiper-slide .card {
+  background: white;
+  border: 1px solid rgba(213, 26, 32, 1);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: unset;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 20px;
+  font-weight: bold;
+  content: unset;
+}
+
+.swiper-slide .card .info {
+  color: rgba(228, 30, 38, 1);
+  font-size: 14px;
+  padding-top: 5px;
+}
+
+.swiper-slide .card:hover, .swiper-slide.active .card {
+  color: white;
+  cursor: pointer;
+  background: rgba(228, 30, 38, 1);
+  box-shadow: -2.034px 6.84px 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+.swiper-slide .card:hover img, .swiper-slide.active .card img {
+  filter: brightness(0) invert(1);
+}
+.swiper-slide .card:hover .info, .swiper-slide.active .card .info {
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slider-container {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.bid-details {
+  width: 100%;
+  text-align: center;
+}
+.main-image {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.main-image img {
+  object-fit: cover;
+  /* position: absolute; */
+  transition: transform 0.5s ease-in-out;
+}
+
+.bid-details .thumbnails {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.bid-details .thumbnails img {
+  height: 150px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.bid-details .thumbnails img:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Custom Scrollbar Styles for Chat */ 
 .chat .chat-body::-webkit-scrollbar {
   width: 3px;
@@ -7029,6 +7257,33 @@ div[class*=auction] .custom-button {
   border-radius: 2px;
 }
 
+@media (max-width: 1310px) {
+  .client-review-bg-sm {
+    width: 300px;
+    padding: 30px 30px;
+    background-size: auto 250px;
+  }
+  
+  .client-review-bg-lg {
+    width: 300px;
+    padding: 30px 30px;
+    background-size: auto 250px;
+  }
+  
+}
+
+@media (max-width: 1040px) {
+  
+  .client-review-bg-lg {
+    display: none;
+  }
+
+  .client-review-section {
+    justify-content: space-around;
+  }
+  
+}
+
 /**================= Custom Media Query =================**/
 
 @media (max-width: 1200px) {
@@ -7044,6 +7299,10 @@ div[class*=auction] .custom-button {
   .sign-up .main-section .left-section .banner {
     height: 280px;
   }   
+
+  .bid-details .thumbnails img {
+    height: 130px;
+  }
 }
 
 
@@ -7125,6 +7384,14 @@ div[class*=auction] .custom-button {
 
   .new-cars .auction-inner .auction-content .price-information {
     padding-top: 40px;
+  }
+
+  .bid-details .thumbnails img {
+    height: 100px;
+  }
+
+  .main-image {
+    height: 300px;
   }
 }
 
@@ -7256,6 +7523,10 @@ div[class*=auction] .custom-button {
   .new-cars {
     margin-bottom: 24px;
   }
+
+  .bid-details .thumbnails img {
+    height: 70px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -7271,9 +7542,9 @@ div[class*=auction] .custom-button {
     margin-top: -250px;
   }
 
-  .bid-list-car-auction {
+  /* .bid-list-car-auction {
     margin-top: 80px;
-  }
+  } */
 
   .new-cars .auction-inner .auction-content {
     width: 100%;
@@ -7316,9 +7587,9 @@ div[class*=auction] .custom-button {
     margin-top: -290px;
   }
 
-  .bid-list-car-auction {
-    margin-top: 120px;
-  }
+  /* .bid-list-car-auction {
+    margin-top: 150px;
+  } */
 
   .bids-details .social-section {
     flex-direction: column;
@@ -7340,6 +7611,22 @@ div[class*=auction] .custom-button {
 
   .sign-in-form {
     padding: 50px 40px 5px 40px;
+  }
+
+  .bid-details .thumbnails img {
+    height: 60px;
+  }
+
+  .bids-details .star {
+    height: 29px;
+  }
+
+  .main-image {
+    height: 200px;
+  }
+
+  .bids-details .status {
+    padding: 5px 25px;
   }
 }
 
@@ -7384,7 +7671,7 @@ div[class*=auction] .custom-button {
   }
 
   .bid-list-car-auction {
-    margin-top: 80px;
+    margin-top: 150px;
   }
 
   .bids-details .bid-section .bid-area {
@@ -7418,8 +7705,26 @@ div[class*=auction] .custom-button {
   .email.modal-body {
     padding: 30px 30px;
   }
+
+  .bid-details .thumbnails img {
+    height: 50px;
+  }
 }
 
+
+@media (max-width: 368px) {
+  .bid-details .thumbnails img {
+    height: 40px;
+  }
+
+  .main-image {
+    height: 130px;
+  }
+
+  .bids-details {
+    margin-top: -215px !important;
+  }
+}
 
 /*Fetured Auction Section Starts Here*/
 .auction-item-8 {
