@@ -7037,7 +7037,9 @@ div[class*=auction] .custom-button {
 
 
 
-
+.client-stars {
+  margin-top: 10px;
+}
 
 
 
@@ -7269,7 +7271,26 @@ div[class*=auction] .custom-button {
     padding: 30px 30px;
     background-size: auto 250px;
   }
+
+  .client-box {
+    height: 60px; /* Fixed height */
+    overflow: hidden;
+  }
   
+  .ellipses-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;/* Number of lines before truncation */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    margin-top: 5px;
+  }
+            
+  .client-photo {
+    margin-top: 30px;
+    height: 60px;
+  }
 }
 
 @media (max-width: 1040px) {
@@ -7527,6 +7548,10 @@ div[class*=auction] .custom-button {
   .bid-details .thumbnails img {
     height: 70px;
   }
+
+  .client-review-last {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -7708,6 +7733,25 @@ div[class*=auction] .custom-button {
 
   .bid-details .thumbnails img {
     height: 50px;
+  }
+
+  .client-box {
+    height: 50px; /* Fixed height */
+  }
+  
+  .ellipses-text {
+    -webkit-line-clamp: 2;
+    margin-top: 5px;
+  }
+            
+  .client-photo {
+    margin-top: 50px;
+    height: 50px;
+  }
+
+  .client-review-bg-sm {
+    width: 245px;
+    background-size: auto 200px;
   }
 }
 

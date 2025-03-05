@@ -1248,22 +1248,26 @@
             </div>
             <div class="client-review-section">
                 <div class="client-review-bg-sm">
-                    <img src="../assets/images/client-1.png" alt="client-photo">
+                    <img class="client-photo" src="../assets/images/client-1.png" alt="client-photo">
                     <h5 style="font-weight: 700; font-family: system-ui; margin-top: 10px; margin-bottom: 15px;">Tom Powell</h5>
-                    <p style="line-height: 18px; font-size: 13px; color: black;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
-                    <p>
+                    <div class="client-box">
+                        <p class="ellipses-text" style="line-height: 18px; font-size: 13px; color: black;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
+                    </div>
+                    <p class="client-stars">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
-                    </p>
+                    </p >
                 </div>
                 <div class="client-review-bg-lg">
-                    <img src="../assets/images/client-2.png" width="100" alt="client-photo">
+                    <img class="client-photo" src="../assets/images/client-2.png" alt="client-photo">
                     <h5 style="font-weight: 700; font-family: system-ui; margin-top: 10px; margin-bottom: 15px;">Richard</h5>
-                    <p style="line-height: 18px; font-size: 13px; color: black;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                    <p>
+                    <div class="client-box">
+                        <p class="ellipses-text" style="line-height: 18px; font-size: 13px; color: black;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
+                    </div>
+                    <p class="client-stars">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
@@ -1271,11 +1275,13 @@
                         <img src="../assets/images/review-star.png" alt="">
                     </p> 
                 </div>
-                <div class="client-review-bg-sm">
-                    <img src="../assets/images/client-1.png" alt="client-photo">
+                <div class="client-review-bg-sm client-review-last">
+                    <img class="client-photo" src="../assets/images/client-1.png" alt="client-photo">
                     <h5 style="font-weight: 700; font-family: system-ui; margin-top: 10px; margin-bottom: 15px;">Tom Powell</h5>
-                    <p style="line-height: 18px; font-size: 13px; color: black;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
-                    <p>
+                    <div class="client-box">
+                        <p class="ellipses-text" style="line-height: 18px; font-size: 13px; color: black;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation.</p>
+                    </div>
+                    <p class="client-stars">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
                         <img src="../assets/images/review-star.png" alt="">
@@ -1731,15 +1737,18 @@
 <!--************************** New Cars Page  ******************************-->
 <ng-container *ngIf="page === 'new-cars'">
 <!--============= Banner Section Starts Here =============-->
-<section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
+<!-- <section class="bid-list-banner-section bg-img"  style="background-image: url('../assets/images/bid-list-banner.png');">
     <div class="banner-shape d-none d-lg-block">
         <img src="../assets/css/img/banner-shape.png" alt="css">
     </div>
-</section>
+</section> -->
+
+<!-- <section class="bid-list-banner-section bg-img">
+</section> -->
 <!--============= Banner Section Ends Here =============-->
 
 
-<div class="browse-section ash-bg">
+<div class="browse-section ash-bg" style="margin-top: 280px;">
     <!--============= Hightlight Slider Section Starts Here =============-->
     <div class="browse-slider-section mt--140">
         <div class="container">
