@@ -10,10 +10,10 @@
 <body>
   <app-root></app-root>
   <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.querySelector(".browse-slider");
+    document.addEventListener("DOMContentLoaded", function () {
+       const carousel = document.querySelector(".browse-slider");
 
-    carousel.addEventListener("click", function (event) {
+       carousel.addEventListener("click", function (event) {
         const clickedItem = event.target.closest(".browse-item");
         if (!clickedItem) return;
 
@@ -27,9 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
         items.forEach(item => {
             item.closest(".browse-item").classList.add("active");
         });
+      });
     });
-});
 
+    
   function changeImage(src) {
     const mainImg = document.getElementById('mainImg');
 

@@ -700,6 +700,32 @@
                             <img class="profile-icon" (click)="changePage('user-info');setActiveMenu('profile')" src="../assets/images/user-profile.png" alt="">
                         </li>
                     </ul>
+
+
+                    <div class="settings">
+                        <div class="header-container">
+                            <div class="profile-menu">
+                                <!-- Profile Icon -->
+                                <img 
+                                    id="profileButton" 
+                                    class="profile-icon" 
+                                    (click)="toggleDropdown()" 
+                                    src="../assets/images/user-profile.png" 
+                                    alt="User Profile"
+                                >
+                        
+                                <!-- Dropdown Menu -->
+                                <div class="dropdowns-menu" *ngIf="isDropdownOpen">
+                                    <div class="dropdown-item amount-section" (click)="changePage('user-info');setActiveMenu('wallet')">
+                                        <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
+                                        <p class="amount">$ 100</p>
+                                    </div>
+                                    <div class="dropdown-item sell-section" data-toggle="modal" data-target="#post-ad-modal">Sell</div>
+                                    <div class="dropdown-item sell-section" (click)="changePage('user-info');setActiveMenu('profile')">Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

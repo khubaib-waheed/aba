@@ -1815,7 +1815,8 @@ footer {
   top: 7px;
 }
 
-.header-top-wrapper .cart-button-area li .amount-section {
+.header-top-wrapper .cart-button-area li .amount-section,
+.header-top-wrapper .settings .amount-section {
   display: flex; 
   flex-wrap: wrap; 
   align-items: center; background: white; 
@@ -1824,7 +1825,8 @@ footer {
   cursor: pointer;
 }
 
-.header-top-wrapper .cart-button-area li .amount {
+.header-top-wrapper .cart-button-area li .amount,
+  .header-top-wrapper .settings .amount-section .amount {
   font-size: 18px;
   font-weight: 600;
   padding-top: 8px;
@@ -7048,78 +7050,7 @@ div[class*=auction] .custom-button {
 
 
 
-/*===============Custom Carousal============*/
-
-.carousel-container {
-  width: 80%;
-  padding: 20px;
-  position: relative;
-}
-
-/* .swiper {
-  width: 100%;
-  overflow: hidden;
-}
-
-.swiper-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-}
-
-.swiper-slide .card {
-  background: white;
-  border: 1px solid rgba(213, 26, 32, 1);
-  padding: 15px;
-  border-radius: 12px;
-  text-align: center;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  position: unset;
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 20px;
-  font-weight: bold;
-  content: unset;
-}
-
-.swiper-slide .card .info {
-  color: rgba(228, 30, 38, 1);
-  font-size: 14px;
-  padding-top: 5px;
-}
-
-.swiper-slide .card:hover, .swiper-slide.active .card {
-  color: white;
-  cursor: pointer;
-  background: rgba(228, 30, 38, 1);
-  box-shadow: -2.034px 6.84px 10px 0px rgba(0, 0, 0, 0.6);
-}
-
-.swiper-slide .card:hover img, .swiper-slide.active .card img {
-  filter: brightness(0) invert(1);
-}
-.swiper-slide .card:hover .info, .swiper-slide.active .card .info {
-  color: white;
-} */
-
-
-
-
+/*===============Custom Owl Carousal Css============*/
 
 .browse-slider .browse-item .info {
   color: rgba(228, 30, 38, 1);
@@ -7792,6 +7723,17 @@ div[class*=auction] .custom-button {
   .bids-details {
     margin-top: -215px !important;
   }
+
+  .header-top-wrapper .cart-button-area {
+    display: none;
+  }
+
+  .settings {
+    display: flex !important;
+    align-items: center;
+  }
+
+
 }
 
 /*Fetured Auction Section Starts Here*/
@@ -10560,6 +10502,63 @@ button.custom-button {
 
 
 
+.settings {
+  display: none;
+}
+
+.settings .profile-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.settings .profile-icon {
+  width: 40px; /* Adjust size */
+  cursor: pointer;
+}
+
+.settings .dropdowns-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.settings .dropdown-item {
+  cursor: pointer;
+  border-bottom: 1px solid rgba(211, 211, 211, 1);
+  padding-bottom: 5px !important;
+}
+
+.settings .dropdown-item:hover .amount {
+  color: #52606d;
+}
+
+.settings .amount-section {
+  justify-content: center;
+  border-radius: 0 !important;
+}
+
+.settings .amount-section .amount {
+  padding-top: 3px !important;
+  padding-left: 5px !important;
+  font-size: 16px;
+}
+
+.settings .amount-icon {
+  height: 20px;
+}
+
+
+.header-top-wrapper .settings .sell-section {
+  background: white; 
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
 
 
 

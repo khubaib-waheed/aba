@@ -92,6 +92,14 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy  {
     this.fileInputs.get(index)?.nativeElement.click();
   }
 
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.profile-menu')) {
+      this.isDropdownOpen = false;
+    }
+  }
+
 
   date: any;
   now: any;
@@ -362,6 +370,12 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy  {
     else if((type === 'vehicle')) {
       this.vehicleFile = null;
     }
+  }
+
+  isDropdownOpen = false; // State to track dropdown visibility
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen; // Toggle the dropdown menu
   }
 
   togglePassword(type: any): void {
