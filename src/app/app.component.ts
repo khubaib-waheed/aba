@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, Inject, Input, NgZone, OnInit, PLATFORM_ID, QueryList, ViewChild, ViewChildren, viewChildren } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgOtpInputModule } from 'ng-otp-input';
@@ -139,7 +139,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private ngZone: NgZone, 
     @Inject(PLATFORM_ID) private platformId: Object,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -213,7 +214,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       setInterval(() => {
       this.tickTock();
@@ -221,6 +222,16 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.difference = this.difference / (1000 * 60 * 60 * 24);
       this.days = Math.floor(this.difference)
     }, 1000)
+
+    const AOS = (await import('aos')).default; // Import AOS dynamically
+      AOS.init({ duration: 1200, once: true });
+
+      // Refresh AOS on route change
+      this.router.events.subscribe((event: any) => {
+        if (event instanceof NavigationEnd) {
+          AOS.refresh();
+        }
+      });
     }
   }
 
