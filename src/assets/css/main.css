@@ -7056,7 +7056,7 @@ div[class*=auction] .custom-button {
   position: relative;
 }
 
-.swiper {
+/* .swiper {
   width: 100%;
   overflow: hidden;
 }
@@ -7069,7 +7069,6 @@ div[class*=auction] .custom-button {
 .swiper-slide {
   display: flex;
   justify-content: center;
-  /* width: 200px !important; */
 }
 
 .swiper-slide .card {
@@ -7116,7 +7115,32 @@ div[class*=auction] .custom-button {
 }
 .swiper-slide .card:hover .info, .swiper-slide.active .card .info {
   color: white;
+} */
+
+
+
+
+
+.browse-slider .browse-item .info {
+  color: rgba(228, 30, 38, 1);
+  font-size: 14px;
+  padding-top: 5px;
 }
+
+.browse-slider .browse-item:hover, .browse-slider .browse-item.active {
+  color: white;
+  cursor: pointer;
+  background: rgba(228, 30, 38, 1);
+  box-shadow: -2.034px 6.84px 10px 0px rgba(0, 0, 0, 0.6);
+}
+
+.browse-slider .browse-item:hover img, .browse-slider .browse-item.active img {
+  filter: brightness(0) invert(1);
+}
+.browse-slider .browse-item:hover .info, .browse-slider .browse-item.active .info {
+  color: white;
+}
+
 
 
 
@@ -10528,3 +10552,15 @@ button.custom-button {
 }
 
 /*All Animation Ends Here*//*# sourceMappingURL=main.css.map */
+
+
+
+
+
+
+
+
+
+
+
+

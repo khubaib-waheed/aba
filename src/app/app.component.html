@@ -229,13 +229,13 @@
 <section *ngIf="page === 'signup'" class="sign-up">
     <div class="container">
         <div class="main-section">
-            <div class="left-section">
+            <div class="left-section" data-aos="fade-right" data-aos-duration="1200">
                 <h2>Welcome to</h2>
                 <h2>Auto Bid Albania</h2>
                 <p>Sign up to Auto Bid Albania and take control of your bids</p>
                 <img class="banner" src="../assets/images/verification/sign-up-banner.png" alt="">
             </div>
-            <div class="right-section">
+            <div class="right-section" data-aos="fade-left" data-aos-duration="1200">
                 <div style="margin: 10px auto 15px auto;">
                     <img src="../assets/images/verification/auto-bid-logo-2.png" alt="">
                 </div>
@@ -728,7 +728,7 @@
                     </ul>
                     <form class="search-form">
                         <input type="text" placeholder="Search for brand, model....">
-                        <button type="submit"><img src="../assets/images/search-icon.png" alt=""></button>
+                        <button type="button"><img src="../assets/images/search-icon.png" alt=""></button>
                     </form>
                     <div class="search-bar d-md-none">
                         <a ><i class="fas fa-search"></i></a>
@@ -796,14 +796,12 @@
                 <div class="container">
                     <div class="mb-4" style="text-align: -webkit-center;">
                         <div class="slider-nav">
-                            <a  class="swiper-button-prev bro-prev"><i class="flaticon-left-arrow"></i></a>
-                            <a  class="swiper-button-next bro-next active"><i class="flaticon-right-arrow"></i></a>
-                            <!-- <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div> -->
+                            <a  class="owl-prev bro-prev"><i class="flaticon-left-arrow"></i></a>
+                            <a  class="owl-next bro-next active"><i class="flaticon-right-arrow"></i></a>
                         </div>
                     </div>
                     <div class="m--15" style=" display: flex;justify-content: center;">
-                        <!-- <div class="browse-slider owl-theme owl-carousel">
+                        <div #owlCarousel class="browse-slider owl-theme owl-carousel">
                             <a  class="browse-item">
                                 <img src="../assets/images/slide-car-all.png" alt="auction">
                                 <span class="info">All</span>
@@ -828,52 +826,6 @@
                                 <img src="../assets/images/slide-car-rover.png" alt="auction">
                                 <span class="info">Land Rover</span>
                             </a>
-                        </div> -->
-                        <div class="carousel-container">
-                            <div class="swiper mySwiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img src="../assets/images/slide-car-all.png" alt="auction">
-                                            <span class="info">All</span>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img src="../assets/images/slide-car-honda.png" alt="auction">
-                                            <span class="info">Honda</span>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img src="../assets/images/slide-car-toyota.png" alt="auction">
-                                            <span class="info">Toyota</span>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img src="../assets/images/slide-car-ford.png" alt="auction">
-                                            <span class="info">Ford F</span>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img src="../assets/images/slide-car-bmw.png" alt="auction">
-                                            <span class="info">BMW</span>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card">
-                                            <img src="../assets/images/slide-car-rover.png" alt="auction">
-                                            <span class="info">Land Rover</span>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <!-- Navigation Buttons -->
-                                <!-- <div class="swiper-button-prev"></div>
-                                <div class="swiper-button-next"></div> -->
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1695,7 +1647,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 col-xl-6">
                     <!-- <div data-aos="zoom-out-up" data-aos-duration="1200" style="background-color: white; border-radius: 20px; padding: 5px;box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);"> -->
-                    <div style="background-color: white; border-radius: 20px; padding: 5px;box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);">
+                    <div data-aos="zoom-out-up" data-aos-duration="1200" style="background-color: white; border-radius: 20px; padding: 5px;box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);">
                         <div class="form-section">
                             <div class="heading">Contact Us</div>
                             <h2 class="title">Get in Touch</h2>
@@ -1710,7 +1662,7 @@
                     </div>
                 </div>
                 <!-- <div class="d-none d-lg-block col-lg-6" data-aos="fade-right" data-aos-duration="1200"> -->
-                <div class="d-none d-lg-block col-lg-6">
+                <div class="d-none d-lg-block col-lg-6" data-aos="fade-right" data-aos-duration="1200">
                     <div class="banner-thumb-2">
                         <img src="../assets/images/contact/banner.png" alt="banner">
                     </div>
@@ -1752,56 +1704,7 @@
     <!--============= Hightlight Slider Section Starts Here =============-->
     <div class="browse-slider-section mt--140">
         <div class="container">
-            <div class="mb-4" style="text-align: -webkit-center;">
-                <!-- <div class="slider-nav">
-                    <a  class="swiper-button-prev bro-prev"><i class="flaticon-left-arrow"></i></a>
-                    <a  class="swiper-button-next bro-next active"><i class="flaticon-right-arrow"></i></a>
-                </div> -->
-            </div>
-            <!-- <div class="m--15" style=" display: flex;justify-content: center;">
-                <div class="carousel-container">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="../assets/images/slide-car-all.png" alt="auction">
-                                    <span class="info">All</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="../assets/images/slide-car-honda.png" alt="auction">
-                                    <span class="info">Honda</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="../assets/images/slide-car-toyota.png" alt="auction">
-                                    <span class="info">Toyota</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="../assets/images/slide-car-ford.png" alt="auction">
-                                    <span class="info">Ford F</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="../assets/images/slide-car-bmw.png" alt="auction">
-                                    <span class="info">BMW</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card">
-                                    <img src="../assets/images/slide-car-rover.png" alt="auction">
-                                    <span class="info">Land Rover</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            <div class="mb-4" style="text-align: -webkit-center;"></div>
         </div>
     </div>
     <!--============= Hightlight Slider Section Ends Here =============-->
@@ -1811,50 +1714,48 @@
     <!--============= Car Auction Section Starts Here =============-->
 
     <section style="background-color: #f5f5f5;" class="bid-list-car-auction car-auction-section padding-bottom pos-rel oh">
-        <div class="container">
+        <div class="container" style="z-index: 999;">
             <div class="row bid-list">
-                <div class="custom-select-wrapper col-md-4 col-lg-2">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="500">
                     <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                 </div>
 
-                <div class="custom-select-wrapper col-md-4 col-lg-2">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="600">
                     <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
                 </div>
 
-                <div class="custom-select-wrapper col-md-4 col-lg-2">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="700">
                     <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
                 </div>
 
-                <div class="custom-select-wrapper col-md-4 col-lg-2">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="800">
                     <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
                 </div>
 
-                <div class="custom-select-wrapper col-md-4 col-lg-2">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="900">
                     <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
                 </div>
 
-                <div class="custom-select-wrapper col-md-4 col-lg-2">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="1000">
                     <app-custom-dropdown [selectedOption]="'Price'" [options]="['Less than $1000', '$1000 - $2000', '$2000 - $3000', '$3000 - $4000', '$4000 - $5000', '$5000 - $7000', '$7000 - $10,000', '$10,000 - $15,000', '$15,000 - $20,000', '$20,000 - $25,000']"></app-custom-dropdown>
                 </div>
             </div>
         </div>
 
-        <div>
-            <div class="" style="display: flex; justify-content: center; gap: 10px; text-align: center; background-color: rgba(228, 30, 38, 1);padding: 20px 0px;">
-                <img src="../assets/images/new-cars/car.png" alt="">
-                <div style="margin: auto 0;">
-                    <div style="font-size: 40px; color: white; font-weight: 600;">New Cars</div>
-                    <div style="font-size: 20px; color: white; font-weight: 500; margin-top: 10px;">We offer affordable Vehicles</div>
-                </div>
-                <img src="../assets/images/new-cars/car.png" alt="">
+        <div data-aos="fade-down" data-aos-duration="500" style="display: flex; justify-content: center; gap: 10px; text-align: center; background-color: rgba(228, 30, 38, 1);padding: 20px 0px;">
+            <img src="../assets/images/new-cars/car.png" alt="">
+            <div style="margin: auto 0;">
+                <div style="font-size: 40px; color: white; font-weight: 600;">New Cars</div>
+                <div style="font-size: 20px; color: white; font-weight: 500; margin-top: 10px;">We offer affordable Vehicles</div>
             </div>
+            <img src="../assets/images/new-cars/car.png" alt="">
         </div>
 
 
         <div class="container padding-bottom padding-top">
             <div class="row justify-content-center mb-30-none">
                 <div class="col-lg-12">
-                    <div class="auction-item-6 new-cars">
+                    <div class="auction-item-6 new-cars" data-aos="fade-down" data-aos-duration="1200">
                         <div class="auction-inner">
                             <div class="auction-thumb">
                                 <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
@@ -1884,7 +1785,7 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <div class="auction-item-6 new-cars">
+                    <div class="auction-item-6 new-cars" data-aos="fade-down" data-aos-duration="1200">
                         <div class="auction-inner">
                             <div class="auction-thumb">
                                 <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
@@ -1914,7 +1815,7 @@
                 </div>
 
                 <div class="col-lg-12">
-                    <div class="auction-item-6 new-cars">
+                    <div class="auction-item-6 new-cars" data-aos="fade-down" data-aos-duration="1200">
                         <div class="auction-inner">
                             <div class="auction-thumb">
                                 <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
@@ -2013,35 +1914,35 @@
         <!--============= Car Auction Section Starts Here =============-->
 
         <section style="background-color: #f5f5f5;" class="bid-list-car-auction car-auction-section padding-bottom pos-rel oh">
-            <div class="container">
+            <div class="container" style="z-index: 999;">
                 <div class="row bid-list">
-                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="500">
                         <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
                     </div>
     
-                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="600">
                         <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
                     </div>
     
-                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="700">
                         <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
                     </div>
     
-                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="800">
                         <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
                     </div>
     
-                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="900">
                         <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
                     </div>
     
-                    <div class="custom-select-wrapper col-md-4 col-lg-2">
+                    <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="1000">
                         <app-custom-dropdown [selectedOption]="'Price'" [options]="['Less than $1000', '$1000 - $2000', '$2000 - $3000', '$3000 - $4000', '$4000 - $5000', '$5000 - $7000', '$7000 - $10,000', '$10,000 - $15,000', '$15,000 - $20,000', '$20,000 - $25,000']"></app-custom-dropdown>
                     </div>
                 </div>
             </div>
             <div class="container">
-                <div class="section-header-3">
+                <div class="section-header-3" data-aos="zoom-out-down" data-aos-duration="1200">
                     <div class="left">
                         <div class="thumb">
                             <img style="margin-top: 10px;" src="../assets/images/feature-bid-car-logo.png" alt="header-icons">
@@ -2055,7 +1956,7 @@
                 </div>
                 <div class="row justify-content-center mb-30-none">
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <div class="auction-item-2" >
+                        <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
                             <div class="auction-thumb">
                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                 <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
@@ -2098,7 +1999,7 @@
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <div class="auction-item-2">
+                        <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="1100">
                             <div class="auction-thumb">
                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                 <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
@@ -2141,7 +2042,7 @@
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <div class="auction-item-2">
+                        <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="1200">
                             <div class="auction-thumb">
                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                 <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
@@ -2191,7 +2092,7 @@
             <!-- <div class="car-bg"><img src="../assets/images/auction/car/car-bg.png" alt="car"></div> -->
             <div class="car-bg"><img src="../assets/images/cars-road-bg.png" alt="car"></div>
             <div class="container">
-                <div class="section-header-3">
+                <div class="section-header-3" data-aos="zoom-out-down" data-aos-duration="1200">
                     <div class="left">
                         <div class="thumb">
                             <img style="margin-top: 10px;" src="../assets/images/Bid-logo.png" alt="header-icons">
@@ -2205,7 +2106,7 @@
                 </div>
                 <div class="row justify-content-center mb-30-none">
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <div class="auction-item-2">
+                        <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
                             <div class="auction-thumb">
                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                 <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
@@ -2248,7 +2149,7 @@
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <div class="auction-item-2">
+                        <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
                             <div class="auction-thumb">
                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                 <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
@@ -2291,7 +2192,7 @@
                         </div>
                     </div>
                     <div class="col-sm-10 col-md-6 col-lg-4">
-                        <div class="auction-item-2">
+                        <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
                             <div class="auction-thumb">
                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                 <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
@@ -2360,7 +2261,7 @@
     <section class="dashboard-section padding-bottom mt--240 mt-lg--440 pos-rel">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-sm-10 col-md-7 col-lg-4">
+                <div class="col-sm-10 col-md-7 col-lg-4" data-aos="fade-right" data-aos-duration="1200">
                     <div class="dashboard-widget mb-30 mb-lg-0 sticky-menu">
                         <div class="user">
                             <div class="thumb-area">
@@ -2392,7 +2293,7 @@
                             <li [class.active]="activeMenu === 'wallet'" (click)="setActiveMenu('wallet')">
                                 <a><img src="../assets/images/my-ads/wallet-logo.png" alt="">Wallet</a>
                             </li>
-                            <li [class.active]="activeMenu === 'logout'" (click)="setActiveMenu('logout')">
+                            <li [class.active]="activeMenu === 'logout'" (click)="goToSignInPage()">
                                 <a><img src="../assets/images/my-ads/logout-logo.png" alt="">Logout</a>
                             </li>
                         </ul>
@@ -2402,7 +2303,7 @@
                 <ng-container *ngIf="activeMenu === 'profile'">
                     <div class="col-sm-12 col-md-12 col-lg-8">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12" data-aos="zoom-out-down" data-aos-duration="1000">
                                 <div class="dash-pro-item mb-30 dashboard-widget">
                                     <div class="header">
                                         <h4 class="title">Personal Details</h4>
@@ -2424,7 +2325,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12" data-aos="zoom-out-down" data-aos-duration="1000">
                                 <div class="dash-pro-item mb-30 dashboard-widget">
                                     <div class="header">
                                         <h4 class="title">Email & Security</h4>
@@ -2442,7 +2343,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12" data-aos="zoom-out-down" data-aos-duration="1000">
                                 <div class="dash-pro-item mb-30 dashboard-widget">
                                     <div class="header">
                                         <h4 class="title">Verification Documents</h4>
@@ -2460,7 +2361,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12" data-aos="zoom-out-down" data-aos-duration="1000">
                                 <div class="dash-pro-item mb-30 dashboard-widget">
                                     <div class="header">
                                         <h4 class="title">Subscription</h4>
@@ -2476,7 +2377,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12" data-aos="zoom-out-down" data-aos-duration="1000">
                                 <div class="dash-pro-item mb-30 dashboard-widget">
                                     <div class="header">
                                         <h4 class="title">Business Details</h4>
@@ -2506,7 +2407,7 @@
                 <ng-container *ngIf="activeMenu === 'chat'">
                     <div class="col-sm-12 col-md-12 col-lg-8">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12" data-aos="zoom-out-down" data-aos-duration="1200">
                                 <div class="chat dash-pro-item mb-30 dashboard-widget">
                                     <h4><img src="../assets/images/chat/chat-logo.png" alt=""> Chat</h4>
                                     <div class="chat-container">
@@ -2588,7 +2489,7 @@
 
                 <ng-container *ngIf="activeMenu === 'my-ads'">
                     <div class="col-sm-12 col-md-12 col-lg-8 my-ads">
-                        <div class="row justify-content-center auction-box">
+                        <div class="row justify-content-center auction-box" data-aos="zoom-out-down" data-aos-duration="1000">
                             <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                                 <div class="auction-item-6" style="border-radius: 10px;">
                                     <div class="auction-inner">
@@ -2648,7 +2549,7 @@
                             </div>
                         </div>
         
-                        <div class="row justify-content-center auction-box">
+                        <div class="row justify-content-center auction-box" data-aos="zoom-out-down" data-aos-duration="1000">
                             <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                                 <div class="auction-item-6" style="border-radius: 10px;">
                                     <div class="auction-inner">
@@ -2706,7 +2607,7 @@
                             </div>
                         </div>
         
-                        <div class="row justify-content-center auction-box">
+                        <div class="row justify-content-center auction-box" data-aos="zoom-out-down" data-aos-duration="1000">
                             <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                                 <div class="auction-item-6" style="border-radius: 10px;">
                                     <div class="auction-inner">
@@ -2764,7 +2665,7 @@
                             </div>
                         </div>
         
-                        <div class="row justify-content-center auction-box">
+                        <div class="row justify-content-center auction-box" data-aos="zoom-out-down" data-aos-duration="1000">
                             <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                                 <div class="auction-item-6" style="border-radius: 10px;">
                                     <div class="auction-inner">
@@ -2823,7 +2724,7 @@
                             </div>
                         </div>
         
-                        <div class="row justify-content-center auction-box">
+                        <div class="row justify-content-center auction-box" data-aos="zoom-out-down" data-aos-duration="1000">
                             <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                                 <div class="auction-item-6" style="border-radius: 10px;">
                                     <div class="auction-inner">
@@ -2888,7 +2789,7 @@
                 <ng-container *ngIf="activeMenu === 'my-bids'">
                     <div class="col-sm-12 col-md-12 col-lg-8">
                         <h6 style="border-bottom: 1px solid rgba(203, 203, 203, 1); padding-bottom: 5px; margin-bottom: 20px;">Active</h6>
-                        <div class="row justify-content-center auction-box my-bids">
+                        <div class="row justify-content-center auction-box my-bids" data-aos="zoom-out-down" data-aos-duration="1000">
                           <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                               <div class="auction-item-6" style="border-radius: 10px;">
                                   <div class="auction-inner">
@@ -2937,7 +2838,7 @@
                           </div>
                         </div>
           
-                        <div class="row justify-content-center auction-box my-bids">
+                        <div class="row justify-content-center auction-box my-bids" data-aos="zoom-out-down" data-aos-duration="1000">
                           <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                               <div class="auction-item-6" style="border-radius: 10px;">
                                   <div class="auction-inner">
@@ -2987,7 +2888,7 @@
                         </div>
           
                         <h6 style="border-bottom: 1px solid rgba(203, 203, 203, 1); padding-bottom: 5px; margin-bottom: 20px;">Completed</h6>
-                        <div class="row justify-content-center auction-box my-bids">
+                        <div class="row justify-content-center auction-box my-bids" data-aos="zoom-out-down" data-aos-duration="1000">
                           <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                               <div class="auction-item-6" style="border-radius: 10px;">
                                   <div class="auction-inner">
@@ -3031,7 +2932,7 @@
                           </div>
                         </div>
           
-                        <div class="row justify-content-center auction-box my-bids">
+                        <div class="row justify-content-center auction-box my-bids" data-aos="zoom-out-down" data-aos-duration="1000">
                           <div class="col-sm-12 col-md-5 col-lg-5 pe-0 auction-left-box">
                               <div class="auction-item-6" style="border-radius: 10px;">
                                   <div class="auction-inner">
@@ -3084,7 +2985,7 @@
                             <div class="tab-pane fade show active" id="upcoming">
                                 <div class="row mb-30-none justify-content-center">
                                     <div class="col-sm-10 col-md-6">
-                                        <div class="auction-item-2">
+                                        <div class="auction-item-2" data-aos="zoom-out-down" data-aos-duration="1200">
                                             <div class="auction-thumb">
                                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                                 <div class="rating"><img src="../assets/images/auction-filled-star.png" alt="car"></div>
@@ -3138,7 +3039,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-10 col-md-6">
-                                        <div class="auction-item-2">
+                                        <div class="auction-item-2" data-aos="zoom-out-down" data-aos-duration="1100">
                                             <div class="auction-thumb">
                                                 <a ><img src="../assets/images/car-1.png" alt="car"></a>
                                                 <div class="rating"><img src="../assets/images/auction-filled-star.png" alt="car"></div>
@@ -3189,7 +3090,7 @@
 
                 <ng-container *ngIf="activeMenu === 'wallet'">
                     <div class="col-sm-12 col-md-12 col-lg-8">
-                        <div class="wallet" style="border-radius: 10px;">
+                        <div class="wallet" style="border-radius: 10px;" data-aos="zoom-out-down" data-aos-duration="1200">
                           <div class="wallet-inner row justify-content-center" >
                               <div class="wallet-thumb col-sm-12 col-md-7 col-lg-7 p-0">
                                 <div style="background-color: rgba(243, 243, 243, 1);border-radius: 5px;">
@@ -3233,7 +3134,7 @@
                         </div>
           
           
-                        <div class="row dashboard-widget wallet-table">
+                        <div class="row dashboard-widget wallet-table" data-aos="zoom-out-down" data-aos-duration="1200">
                           <div class="col-sm-6 col-md-4 col-lg-4" style="position: relative;"> 
                             <select class="wallet-dropdown">
                               <option value="" disabled selected>Select</option>
@@ -3762,21 +3663,3 @@
     <!--============= Footer Section Ends Here =============-->
 
 </ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
-
-
-
-

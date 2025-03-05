@@ -34,12 +34,13 @@
               "src/assets/css/all.min.css",
               "src/assets/css/animate.css",
               "src/assets/css/nice-select.css",
-              "src/assets/css/owl.min.css",
               "src/assets/css/magnific-popup.css",
               "src/assets/css/flaticon.css",
               "src/assets/css/jquery-ui.min.css",
               "src/assets/css/aos.css",
-              "src/assets/css/main.css"
+              "src/assets/css/main.css",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.min.css"
             ],
             "scripts": [
               "src/assets/js/jquery-3.3.1.min.js",
@@ -54,11 +55,11 @@
               "src/assets/js/waypoints.js",
               "src/assets/js/nice-select.js",
               "src/assets/js/counterup.min.js",
-              "src/assets/js/owl.min.js",
               "src/assets/js/magnific-popup.min.js",
               "src/assets/js/yscountdown.min.js",
               "src/assets/js/jquery-ui.min.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+              "node_modules/owl.carousel/dist/owl.carousel.min.js"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
