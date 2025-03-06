@@ -5196,19 +5196,16 @@ div[class*=auction] .custom-button {
   margin-top: 15px;
 }
 
-.wallet-table .wallet-dropdown {
-  appearance: none;
-  border: 1px solid rgba(177, 177, 177, 1);
+.wallet-table .custom-bid-dropdown .dropdown-header {
   border-radius: 5px;
-  padding: 0px 10px;
-  font-size: 13px;
-  height: 35px;
+  border: 1px solid rgba(177, 177, 177, 1);
+  line-height: 13px;
 }
 
-.wallet-table .custom-arrow {
-  right: 25px;
-}
 
+.wallet-table .custom-bid-dropdown .dropdown-list {
+  border: 1px solid rgba(177, 177, 177, 1);
+}
 
 [type="date"] {
   background:#fff url('../images/my-wallet/calender-logo.png')  97% 50% no-repeat ;
