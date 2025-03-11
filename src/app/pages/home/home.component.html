@@ -323,16 +323,16 @@
                     <div class="title">Vehicle information</div>
                     <div class="dropdowns-section">
                         <div>
-                            <app-custom-dropdown formControlName="maker" [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('maker')?.invalid && createAdSecondForm.get('maker')?.touched">
-                                <span *ngIf="createAdSecondForm.get('maker')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="manufacturerId" [selectedOption]="'Select Manufacturer'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('manufacturerId')?.invalid && createAdSecondForm.get('manufacturerId')?.touched">
+                                <span *ngIf="createAdSecondForm.get('manufacturerId')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
         
                         <div>
-                            <app-custom-dropdown formControlName="model" [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('model')?.invalid && createAdSecondForm.get('model')?.touched">
-                                <span *ngIf="createAdSecondForm.get('model')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="modelId" [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('modelId')?.invalid && createAdSecondForm.get('modelId')?.touched">
+                                <span *ngIf="createAdSecondForm.get('modelId')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
         
@@ -398,15 +398,15 @@
                             </div>
                             <div class="row" style="margin: 0;">
                                 <div class="col-lg-6 date-container">
-                                    <input type="date" formControlName="auctionStartDate" class="date-field" placeholder="Auction Start">
-                                    <div class="error-message" *ngIf="createAdSecondForm.get('auctionStartDate')?.invalid && createAdSecondForm.get('auctionStartDate')?.touched">
-                                        <span *ngIf="createAdSecondForm.get('auctionStartDate')?.errors?.['required']">Start Date is required.</span>
+                                    <input type="date" formControlName="startDateTime" class="date-field" placeholder="Auction Start">
+                                    <div class="error-message" *ngIf="createAdSecondForm.get('startDateTime')?.invalid && createAdSecondForm.get('startDateTime')?.touched">
+                                        <span *ngIf="createAdSecondForm.get('startDateTime')?.errors?.['required']">Start Date is required.</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 date-container">
-                                    <input type="date" formControlName="auctionEndDate" class="date-field" placeholder="Auction End">
-                                    <div class="error-message" *ngIf="createAdSecondForm.get('auctionEndDate')?.invalid && createAdSecondForm.get('auctionEndDate')?.touched">
-                                        <span *ngIf="createAdSecondForm.get('auctionEndDate')?.errors?.['required']">End Date is required.</span>
+                                    <input type="date" formControlName="endDateTime" class="date-field" placeholder="Auction End">
+                                    <div class="error-message" *ngIf="createAdSecondForm.get('endDateTime')?.invalid && createAdSecondForm.get('endDateTime')?.touched">
+                                        <span *ngIf="createAdSecondForm.get('endDateTime')?.errors?.['required']">End Date is required.</span>
                                     </div>
                                 </div>
                             </div>

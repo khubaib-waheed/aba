@@ -6027,6 +6027,8 @@ div[class*=auction] .custom-button {
   border-radius: 50px;
   font-size: 14px;
   font-weight: 600;
+  width: unset;
+  border: none;
 }
 
 .sign-in-form .sign-up-link {
@@ -6149,6 +6151,8 @@ div[class*=auction] .custom-button {
   font-size: 14px;
   font-weight: 600;
   margin: 40px auto 5px auto;
+  width: unset;
+  border: none;
 }
 
 
@@ -6791,6 +6795,7 @@ div[class*=auction] .custom-button {
   font-size: 14px;
   padding: 8px 16%;
   border-radius: 50px;
+  border: none;
 }
 
 .continue-btn:hover {

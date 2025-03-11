@@ -30,7 +30,8 @@ export const routes: Routes = [
         children: [
           { path: '', redirectTo: 'home', pathMatch: 'full' },
           { path: 'home', component: LandingPageComponent },
-          { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
+          // { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
+          { path: 'contact', component: ContactComponent },
           { path: 'new-cars', component: NewCarsComponent },
           { path: 'auction-list', component: AuctionListComponent },
           { path: 'bid-detail/:id', component: BidDetailComponent },

@@ -4,6 +4,8 @@ import { Router, RouterModule } from '@angular/router';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth/auth.service';
+declare var $: any; // Declare jQuery
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +30,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +41,7 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      socialLink: ['', Validators.required],
+      source: ['', Validators.required],
       confirmPassword: ['', Validators.required]}, { validators: this.matchPasswords });
       
   }
@@ -51,9 +54,20 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.signUpForm.valid) {
-      console.log('Form Submitted!', this.signUpForm.value);
-    }
+    // if (this.signUpForm.valid) {
+    //   console.log('Form Submitted!', this.signUpForm.value);
+    // }
+    console.log(this.signUpForm)
+    console.log('Form Submitted!', this.signUpForm.value);
+
+    this.authService.signUp({data: ''}).subscribe({
+      next: res => {
+
+      },
+      error: err => {
+
+      }
+    })
   }
 
   goToSecretQuestion() {
@@ -62,5 +76,24 @@ export class SignUpComponent implements OnInit {
 
   onOtpChange(otp: any) {
     this.otp = otp;
+  }
+
+  openModal(modalName: string): void {
+    $(modalName).modal('show'); // Open modal
+  }
+
+  closeModal(modalName: string): void {
+    $(modalName).modal('hide'); // Close modal
+  }
+
+  sendOTP() {
+    this.authService.verifyCode({code: '', tokenUuid: ''}).subscribe({
+      next: res => {
+
+      },
+      error: err => {
+
+      }
+    })
   }
 }

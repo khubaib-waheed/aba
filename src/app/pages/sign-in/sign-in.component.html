@@ -24,7 +24,7 @@
               <span *ngIf="signInForm.get('password')?.errors?.['required']">Password is required.</span>
             </div>
           
-          </form>
+          
           
               <!-- <div class="password-container">
                       <input 
@@ -37,7 +37,7 @@
                       </span>
                   </div> -->
                   
-        </div>
+        
         
         <div class="check-section">
           <div>
@@ -50,8 +50,11 @@
           </div>
         </div>
         <div style="text-align: center;padding: 30px 10px;">
-          <a routerLink="/app/home" class="sign-in-btn">Sign In</a>
+          <!-- <a routerLink="/app/home" class="sign-in-btn">Sign In</a> -->
+          <button type="submit" class="sign-in-btn">Sign In</button>
         </div>
+       </form>
+      </div>
         <div style="text-align: center;padding: 10px;">
           <a routerLink="/auth/sign-up" class="sign-up-link">Don’t have an account? Sign up</a>
         </div>
@@ -90,7 +93,7 @@
                     </div>
                 </div>
                 <div style="text-align: center; padding-top: 10px;">
-                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#otp-modal">Continue</a>
+                    <button type="submit" class="continue-btn">Continue</button>
                 </div>
             </form>
         </div>
@@ -118,13 +121,12 @@
                 <div class="subtitle">We have sent a 4 digit one time <br> password to your email address</div>
             </div>
             <form action="">
-               
-                <div style="padding: 25px;">
-                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
-                </div>
-                <div style="text-align: center; padding-top: 10px;">
-                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#question-modal">Verify</a>
-                </div>
+              <div style="padding: 25px;">
+                <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+              </div>
+              <div style="text-align: center; padding-top: 10px;">
+                <a class="continue-btn" (click)="sendOTP()">Verify</a>
+              </div>
             </form>
         </div>
       </div>
@@ -153,35 +155,35 @@
             </div>
             <form [formGroup]="questionForm" (ngSubmit)="onSubmitQuestion()">
               <div class="field-container">
-                <app-custom-dropdown formControlName="question1" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
-                <div class="error-message" *ngIf="questionForm.get('question1')?.invalid && questionForm.get('question1')?.touched">
-                  <span *ngIf="questionForm.get('question1')?.errors?.['required']">Please select question.</span>
+                <app-custom-dropdown formControlName="secretQuestion1" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
+                <div class="error-message" *ngIf="questionForm.get('secretQuestion1')?.invalid && questionForm.get('secretQuestion1')?.touched">
+                  <span *ngIf="questionForm.get('secretQuestion1')?.errors?.['required']">Please select question.</span>
                 </div>
                </div>
 
                <div class="field-container">
-                <input type="text" formControlName="answer1" class="input-field" placeholder="Answer">
-                <div class="error-message" *ngIf="questionForm.get('answer1')?.invalid && questionForm.get('answer1')?.touched">
-                  <span *ngIf="questionForm.get('answer1')?.errors?.['required']">Answer is required.</span>
+                <input type="text" formControlName="SecretQuestion1Answer" class="input-field" placeholder="Answer">
+                <div class="error-message" *ngIf="questionForm.get('SecretQuestion1Answer')?.invalid && questionForm.get('SecretQuestion1Answer')?.touched">
+                  <span *ngIf="questionForm.get('SecretQuestion1Answer')?.errors?.['required']">Answer is required.</span>
                 </div>
                </div>
         
               <div class="field-container">
-                <app-custom-dropdown formControlName="questoin2" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
-                <div class="error-message" *ngIf="questionForm.get('questoin2')?.invalid && questionForm.get('questoin2')?.touched">
-                  <span *ngIf="questionForm.get('questoin2')?.errors?.['required']">Please select question.</span>
+                <app-custom-dropdown formControlName="secretQuestion2" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
+                <div class="error-message" *ngIf="questionForm.get('secretQuestion2')?.invalid && questionForm.get('secretQuestion2')?.touched">
+                  <span *ngIf="questionForm.get('secretQuestion2')?.errors?.['required']">Please select question.</span>
                 </div>
               </div>
 
               <div class="field-container">
-                <input type="text" formControlName="answer2" class="input-field" placeholder="Answer">
-                <div class="error-message" *ngIf="questionForm.get('answer2')?.invalid && questionForm.get('answer2')?.touched">
-                  <span *ngIf="questionForm.get('answer2')?.errors?.['required']">Answer is required.</span>
+                <input type="text" formControlName="SecretQuestion2Answer" class="input-field" placeholder="Answer">
+                <div class="error-message" *ngIf="questionForm.get('SecretQuestion2Answer')?.invalid && questionForm.get('SecretQuestion2Answer')?.touched">
+                  <span *ngIf="questionForm.get('SecretQuestion2Answer')?.errors?.['required']">Answer is required.</span>
                 </div>
               </div>
 
               <div style="text-align: center; padding-top: 25px;">
-                  <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#reset-modal">Continue</a>
+                  <button type="submit" class="continue-btn">Continue</button>
               </div>
             </form>
         </div>
@@ -257,7 +259,7 @@
                       </div>
                 </div>
                 <div style="text-align: center; padding-top: 10px;">
-                    <a class="continue-btn" data-dismiss="modal">Done</a>
+                    <button type="submit" class="continue-btn">Done</button>
                 </div>
             </form>
         </div>

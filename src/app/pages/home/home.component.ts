@@ -50,16 +50,16 @@ export class HomeComponent implements OnInit {
     });
 
     this.createAdSecondForm = this.fb.group({
-      maker: ['', Validators.required],
-      model: ['', Validators.required],
+      manufacturerId: ['', Validators.required],
+      modelId: ['', Validators.required],
       year: ['', Validators.required],
       transmission: ['', Validators.required],
       engineType: ['', Validators.required],
       startingPrice: ['', Validators.required],
       reservePrice: ['', Validators.required],
       buyNowPrice: ['', Validators.required],
-      auctionStartDate: ['', Validators.required],
-      auctionEndDate: ['', Validators.required],
+      startDateTime: ['', Validators.required],
+      endDateTime: ['', Validators.required],
       promoteAd: ['', Validators.required]
     });
   }

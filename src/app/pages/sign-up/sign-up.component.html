@@ -53,21 +53,25 @@
                             <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
                             <div class="error-message" *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched">
                                 <span *ngIf="signUpForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+                                <span *ngIf="signUpForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
                             </div>
                          </div>
                     </div>
                     <div class="dropdown">
-                        <app-custom-dropdown formControlName="socialLink" selectedOption="How did you hear about us?" [options]="['Facebook', 'Instagram', 'Google', 'Linkedin']"></app-custom-dropdown>
-                        <div class="error-message" *ngIf="signUpForm.get('socialLink')?.invalid && signUpForm.get('socialLink')?.touched">
-                            <span *ngIf="signUpForm.get('socialLink')?.errors?.['required']">Social Link is required.</span>
+                        <app-custom-dropdown formControlName="source" selectedOption="How did you hear about us?" [options]="['Facebook', 'Instagram', 'Google', 'Linkedin']"></app-custom-dropdown>
+                        <div class="error-message" *ngIf="signUpForm.get('source')?.invalid && signUpForm.get('source')?.touched">
+                            <span *ngIf="signUpForm.get('source')?.errors?.['required']">Source is required.</span>
                         </div>
                     </div>
                     <div class="check-section">
                         <input type="checkbox" class="form-check-input"> 
                         <a style="cursor: context-menu;">I agree to the terms of service</a>
                     </div>
+                    <!-- <div>
+                        <a class="sign-up-btn" type="submit" data-toggle="modal" data-target="#otp-modal">Sign up</a>
+                    </div> -->
                     <div>
-                        <a class="sign-up-btn" data-toggle="modal" data-target="#otp2-modal">Sign up</a>
+                        <button class="sign-up-btn" type="submit" (click)="openModal('#otp-modal')">Sign up</button>
                     </div>
                     <div>
                         <a routerLink="/auth/sign-in" class="sign-in-link">Already have an account? Sign in</a>
@@ -82,7 +86,7 @@
 
     <!--============================OTP Section=======================-->
       <!-- Modal -->
-      <div class="modal fade" id="otp2-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="otp-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="otp modal-body" style="position: relative;">
@@ -96,8 +100,11 @@
                     <div style="padding: 25px;">
                         <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
                     </div>
-                    <div style="text-align: center; padding-top: 10px;">
+                    <!-- <div style="text-align: center; padding-top: 10px;">
                         <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#email-verified-modal">Verify</a>
+                    </div> -->
+                    <div style="text-align: center; padding-top: 10px;">
+                        <a class="continue-btn" (click)="closeModal('#otp-modal'); openModal('#email-verified-modal'); sendOTP()">Verify</a>
                     </div>
                 </form>
             </div>
@@ -121,7 +128,7 @@
                     Congratulations! Your email is verified. Let’s get you started! Please complete your profile to access all system features.
                 </div>
                 <div style="text-align: center; padding-top: 10px;">
-                    <a class="continue-btn" data-dismiss="modal" (click)="goToSecretQuestion()">Done</a>
+                    <a class="continue-btn" (click)="goToSecretQuestion(); closeModal('#email-verified-modal')">Done</a>
                 </div>
             </div>
           </div>

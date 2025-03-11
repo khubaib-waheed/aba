@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CustomDropdownComponent } from '../../shared/custom-dropdown/custom-dropdown.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth/auth.service';
+declare var $: any; // Declare jQuery
 
 @Component({
   selector: 'app-sign-in',
@@ -32,7 +34,11 @@ export class SignInComponent implements OnInit {
     }
   };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder, 
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -45,10 +51,10 @@ export class SignInComponent implements OnInit {
     });
 
     this.questionForm = this.fb.group({
-      question1: ['', Validators.required],
-      answer1: ['', Validators.required],
-      questoin2: ['', Validators.required],
-      answer2: ['', Validators.required]
+      secretQuestion1: ['', Validators.required],
+      SecretQuestion1Answer: ['', Validators.required],
+      secretQuestion2: ['', Validators.required],
+      SecretQuestion2Answer: ['', Validators.required]
     });
 
     this.resetPasswordForm = this.fb.group({
@@ -66,35 +72,97 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.signInForm.valid) {
-      console.log(this.signInForm.value);
-    } else {
-      console.log('Form is invalid');
-    }
+    // if (this.signInForm.valid) {
+    //   console.log(this.signInForm.value);
+    // } else {
+    //   console.log('Form is invalid');
+    // }
+
+    console.log(this.signInForm.value)
+
+    this.authService.signIn({userNameOrEmail: '', password: ''}).subscribe({
+      next: res => {
+        this.router.navigate(['/app/home']);
+      },
+      error: err => {
+  
+      }
+    })
   }
 
   onSubmitEmail() {
-    if (this.emailForm.valid) {
-      console.log(this.emailForm.value);
-    } else {
-      console.log('Form is invalid');
-    }
+    // if (this.emailForm.valid) {
+    //   console.log(this.emailForm.value);
+    // } else {
+    //   console.log('Form is invalid');
+    // }
+
+    console.log(this.emailForm.value);
+
+    this.closeModal('#email-modal');
+    this.openModal('#otp-modal');
+
+
+    this.authService.forgotPassword({UserNameOrEmail: ''}).subscribe({
+      next: res => {
+        
+      },
+      error: err => {
+  
+      }
+    })
+
+  }
+
+  sendOTP() {
+    this.closeModal('#otp-modal');
+    this.openModal('#question-modal');
+    this.authService.verifyForgotPasswordCode({code: '', tokenUuid: ''}).subscribe({
+      next: res => {
+
+      },
+      error: err => {
+
+      }
+    })
   }
 
   onSubmitQuestion() {
-    if (this.questionForm.valid) {
-      console.log(this.questionForm.value);
-    } else {
-      console.log('Form is invalid');
-    }
+    // if (this.questionForm.valid) {
+    //   console.log(this.questionForm.value);
+    // } else {
+    //   console.log('Form is invalid');
+    // }
+    console.log(this.questionForm.value)
+    this.closeModal('#question-modal');
+    this.openModal('#reset-modal');
+    this.authService.verifySecretQuestion({password: '', tokenUuid: ''}).subscribe({
+      next: res => {
+
+      },
+      error: err => {
+
+      }
+    })
   }
 
   onSubmitResetPassword() {
-    if (this.resetPasswordForm.valid) {
-      console.log(this.resetPasswordForm.value);
-    } else {
-      console.log('Form is invalid');
-    }
+    // if (this.resetPasswordForm.valid) {
+    //   console.log(this.resetPasswordForm.value);
+    // } else {
+    //   console.log('Form is invalid');
+    // }
+
+    console.log(this.resetPasswordForm.value)
+    this.closeModal('#reset-modal');
+    this.authService.resetPassword({value: {...this.resetPasswordForm.value}, tokenUuid: ''}).subscribe({
+      next: res => {
+
+      },
+      error: err => {
+
+      }
+    })
   }
 
   togglePassword(): void {
@@ -103,5 +171,13 @@ export class SignInComponent implements OnInit {
 
   onOtpChange(otp: any) {
     this.otp = otp;
+  }
+
+  openModal(modalName: string): void {
+    $(modalName).modal('show'); // Open modal
+  }
+
+  closeModal(modalName: string): void {
+    $(modalName).modal('hide'); // Close modal
   }
 }

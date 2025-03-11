@@ -1,12 +1,11 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { CustomDropdownComponent } from '../../../shared/custom-dropdown/custom-dropdown.component';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-user-information',
-  imports: [RouterModule, CustomDropdownComponent],
+  imports: [RouterModule],
   templateUrl: './user-information.component.html',
   styleUrl: './user-information.component.scss'
 })

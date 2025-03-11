@@ -1,0 +1,99 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private baseUrl = `${environment.apiUrl}/auth`;
+
+  constructor(private http: HttpClient) {}
+
+  signUp(userInfo: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/signup`, userInfo);
+  }
+
+  verifyCode(model: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/verify-code`, model);
+  }
+
+  resendCode(model: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/resend-code`, model);
+  }
+
+  signIn(userInfo: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/login`, userInfo);
+  }
+
+  forgotPassword(email: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/forget-password`, email);
+  }
+
+  verifyForgotPasswordCode(model: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/forget-password/verify-code`, model);
+  }
+
+  verifySecretQuestion(model: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/verify-secret-question`, model);
+  }
+
+  resetPassword(userInfo: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/reset-password`, userInfo);
+  }
+
+  changePassword(password: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/change-password`, password);
+  }
+
+  logout(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your-token-here' // Replace with your actual token
+    });
+    return this.http.post(`${this.baseUrl}/logout`, null, { headers });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // GET all items
+  getItems(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
+  // GET a single item by ID
+  getItemById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
+
+  // POST a new item
+  createItem(item: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl, item);
+  }
+
+  // PUT (update) an existing item
+  updateItem(id: number, item: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`, item);
+  }
+
+  // DELETE an item
+  deleteItem(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+}
