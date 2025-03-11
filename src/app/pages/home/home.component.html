@@ -1,0 +1,442 @@
+<!--============= ScrollToTop Section Starts Here =============-->
+    <!-- <div class="overlayer" id="overlayer">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div> -->
+    <a  class="scrollToTop"><i class="fas fa-angle-up"></i></a>
+    <div class="overlay"></div>
+<!--============= ScrollToTop Section Ends Here =============-->
+
+<!--============= Header Section Starts Here =============-->
+<header [ngClass]="headerClass">
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-wrapper">
+                <ul class="customer-support">
+                    <li class="cmn-support-text">
+                        <a routerLink="/app/contact" class="mr-3"><i class="fas fa-phone-alt"></i><span class="ml-2 d-none d-sm-inline-block">Customer Support</span></a>
+                    </li>
+                    <li class="customer-lang">
+                        <div><img src="../assets/images/dropdown-icon.png" alt=""></div>
+                        <div>
+                            <app-custom-dropdown selectedOption="AL" [options]="['EN', 'AL']"></app-custom-dropdown>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="cart-button-area">                      
+                    <li>
+                        <div class="amount-section" (click)="goToWallet()">
+                            <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
+                            <p class="amount">$ 100</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sell-section" data-toggle="modal" data-target="#post-ad-modal">
+                            <p class="sell">Sell</p>
+                        </div>
+                    </li>
+                    <li>
+                        <a routerLink="/app/user-information/profile"><img class="profile-icon" src="../assets/images/user-profile.png" alt=""></a>
+                    </li>
+                </ul>
+
+
+                <div class="settings">
+                    <div class="header-container">
+                        <div class="profile-menu">
+                            <!-- Profile Icon -->
+                            <img 
+                                id="profileButton" 
+                                class="profile-icon" 
+                                (click)="toggleDropdown()" 
+                                src="../assets/images/user-profile.png" 
+                                alt="User Profile"
+                            >
+                    
+                            <!-- Dropdown Menu -->
+                            <div class="dropdowns-menu" *ngIf="isDropdownOpen">
+                                <div class="dropdown-item amount-section" (click)="goToWallet()">
+                                    <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
+                                    <p class="amount">$ 100</p>
+                                </div>
+                                <a class="dropdown-item sell-section" data-toggle="modal" data-target="#post-ad-modal">Sell</a>
+                                <a routerLink="/app/user-information/profile" class="dropdown-item sell-section">Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom" [class.active]="isActive">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a routerLink="/app/home">
+                        <!-- <img src="../assets/images/logo/logo.png" alt="logo"> -->
+                        <img src="../assets/images/auto-bid-logo.png" alt="logo">
+                    </a>
+                </div>
+                <ul class="menu ml-auto">
+                    <li>
+                        <a routerLink="/app/home">Home</a>
+                    </li>
+                    <li>
+                        <a routerLink="/app/auction-list">Auction</a>
+                    </li>
+                    <li>
+                        <a routerLink="/app/new-cars">New Cars</a>
+                    </li>
+                    <li>
+                        <a routerLink="/app/contact">Contact</a>
+                    </li>
+                </ul>
+                <form class="search-form" onsubmit="return false;">
+                    <input type="text" placeholder="Search for brand, model....">
+                    <button type="button"><img src="../assets/images/search-icon.png" alt=""></button>
+                </form>
+                <div class="search-bar d-md-none">
+                    <a ><i class="fas fa-search"></i></a>
+                </div>
+                <div class="header-bar d-lg-none">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!--============= Header Section Ends Here =============-->
+
+   <router-outlet></router-outlet>
+
+<!--============= Footer Section Starts Here =============-->
+<footer class="bg-img padding-top oh" style="background-position: top; background-image: url('../assets/images/footer-background.png');">
+    <!-- <div class="footer-top-shape">
+        <img src="../assets/images/footer/footer-background.png" alt="css">
+    </div> -->
+    <div class="anime-wrapper">
+        <div class="anime-1 plus-anime">
+            <img src="../assets/images/footer/p1.png" alt="footer">
+        </div>
+        <div class="anime-2 plus-anime">
+            <img src="../assets/images/footer/p2.png" alt="footer">
+        </div>
+        <div class="anime-3 plus-anime">
+            <img src="../assets/images/footer/p3.png" alt="footer">
+        </div>
+        <div class="anime-5 zigzag">
+            <img src="../assets/images/footer/c2.png" alt="footer">
+        </div>
+        <div class="anime-6 zigzag">
+            <img src="../assets/images/footer/c3.png" alt="footer">
+        </div>
+        <div class="anime-7 zigzag">
+            <img src="../assets/images/footer/c4.png" alt="footer">
+        </div>
+    </div>
+    <div class="newslater-wrapper">
+        <div class="container">
+            <div class="newslater-area">
+                <div class="newslater-thumb">
+                    <img src="../assets/images/footer-pc.png" alt="footer">
+                </div>
+                <div class="newslater-content">
+                    <div class="section-header left-style mb-low" data-aos="fade-down" data-aos-duration="1100">
+                        <p class="cate">Subscribe</p>
+                        <p class="title">To Auto Bid Albania</p>
+                    </div>
+                    <form class="subscribe-form">
+                        <input type="text" placeholder="Enter Your Email" name="email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-top padding-bottom padding-top">
+        <div class="container">
+            <div class="row mb--60">
+                <div class="col-sm-12 col-lg-6" data-aos="fade-down" data-aos-duration="1000">
+                    <div class="logo">
+                        <a><img src="../assets/images/footer-logo.png" alt="logo"></a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3" data-aos="fade-down" data-aos-duration="1600">
+                    <div class="footer-widget widget-links">
+                        <h5 class="title">Auction Categories</h5>
+                        <ul class="links-list">
+                            <li>
+                                <a >Honda</a>
+                            </li>
+                            <li>
+                                <a >BMW</a>
+                            </li>
+                            <li>
+                                <a >Land Rover</a>
+                            </li>
+                            <li>
+                                <a >Toyota</a>
+                            </li>
+                            <li>
+                                <a >Ford F</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3" data-aos="fade-down" data-aos-duration="1800">
+                    <div class="footer-widget widget-follow">
+                        <h5 class="title">Follow Up</h5>
+                        <ul class="links-list">
+                            <li>
+                                <a ><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 663-4575</a>
+                            </li>
+                            <li>
+                                <a ><img style="margin-right: 15px;" src="../assets/images/cell-icon.png"/>(646) 968-0608</a>
+                            </li>
+                            <li>
+                                <a ><img style="margin-right: 15px;" src="../assets/images/email-icon.png"/>{{ 'autobidalbania@gmail.com' }}</a>
+                            </li>
+                            <li>
+                                <a  style="margin-left: 30px;">Street "Aleksandër Moisiu" Nr. 76
+                                    Ish - Kinostudio
+                                    Tirana Albania</a>
+                            </li>
+                        </ul>
+                        <ul class="social-icons">
+                            <li class="social-container">
+                                <div></div>
+                                <img src="../assets/images/facebook.png">
+                            </li>
+                            <li class="social-container">
+                                <div></div>
+                                <img src="../assets/images/instagram.png">
+                            </li>
+                            <li class="social-container">
+                                <div></div>
+                                <img src="../assets/images/watsapp.png">
+                            </li>
+                            <li class="social-container">
+                                <div></div>
+                                <img src="../assets/images/linkedin.png">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="copyright-area">
+            <div class="footer-bottom-wrapper">
+                <div class="copyright"><p>&copy; Copyright 2025 | Auto Bid Albania</p></div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--============= Footer Section Ends Here =============-->    
+
+
+
+
+
+
+
+<!--************************** Create AD Modal  ******************************-->
+<div class="modal fade" id="post-ad-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="create-ad-modal modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body create-ad" style="position: relative;">
+            <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon">
+            <div style="text-align: center; border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 10px;">
+                <h4>Create Ad</h4>
+            </div>
+            <ng-container *ngIf="createAdPage === 'create-ad-first-page'">
+                <div class="title">
+                    Upload image
+                </div>
+                <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
+                    <div class="upload-container">
+                        <div class="upload-grid">
+                          <div class="upload-box" *ngFor="let preview of imagePreviews; let i = index" (click)="openFileSelector(i)">
+                            <input #fileInputs type="file" accept="image/*" (change)="onFileSelected($event, i)">
+                            <img *ngIf="preview" class="uploaded-image" [src]="preview" alt="Uploaded Image">
+                            <div *ngIf="!preview">
+                                <img src="../assets/images/modals/image-icon.png" alt="">
+                                <div>Add Image</div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="createAdFirstForm" (ngSubmit)="onSubmitFirst()">
+                    <div class="title">Ad Title</div>
+                    <div>
+                        <input class="add-title" formControlName="title" type="text" placeholder="Ad Title">
+                        <div class="error-message" *ngIf="createAdFirstForm.get('title')?.invalid && createAdFirstForm.get('title')?.touched">
+                            <span *ngIf="createAdFirstForm.get('title')?.errors?.['required']">Title is required.</span>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea class="add-description" formControlName="description" placeholder="Ad Description"></textarea>
+                        <div class="error-message" *ngIf="createAdFirstForm.get('description')?.invalid && createAdFirstForm.get('description')?.touched">
+                            <span *ngIf="createAdFirstForm.get('description')?.errors?.['required']">Description is required.</span>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding-top: 25px;">
+                        <a class="post-btn" (click)="goToNextCreateAdPage()">Next</a>
+                    </div>
+                </form>
+            </ng-container>
+
+            <ng-container *ngIf="createAdPage === 'create-ad-second-page'">
+                <div class="title">
+                    Upload Vehicle Verification Document
+                </div>
+                <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
+                    <div class="file-uploader">
+                        <label for="vehicleFileInput" *ngIf="!vehicleFile">
+                          <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                          <div class="upload-text">
+                            <strong>Business Verification</strong>
+                                <p>(E.g.Tax Verification Document)</p>
+                          </div>
+                        </label>
+                        <input type="file" id="vehicleFileInput" hidden (change)="onFileSelect($event, 'vehicle')">
+                        
+                        <!-- Show selected file name -->
+                        <div class="file-name" *ngIf="vehicleFile">
+                          <div style="display: flex; justify-content: space-between;">
+                              <div class="name">
+                                  {{ vehicleFile }}
+                              </div>
+                              <div>
+                                  <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('vehicle')" alt="">
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <form [formGroup]="createAdSecondForm" (ngSubmit)="onSubmitSecond()">
+                    <div class="title">Vehicle information</div>
+                    <div class="dropdowns-section">
+                        <div>
+                            <app-custom-dropdown formControlName="maker" [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('maker')?.invalid && createAdSecondForm.get('maker')?.touched">
+                                <span *ngIf="createAdSecondForm.get('maker')?.errors?.['required']">Please select</span>
+                            </div>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown formControlName="model" [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('model')?.invalid && createAdSecondForm.get('model')?.touched">
+                                <span *ngIf="createAdSecondForm.get('model')?.errors?.['required']">Please select</span>
+                            </div>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown formControlName="year" [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('year')?.invalid && createAdSecondForm.get('year')?.touched">
+                                <span *ngIf="createAdSecondForm.get('year')?.errors?.['required']">Please select</span>
+                            </div>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown formControlName="transmission" [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('transmission')?.invalid && createAdSecondForm.get('transmission')?.touched">
+                                <span *ngIf="createAdSecondForm.get('transmission')?.errors?.['required']">Please select</span>
+                            </div>
+                        </div>
+        
+                        <div>
+                            <app-custom-dropdown formControlName="engineType" [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('engineType')?.invalid && createAdSecondForm.get('engineType')?.touched">
+                                <span *ngIf="createAdSecondForm.get('engineType')?.errors?.['required']">Please select</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        Pricing
+                    </div>
+                    <div class="row" style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px; margin: 0; justify-content: space-between;">
+                        <div class="col-lg-4 p-0">
+                            <div class="input-container">
+                                <input type="text" formControlName="startingPrice" class="input-field" placeholder="Starting Price">
+                                <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                            </div>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('startingPrice')?.invalid && createAdSecondForm.get('startingPrice')?.touched">
+                                <span *ngIf="createAdSecondForm.get('startingPrice')?.errors?.['required']">Price is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 p-0">
+                            <div class="input-container">
+                                <input type="text" formControlName="reservePrice" class="input-field" placeholder="Reserve Price">
+                                <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                            </div>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('reservePrice')?.invalid && createAdSecondForm.get('reservePrice')?.touched">
+                                <span *ngIf="createAdSecondForm.get('reservePrice')?.errors?.['required']">Price is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 p-0">
+                            <div class="input-container">
+                                <input type="text" formControlName="buyNowPrice" class="input-field" placeholder="Buy now price">
+                                <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                            </div>
+                            <div class="error-message" *ngIf="createAdSecondForm.get('buyNowPrice')?.invalid && createAdSecondForm.get('buyNowPrice')?.touched">
+                                <span *ngIf="createAdSecondForm.get('buyNowPrice')?.errors?.['required']">Price is required.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8 time-section">
+                            <div class="title">
+                                Time
+                            </div>
+                            <div class="row" style="margin: 0;">
+                                <div class="col-lg-6 date-container">
+                                    <input type="date" formControlName="auctionStartDate" class="date-field" placeholder="Auction Start">
+                                    <div class="error-message" *ngIf="createAdSecondForm.get('auctionStartDate')?.invalid && createAdSecondForm.get('auctionStartDate')?.touched">
+                                        <span *ngIf="createAdSecondForm.get('auctionStartDate')?.errors?.['required']">Start Date is required.</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 date-container">
+                                    <input type="date" formControlName="auctionEndDate" class="date-field" placeholder="Auction End">
+                                    <div class="error-message" *ngIf="createAdSecondForm.get('auctionEndDate')?.invalid && createAdSecondForm.get('auctionEndDate')?.touched">
+                                        <span *ngIf="createAdSecondForm.get('auctionEndDate')?.errors?.['required']">End Date is required.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-4 post-section">
+                            <div class="title">
+                                Promote Ad
+                            </div>
+                            <div>
+                                <div class="input-container">
+                                    <input type="text" formControlName="promoteAd" class="input-field" placeholder="$10">
+                                    <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
+                                </div>
+                                <div class="error-message" *ngIf="createAdSecondForm.get('promoteAd')?.invalid && createAdSecondForm.get('promoteAd')?.touched">
+                                    <span *ngIf="createAdSecondForm.get('promoteAd')?.errors?.['required']">Price is required.</span>
+                                </div>
+                            </div>
+                            <div class="check-section">
+                                <input type="checkbox" required> 
+                                <a>Are you sure promote your ad</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; padding-top: 25px;">
+                        <a class="post-btn" data-toggle="modal" data-target="#confirmation-modal">Post Ad</a>
+                    </div>
+                </form>
+            </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
