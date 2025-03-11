@@ -1,0 +1,150 @@
+<div class="wallet" style="border-radius: 10px;" data-aos="zoom-out-down" data-aos-duration="1200">
+  <div class="wallet-inner row justify-content-center" >
+      <div class="wallet-thumb col-sm-12 col-md-7 col-lg-7 p-0">
+        <div style="background-color: rgba(243, 243, 243, 1);border-radius: 5px;">
+          <div class="p-3">
+            <img src="../assets/images/my-wallet/wallet-logo.png" style="margin-right: 10px;" alt="">
+            <span style="font-size: 14px;font-weight: 600;color: black;">My Wallet</span>
+          </div>
+          <h3 class="p-1">$100</h3>
+        </div>
+
+         <div style="display: flex; justify-content: space-around;" class="wallet-info">
+          <div style="margin-top: 10px;">
+            <img src="../assets/images/my-wallet/deposit-logo.png" alt="">
+            <span>Deposits</span>
+            <p>0</p>
+          </div>
+          <div class="separator-line"></div>
+          <div style="margin-top: 10px;">
+            <img src="../assets/images/my-wallet/refund-logo.png" alt="">
+            <span>Refunds</span>
+            <p>0</p>
+          </div>
+          <div class="separator-line"></div>
+          <div style="margin-top: 10px;">
+            <img src="../assets/images/my-wallet/reward-logo.png" alt="">
+            <span>Rewards</span>
+            <p>0</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wallet-thumb col-sm-12 col-md-5 col-lg-5 pe-0 ps-2">
+        <div style="background-color: rgba(243, 243, 243, 1);border-radius: 5px;" class="wallet-chart">
+          <div class="p-3">
+            <img src="../assets/images/my-wallet/donut-chart.png" alt="">
+          </div>
+          <a  style="font-size: 13px;color: white;background-color: rgba(44, 110, 73, 1);padding: 1px 30px;border-radius: 50px; margin-bottom:10px;">DEPOSITS</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="row dashboard-widget wallet-table" data-aos="zoom-out-down" data-aos-duration="1200">
+  <div class="col-sm-6 col-md-4 col-lg-4" style="position: relative;"> 
+    <!-- <select class="wallet-dropdown">
+      <option value="" disabled selected>Select</option>
+      <option>Pure CSS Select</option>
+      <option> With wrapper</option>
+      <option>No JS!</option>
+    </select> -->
+    <div>
+        <app-custom-dropdown [selectedOption]="'All Transactions'" [options]="['Active', 'Pending' ,'Completed']"></app-custom-dropdown>
+    </div>
+  </div>    
+  <div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="date-container">
+      <input type="date" class="wallet-date"> 
+    </div>
+    
+  </div>
+  
+  
+  <div class="col-12 dashboard-purchasing-tabs">
+    <table class="purchasing-table">
+      <thead style="background-color: rgba(242, 242, 242, 1);">
+          <th style="border-radius: 10px 0 0 10px;padding-left: 15px;">Date</th>
+          <th>Type</th>
+          <th>Amount
+          <th>Status</th>
+          <th colspan="2" style="border-radius: 0 10px 10px 0;padding-right: 15px;">Details</th>
+      </thead>
+      <tbody>
+          <tr>
+              <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+              <td data-purchase="type">$1,775.00</td>
+              <td data-purchase="amount">$1,775.00</td>
+              <td data-purchase="status">$1,400.00</td>
+              <td data-purchase="details">7/2/2024</td>
+              <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+          <tr>
+            <td data-purchase="date" class="date">2018 Hyundai Sonata</td>
+            <td data-purchase="type">$1,775.00</td>
+            <td data-purchase="amount">$1,775.00</td>
+            <td data-purchase="status">$1,400.00</td>
+            <td data-purchase="details">7/2/2024</td>
+            <td data-purchase="details"><a  class="status">status</a></td>
+          </tr>
+      </tbody>
+  </table>
+  </div>
+</div>

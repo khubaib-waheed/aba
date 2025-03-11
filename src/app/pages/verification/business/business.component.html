@@ -1,0 +1,71 @@
+<div class="main-section business-info" data-aos="zoom-out-up" data-aos-duration="1000">
+    <h4 class="title">Business Information</h4>
+    <form class="verification-form" [formGroup]="businessForm" (ngSubmit)="onSubmit()">
+        <div class="row fields">
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="companyName" placeholder="Company Name">
+               <div class="error-message" *ngIf="businessForm.get('companyName')?.invalid && businessForm.get('companyName')?.touched">
+                 <span *ngIf="businessForm.get('companyName')?.errors?.['required']">Name is required.</span>
+               </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="companyPhoneNo" placeholder="Company Phone Number">
+               <div class="error-message" *ngIf="businessForm.get('companyPhoneNo')?.invalid && businessForm.get('companyPhoneNo')?.touched">
+                 <span *ngIf="businessForm.get('companyPhoneNo')?.errors?.['required']">Phone No is required.</span>
+               </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="email" formControlName="companyEmail" placeholder="Company Email">
+               <div class="error-message" *ngIf="businessForm.get('companyEmail')?.invalid && businessForm.get('companyEmail')?.touched">
+                <span *ngIf="businessForm.get('companyEmail')?.errors?.['required']">Email is required.</span>
+                <span *ngIf="businessForm.get('companyEmail')?.errors?.['email']">Invalid email format.</span>
+              </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="companyAddress" placeholder="Company Address">
+               <div class="error-message" *ngIf="businessForm.get('companyAddress')?.invalid && businessForm.get('companyAddress')?.touched">
+                <span *ngIf="businessForm.get('companyAddress')?.errors?.['required']">Address is required.</span>
+              </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="file-uploader">
+                    <label for="fileInput" *ngIf="!file">
+                      <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                      <div class="upload-text">
+                        <strong>Business Verification</strong>
+                        <p>(E.g.Tax Verification Document)</p>
+                      </div>
+                    </label>
+                    <input type="file" id="fileInput" hidden (change)="onFileSelect($event)">
+                    <div *ngIf="!file" style="margin-bottom: 19px; color: red;">
+                        <span>*</span>
+                    </div>
+
+                    <!-- Show selected file name -->
+                    <div class="file-name" *ngIf="file">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div class="name">
+                                {{ file }}
+                            </div>
+                            <div>
+                                <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile()" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin: 10px 0px 30px 0px;">
+            <div>
+                <a routerLink="/auth/verification/subscription" class="verification-skip-btn">Skip</a>
+            </div>
+            <div>
+                <a routerLink="/auth/verification/subscription" class="verification-btn">Continue</a>
+            </div>
+        </div>
+    </form>
+</div>

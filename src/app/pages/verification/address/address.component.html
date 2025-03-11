@@ -1,0 +1,53 @@
+<div class="main-section" data-aos="zoom-out-up" data-aos-duration="1000">
+    <h4 class="title">Address Information</h4>
+    <form class="verification-form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+        <div class="row fields">
+            <div class="col-lg-12">
+                <div class="custom-select-wrapper">
+                    <app-custom-dropdown formControlName="country" selectedOption="Country" [options]="['Albania','USA','Canada','Australia','Brazil','India','Pakistan','Bahrain','Dubai']"></app-custom-dropdown>
+                    <div class="error-message" *ngIf="addressForm.get('country')?.invalid && addressForm.get('country')?.touched">
+                        <span *ngIf="addressForm.get('country')?.errors?.['required']">Please select country.</span>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="street" placeholder="Street" required>
+               <div class="error-message" *ngIf="addressForm.get('street')?.invalid && addressForm.get('street')?.touched">
+                 <span *ngIf="addressForm.get('street')?.errors?.['required']">Street is required.</span>
+               </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="houseNo" placeholder="House No." required>
+               <div class="error-message" *ngIf="addressForm.get('houseNo')?.invalid && addressForm.get('houseNo')?.touched">
+                 <span *ngIf="addressForm.get('houseNo')?.errors?.['required']">House number is required.</span>
+               </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="address" placeholder="Address" required>
+               <div class="error-message" *ngIf="addressForm.get('address')?.invalid && addressForm.get('address')?.touched">
+                 <span *ngIf="addressForm.get('address')?.errors?.['required']">Address is required.</span>
+               </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="postalCode" placeholder="Postal Code" required>
+               <div class="error-message" *ngIf="addressForm.get('postalCode')?.invalid && addressForm.get('postalCode')?.touched">
+                 <span *ngIf="addressForm.get('postalCode')?.errors?.['required']">Postal code is required.</span>
+               </div>
+            </div>
+
+            <div class="col-lg-12 field-container">
+               <input type="text" formControlName="city" placeholder="City" required>
+               <div class="error-message" *ngIf="addressForm.get('city')?.invalid && addressForm.get('city')?.touched">
+                 <span *ngIf="addressForm.get('city')?.errors?.['required']">City is required.</span>
+               </div>
+            </div>
+        </div>
+        <div>
+            <a routerLink="/auth/verification/documents" class="verification-btn">Continue</a>
+        </div>
+    </form>
+</div>

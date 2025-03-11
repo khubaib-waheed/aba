@@ -1,0 +1,42 @@
+<section class="banner-section contact" style="padding: 200px 0 175px;">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 col-xl-6">
+                <div data-aos="zoom-out-up" data-aos-duration="1200" style="background-color: white; border-radius: 20px; padding: 5px;box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);">
+                    <div class="form-section">
+                        <div class="heading">Contact Us</div>
+                        <h2 class="title">Get in Touch</h2>
+                        <div class="heading">We'd love to hear from you! Let us know how we can help.</div>
+                        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                            <div>
+                                <input formControlName="name" class="input-field" type="text" placeholder="Your Name">
+                                <div class="error-message" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                                    <span *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</span>
+                                </div>
+                            </div>
+                            <div>
+                                <input formControlName="email" class="input-field" type="text" placeholder="Enter your Email ID">
+                                <div class="error-message" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                                    <span *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</span>
+                                    <span *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                                </div>
+                            </div>
+                            <div>
+                                <textarea formControlName="message" class="input-field" placeholder="Type your message"></textarea>
+                                <div class="error-message" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                                    <span *ngIf="contactForm.get('message')?.errors?.['required']">Message is required.</span>
+                                </div>
+                            </div>
+                            <a class="send-message-btn">Send Message</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="d-none d-lg-block col-lg-6" data-aos="fade-right" data-aos-duration="1200">
+                <div class="banner-thumb-2">
+                    <img src="../assets/images/contact/banner.png" alt="banner">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

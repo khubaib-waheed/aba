@@ -1,0 +1,148 @@
+<div class="browse-section ash-bg" style="margin-top: 280px;">
+    <!--============= Hightlight Slider Section Starts Here =============-->
+    <div class="browse-slider-section mt--140">
+        <div class="container">
+            <div class="mb-4" style="text-align: -webkit-center;"></div>
+        </div>
+    </div>
+    <!--============= Hightlight Slider Section Ends Here =============-->
+    
+
+
+    <!--============= Car Auction Section Starts Here =============-->
+
+    <section style="background-color: #f5f5f5;" class="bid-list-car-auction car-auction-section padding-bottom pos-rel oh">
+        <div class="container" style="z-index: 98;">
+            <div class="row bid-list">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="500">
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="600">
+                    <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="700">
+                    <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="800">
+                    <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="900">
+                    <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="1000">
+                    <app-custom-dropdown [selectedOption]="'Price'" [options]="['Less than $1000', '$1000 - $2000', '$2000 - $3000', '$3000 - $4000', '$4000 - $5000', '$5000 - $7000', '$7000 - $10,000', '$10,000 - $15,000', '$15,000 - $20,000', '$20,000 - $25,000']"></app-custom-dropdown>
+                </div>
+            </div>
+        </div>
+
+        <div data-aos="fade-down" data-aos-duration="500" style="display: flex; justify-content: center; gap: 10px; text-align: center; background-color: rgba(228, 30, 38, 1);padding: 20px 0px;">
+            <img src="../assets/images/new-cars/car.png" alt="">
+            <div style="margin: auto 0;">
+                <div style="font-size: 40px; color: white; font-weight: 600;">New Cars</div>
+                <div style="font-size: 20px; color: white; font-weight: 500; margin-top: 10px;">We offer affordable Vehicles</div>
+            </div>
+            <img src="../assets/images/new-cars/car.png" alt="">
+        </div>
+
+
+        <div class="container padding-bottom padding-top">
+            <div class="row justify-content-center mb-30-none">
+                <div class="col-lg-12">
+                    <div class="auction-item-6 new-cars" data-aos="fade-down" data-aos-duration="1200">
+                        <div class="auction-inner">
+                            <div class="auction-thumb">
+                                <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
+                                <img class="rating" src="../assets/images/auction-star.png" alt="">
+                                <img class="bid" src="../assets/images/auction-bid-red.png" alt="">
+                            </div>
+                            <div class="auction-content">
+                                <h4 class="title">Hyundai Sonata</h4>
+                                <div class="information-section">
+                                    <div class="item-information">
+                                        <span>Maker</span><span>:</span><span>BMW</span>
+                                        <span>Posted on</span><span>:</span><span>Dec 25, 2024</span>
+                                        <span>Country</span><span>:</span><span>Albania</span>
+                                        <span>Transmission</span><span>:</span><span>ABCD</span>
+                                        <span>Engine Type</span><span>:</span><span>Solid</span>
+                                    </div>
+                                    <div class="price-information">
+                                        <span>Price: $2000</span>
+                                    </div>
+                                </div>                                           
+                                <div style="text-align: center; padding-top: 70px; padding-bottom: 10px;">
+                                    <a routerLink="/app/bid-detail/3" class="buy-now">BUY NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="auction-item-6 new-cars" data-aos="fade-down" data-aos-duration="1200">
+                        <div class="auction-inner">
+                            <div class="auction-thumb">
+                                <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
+                                <img class="rating" src="../assets/images/auction-star.png" alt="">
+                                <img class="bid" src="../assets/images/auction-bid-red.png" alt="">
+                            </div>
+                            <div class="auction-content">
+                                <h4 class="title">Hyundai Sonata</h4>
+                                <div class="information-section">
+                                    <div class="item-information">
+                                        <span>Maker</span><span>:</span><span>BMW</span>
+                                        <span>Posted on</span><span>:</span><span>Dec 25, 2024</span>
+                                        <span>Country</span><span>:</span><span>Albania</span>
+                                        <span>Transmission</span><span>:</span><span>ABCD</span>
+                                        <span>Engine Type</span><span>:</span><span>Solid</span>
+                                    </div>
+                                    <div class="price-information">
+                                        <span>Price: $2000</span>
+                                    </div>
+                                </div>                                           
+                                <div style="text-align: center; padding-top: 70px; padding-bottom: 10px;">
+                                    <a routerLink="/app/bid-detail/3" class="buy-now">BUY NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="auction-item-6 new-cars" data-aos="fade-down" data-aos-duration="1200">
+                        <div class="auction-inner">
+                            <div class="auction-thumb">
+                                <a><img style="width: 100%;" src="../assets/images/car-1.png" alt="trending"></a>
+                                <img class="rating" src="../assets/images/auction-star.png" alt="">
+                                <img class="bid" src="../assets/images/auction-bid-red.png" alt="">
+                            </div>
+                            <div class="auction-content">
+                                <h4 class="title">Hyundai Sonata</h4>
+                                <div class="information-section">
+                                    <div class="item-information">
+                                        <span>Maker</span><span>:</span><span>BMW</span>
+                                        <span>Posted on</span><span>:</span><span>Dec 25, 2024</span>
+                                        <span>Country</span><span>:</span><span>Albania</span>
+                                        <span>Transmission</span><span>:</span><span>ABCD</span>
+                                        <span>Engine Type</span><span>:</span><span>Solid</span>
+                                    </div>
+                                    <div class="price-information">
+                                        <span>Price: $2000</span>
+                                    </div>
+                                </div>                                           
+                                <div style="text-align: center; padding-top: 70px; padding-bottom: 10px;">
+                                    <a routerLink="/app/bid-detail/3" class="buy-now">BUY NOW</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Car Auction Section Ends Here =============-->
+</div>

@@ -1,0 +1,136 @@
+<section class="sign-up">
+    <div class="container">
+        <div class="main-section">
+            <div class="left-section" data-aos="fade-right" data-aos-duration="1200">
+                <h2>Welcome to</h2>
+                <h2>Auto Bid Albania</h2>
+                <p>Sign up to Auto Bid Albania and take control of your bids</p>
+                <img class="banner" src="../assets/images/verification/sign-up-banner.png" alt="">
+            </div>
+            <div class="right-section" data-aos="fade-left" data-aos-duration="1200">
+                <div style="margin: 10px auto 15px auto;">
+                    <img src="../assets/images/verification/auto-bid-logo-2.png" alt="">
+                </div>
+                <form class="signup-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                    <div class="row fields">
+                        <div class="col-lg-6 field-container">
+                           <input type="text" formControlName="firstName" placeholder="First name" required>
+                           <div class="error-message" *ngIf="signUpForm.get('firstName')?.invalid && signUpForm.get('firstName')?.touched">
+                            <span *ngIf="signUpForm.get('firstName')?.errors?.['required']">First Name is required.</span>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-6 field-container">
+                           <input type="text" formControlName="lastName" placeholder="Last name" required>
+                           <div class="error-message" *ngIf="signUpForm.get('lastName')?.invalid && signUpForm.get('lastName')?.touched">
+                            <span *ngIf="signUpForm.get('lastName')?.errors?.['required']">Last Name is required.</span>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-6 field-container">
+                           <input type="email" formControlName="email" placeholder="Email" required>
+                           <div class="error-message" *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
+                            <span *ngIf="signUpForm.get('email')?.errors?.['required']">Email is required.</span>
+                            <span *ngIf="signUpForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-6 field-container">
+                           <input type="tel" formControlName="phone" placeholder="Phone Number" required>
+                           <div class="error-message" *ngIf="signUpForm.get('phone')?.invalid && signUpForm.get('phone')?.touched">
+                            <span *ngIf="signUpForm.get('phone')?.errors?.['required']">Phone No. is required.</span>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-6 field-container">
+                           <input type="password" formControlName="password" placeholder="Password" required>
+                           <div class="error-message" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
+                            <span *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required.</span>
+                           </div>
+                        </div>
+
+                        <div class="col-lg-6 field-container">
+                            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
+                            <div class="error-message" *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched">
+                                <span *ngIf="signUpForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="dropdown">
+                        <app-custom-dropdown formControlName="socialLink" selectedOption="How did you hear about us?" [options]="['Facebook', 'Instagram', 'Google', 'Linkedin']"></app-custom-dropdown>
+                        <div class="error-message" *ngIf="signUpForm.get('socialLink')?.invalid && signUpForm.get('socialLink')?.touched">
+                            <span *ngIf="signUpForm.get('socialLink')?.errors?.['required']">Social Link is required.</span>
+                        </div>
+                    </div>
+                    <div class="check-section">
+                        <input type="checkbox" class="form-check-input"> 
+                        <a style="cursor: context-menu;">I agree to the terms of service</a>
+                    </div>
+                    <div>
+                        <a class="sign-up-btn" data-toggle="modal" data-target="#otp2-modal">Sign up</a>
+                    </div>
+                    <div>
+                        <a routerLink="/auth/sign-in" class="sign-in-link">Already have an account? Sign in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--============================OTP Section=======================-->
+      <!-- Modal -->
+      <div class="modal fade" id="otp2-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="otp modal-body" style="position: relative;">
+                <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+                <div style="text-align: center;">
+                    <h3 style="margin-bottom: 2px;">OTP</h3>
+                    <div class="subtitle">We have sent a 4 digit one time <br> password to your email address</div>
+                </div>
+                <form action="">
+                   
+                    <div style="padding: 25px;">
+                        <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+                    </div>
+                    <div style="text-align: center; padding-top: 10px;">
+                        <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#email-verified-modal">Verify</a>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    
+     <!--============================Email Verified Section=======================-->
+      <!-- Modal -->
+      <div class="modal fade" id="email-verified-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="email-verify modal-body" style="position: relative;">
+                <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+                <div>
+                    <h2>Email Verified</h2>
+                </div>
+                <div class="message">  
+                    Congratulations! Your email is verified. Let’s get you started! Please complete your profile to access all system features.
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" (click)="goToSecretQuestion()">Done</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+
+
+
+ 

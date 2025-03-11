@@ -1,0 +1,64 @@
+<div class="main-section documents" data-aos="zoom-out-up" data-aos-duration="1000">
+    <h4 class="title">Verification Documents</h4>
+    <div class="subtitle">
+        Please upload these supportive documents to verfiy your data
+    </div>
+    <form class="verification-form">
+        <div class="files-section">
+            <!-- Identity Verification -->
+            <div class="file-uploader">
+              <label for="identityFileInput" *ngIf="!identityFile">
+                <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                <div class="upload-text">
+                  <strong>Identity Verification</strong>
+                  <p>(E.g. Driving License, ID Card, Passport)</p>
+                </div>
+              </label>
+              <input type="file" id="identityFileInput" hidden (change)="onFileSelect($event, 'identity')">
+              <div *ngIf="!identityFile" style="margin-bottom: 19px; color: red;">
+                <span>*</span>
+              </div>
+              <!-- Show selected file name -->
+              <div class="file-name" *ngIf="identityFile">
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="name">
+                        {{ identityFile }}
+                    </div>
+                    <div>
+                        <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('identity')" alt="">
+                    </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Address Verification -->
+            <div class="file-uploader">
+              <label for="addressFileInput" *ngIf="!addressFile">
+                <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                <div class="upload-text">
+                  <strong>Address Verification</strong>
+                  <p>(E.g. Utility Bill)</p>
+                </div>
+              </label>
+              <input type="file" id="addressFileInput" hidden (change)="onFileSelect($event, 'address')">
+              <div *ngIf="!addressFile" style="margin-bottom: 19px; color: red;">
+                <span>*</span>
+              </div>
+              <!-- Show selected file name -->
+              <div class="file-name" *ngIf="addressFile">
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="name">
+                        {{ addressFile }}
+                    </div>
+                    <div>
+                        <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('address')" alt="">
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div>
+            <a routerLink="/auth/verification/business" class="verification-btn">Continue</a>
+        </div>
+    </form>
+</div>

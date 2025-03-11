@@ -1,0 +1,295 @@
+<div>
+  <img src="../assets/images/verification/auto-bid-logo.png" class="top-image" alt="">
+  <img src="../assets/images/verification/sign-in-banner.png" class="bg-image">
+
+  <div class="container">
+      <div class="sign-in-form">
+        <h3 class="title">Welcome to</h3>
+        <h3 class="title">Auto Bid Albania</h3>
+        <div style="margin-top: 15px;">
+          <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+            
+            <input type="email" formControlName="email" placeholder="User Name / Email" class="input-field">
+            <div class="sign-in-error-message" *ngIf="signInForm.get('email')?.invalid && signInForm.get('email')?.touched">
+              <span *ngIf="signInForm.get('email')?.errors?.['required']">Email is required.</span>
+              <span *ngIf="signInForm.get('email')?.errors?.['email']">Invalid email format.</span>
+            </div>
+            <div class="password-container">
+              <input type="password" formControlName="password" placeholder="Password" class="input-field"/>
+              <span class="toggle-icon">
+                <img src="../assets/images/verification/eye-icon.png" alt="Toggle">
+              </span>
+            </div>
+            <div class="sign-in-error-message" *ngIf="signInForm.get('password')?.invalid && signInForm.get('password')?.touched">
+              <span *ngIf="signInForm.get('password')?.errors?.['required']">Password is required.</span>
+            </div>
+          
+          </form>
+          
+              <!-- <div class="password-container">
+                      <input 
+                        [type]="isPasswordVisible ? 'text' : 'password'" 
+                        placeholder="Password" 
+                        class="input-field"
+                      />
+                      <span class="toggle-icon" (click)="togglePassword('password')">
+                        <img [src]="isPasswordVisible ? '../assets/images/verification/eye-open-icon.png' : '../assets/images/verification/eye-icon.png'" alt="Toggle">
+                      </span>
+                  </div> -->
+                  
+        </div>
+        
+        <div class="check-section">
+          <div>
+              <input type="checkbox" class="form-check-input">
+              <a style="color: white; cursor: context-menu;">Remember me</a>
+          </div>
+          
+          <div>
+              <a class="forgot-password" data-toggle="modal" data-target="#email-modal">Forgot password?</a>
+          </div>
+        </div>
+        <div style="text-align: center;padding: 30px 10px;">
+          <a routerLink="/app/home" class="sign-in-btn">Sign In</a>
+        </div>
+        <div style="text-align: center;padding: 10px;">
+          <a routerLink="/auth/sign-up" class="sign-up-link">Don’t have an account? Sign up</a>
+        </div>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--============================Email Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="email modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <img src="../assets/images/modals/bid-logo.png" alt="">
+                <h4 style="margin: 10px; margin-bottom: 2px;">Enter your email</h4>
+                <div class="subtitle">Enter the email associated with<br> Auto Bids Albania account</div>
+            </div>
+            <form [formGroup]="emailForm" (ngSubmit)="onSubmitEmail()">
+                <div class="field-container">
+                    <input type="text" formControlName="email" class="input-field" placeholder="Email">
+                    <div class="error-message" *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.touched">
+                      <span *ngIf="emailForm.get('email')?.errors?.['required']">Email is required.</span>
+                      <span *ngIf="emailForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                    </div>
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#otp-modal">Continue</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<!--============================OTP Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="otp-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="otp modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <h3 style="margin-bottom: 2px;">OTP</h3>
+                <div class="subtitle">We have sent a 4 digit one time <br> password to your email address</div>
+            </div>
+            <form action="">
+               
+                <div style="padding: 25px;">
+                    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#question-modal">Verify</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<!--============================Question Section=======================-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="question-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="question modal-body" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <img src="../assets/images/modals/bid-logo.png" alt="">
+                <h4 style="margin: 10px;">Secret Question</h4>
+            </div>
+            <form [formGroup]="questionForm" (ngSubmit)="onSubmitQuestion()">
+              <div class="field-container">
+                <app-custom-dropdown formControlName="question1" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
+                <div class="error-message" *ngIf="questionForm.get('question1')?.invalid && questionForm.get('question1')?.touched">
+                  <span *ngIf="questionForm.get('question1')?.errors?.['required']">Please select question.</span>
+                </div>
+               </div>
+
+               <div class="field-container">
+                <input type="text" formControlName="answer1" class="input-field" placeholder="Answer">
+                <div class="error-message" *ngIf="questionForm.get('answer1')?.invalid && questionForm.get('answer1')?.touched">
+                  <span *ngIf="questionForm.get('answer1')?.errors?.['required']">Answer is required.</span>
+                </div>
+               </div>
+        
+              <div class="field-container">
+                <app-custom-dropdown formControlName="questoin2" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
+                <div class="error-message" *ngIf="questionForm.get('questoin2')?.invalid && questionForm.get('questoin2')?.touched">
+                  <span *ngIf="questionForm.get('questoin2')?.errors?.['required']">Please select question.</span>
+                </div>
+              </div>
+
+              <div class="field-container">
+                <input type="text" formControlName="answer2" class="input-field" placeholder="Answer">
+                <div class="error-message" *ngIf="questionForm.get('answer2')?.invalid && questionForm.get('answer2')?.touched">
+                  <span *ngIf="questionForm.get('answer2')?.errors?.['required']">Answer is required.</span>
+                </div>
+              </div>
+
+              <div style="text-align: center; padding-top: 25px;">
+                  <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#reset-modal">Continue</a>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<!--============================Reset Password Section=======================-->
+  <!-- Modal -->
+  <div class="modal fade" id="reset-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body reset-password" style="position: relative;">
+            <!-- <img data-dismiss="modal" class="cross-icon" src="../assets/images/modals/cross-icon.png" alt="cross-icon"> -->
+            <div style="text-align: center;">
+                <img src="../assets/images/modals/bid-logo.png" alt="">
+                <h4 style="margin: 10px;">Reset your password</h4>
+            </div>
+            <form [formGroup]="resetPasswordForm" (ngSubmit)="onSubmitResetPassword()">
+                <div>
+                    <!-- <div class="password-container">
+                        <input 
+                          [type]="isPasswordVisible ? 'text' : 'password'" 
+                          placeholder="Password" 
+                          class="input-field"
+                        />
+                        <span class="toggle-icon" (click)="togglePassword('password')">
+                          <img [src]="isPasswordVisible ? '../assets/images/modals/eye-open-icon.png' : '../assets/images/verification/eye-icon.png'" alt="Toggle">
+                        </span>
+                      </div>
+                      <div class="password-container">
+                        <input 
+                          [type]="isConfirmPasswordVisible ? 'text' : 'password'" 
+                          placeholder="Confirm Password" 
+                          class="input-field"
+                        />
+                        <span class="toggle-icon" (click)="togglePassword('confirm-password')">
+                          <img [src]="isConfirmPasswordVisible ? '../assets/images/verification/eye-open-icon.png' : '../assets/images/verification/eye-icon.png'" alt="Toggle">
+                        </span>
+                      </div> -->
+                      <div style="display: flex; justify-content: center;">
+                        <div class="field-container">
+                          <div class="password-container">
+                            <input type="password" formControlName="password" placeholder="Password" class="input-field"/>
+                            <span class="toggle-icon" >
+                              <img src="../assets/images/modals/eye-icon.png" alt="Toggle">
+                            </span>
+                          </div>
+                          <div class="error-message" *ngIf="resetPasswordForm.get('password')?.invalid && resetPasswordForm.get('password')?.touched">
+                            <span *ngIf="resetPasswordForm.get('password')?.errors?.['required']">Password is required.</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div style="display: flex; justify-content: center;">
+                        <div class="field-container">
+                          <div class="password-container">
+                            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="input-field"/>
+                            <span class="toggle-icon" >
+                              <img src="../assets/images/modals/eye-icon.png" alt="Toggle">
+                            </span>
+                          </div>
+                          <div class="error-message" *ngIf="resetPasswordForm.get('confirmPassword')?.invalid && resetPasswordForm.get('confirmPassword')?.touched">
+                            <span *ngIf="resetPasswordForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</span>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <a class="continue-btn" data-dismiss="modal">Done</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

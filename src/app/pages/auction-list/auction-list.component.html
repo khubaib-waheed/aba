@@ -1,0 +1,329 @@
+<div class="browse-section ash-bg" style="padding-top: 30px;">
+    <!--============= Car Auction Section Starts Here =============-->
+
+    <section style="background-color: #f5f5f5;" class="bid-list-car-auction car-auction-section padding-bottom pos-rel oh">
+        <div class="container" style="z-index: 98;">
+            <div class="row bid-list">
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="500">
+                    <app-custom-dropdown [selectedOption]="'Select Maker'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="600">
+                    <app-custom-dropdown [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="700">
+                    <app-custom-dropdown [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="800">
+                    <app-custom-dropdown [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="900">
+                    <app-custom-dropdown [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
+                </div>
+
+                <div class="custom-select-wrapper col-md-4 col-lg-2" data-aos="zoom-out-down" data-aos-duration="1000">
+                    <app-custom-dropdown [selectedOption]="'Price'" [options]="['Less than $1000', '$1000 - $2000', '$2000 - $3000', '$3000 - $4000', '$4000 - $5000', '$5000 - $7000', '$7000 - $10,000', '$10,000 - $15,000', '$15,000 - $20,000', '$20,000 - $25,000']"></app-custom-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section-header-3" data-aos="zoom-out-down" data-aos-duration="1200">
+                <div class="left">
+                    <div class="thumb">
+                        <img style="margin-top: 10px;" src="../assets/images/feature-bid-car-logo.png" alt="header-icons">
+                    </div>
+                    <div class="title-area">
+                        <h2 class="title">Featured Bids</h2>
+                        <h6>Start winning cars with comfort</h6>
+                    </div>
+                </div>
+                <!-- <a  class="normal-button">View All</a> -->
+            </div>
+            <div class="row justify-content-center mb-30-none">
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
+                        <div class="auction-thumb">
+                            <a ><img src="../assets/images/car-1.png" alt="car"></a>
+                            <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                            <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                        </div>
+                        <div class="auction-content">
+                            <h6 class="title">
+                                <a >2018 Hyundai Sonata</a>
+                            </h6>
+                            <div class="bid-area">
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-green.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Current Bid</div>
+                                        <div class="amount">$876.00</div>
+                                    </div>
+                                </div>
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-amount.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Buy Now</div>
+                                        <div class="amount">$5,00.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="countdown-area">
+                                <div class="countdown">
+                                    <div id="bid_counter26"></div>
+                                </div>
+                                <span class="total-bids">30 Bids</span>
+                            </div>
+                            <div class="text-center">
+                                <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="1100">
+                        <div class="auction-thumb">
+                            <a ><img src="../assets/images/car-1.png" alt="car"></a>
+                            <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                            <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                        </div>
+                        <div class="auction-content">
+                            <h6 class="title">
+                                <a >2018 Hyundai Sonata</a>
+                            </h6>
+                            <div class="bid-area">
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-green.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Current Bid</div>
+                                        <div class="amount">$876.00</div>
+                                    </div>
+                                </div>
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-amount.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Buy Now</div>
+                                        <div class="amount">$5,00.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="countdown-area">
+                                <div class="countdown">
+                                    <div id="bid_counter26"></div>
+                                </div>
+                                <span class="total-bids">30 Bids</span>
+                            </div>
+                            <div class="text-center">
+                                <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="1200">
+                        <div class="auction-thumb">
+                            <a ><img src="../assets/images/car-1.png" alt="car"></a>
+                            <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                            <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                        </div>
+                        <div class="auction-content">
+                            <h6 class="title">
+                                <a >2018 Hyundai Sonata</a>
+                            </h6>
+                            <div class="bid-area">
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-green.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Current Bid</div>
+                                        <div class="amount">$876.00</div>
+                                    </div>
+                                </div>
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-amount.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Buy Now</div>
+                                        <div class="amount">$5,00.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="countdown-area">
+                                <div class="countdown">
+                                    <div id="bid_counter26"></div>
+                                </div>
+                                <span class="total-bids">30 Bids</span>
+                            </div>
+                            <div class="text-center">
+                                <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="car-auction-section padding-bottom padding-top pos-rel oh">
+        <!-- <div class="car-bg"><img src="../assets/images/auction/car/car-bg.png" alt="car"></div> -->
+        <div class="car-bg"><img src="../assets/images/cars-road-bg.png" alt="car"></div>
+        <div class="container">
+            <div class="section-header-3" data-aos="zoom-out-down" data-aos-duration="1200">
+                <div class="left">
+                    <div class="thumb">
+                        <img style="margin-top: 10px;" src="../assets/images/Bid-logo.png" alt="header-icons">
+                    </div>
+                    <div class="title-area">
+                        <h2 class="title">Bids</h2>
+                        <h6>We offer affordable Vehicles</h6>
+                    </div>
+                </div>
+                <!-- <a  class="normal-button">View All</a> -->
+            </div>
+            <div class="row justify-content-center mb-30-none">
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
+                        <div class="auction-thumb">
+                            <a ><img src="../assets/images/car-1.png" alt="car"></a>
+                            <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                            <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                        </div>
+                        <div class="auction-content">
+                            <h6 class="title">
+                                <a >2018 Hyundai Sonata</a>
+                            </h6>
+                            <div class="bid-area">
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-green.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Current Bid</div>
+                                        <div class="amount">$876.00</div>
+                                    </div>
+                                </div>
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-amount.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Buy Now</div>
+                                        <div class="amount">$5,00.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="countdown-area">
+                                <div class="countdown">
+                                    <div id="bid_counter26"></div>
+                                </div>
+                                <span class="total-bids">30 Bids</span>
+                            </div>
+                            <div class="text-center">
+                                <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
+                        <div class="auction-thumb">
+                            <a ><img src="../assets/images/car-1.png" alt="car"></a>
+                            <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                            <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                        </div>
+                        <div class="auction-content">
+                            <h6 class="title">
+                                <a >2018 Hyundai Sonata</a>
+                            </h6>
+                            <div class="bid-area">
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-green.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Current Bid</div>
+                                        <div class="amount">$876.00</div>
+                                    </div>
+                                </div>
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-amount.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Buy Now</div>
+                                        <div class="amount">$5,00.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="countdown-area">
+                                <div class="countdown">
+                                    <div id="bid_counter26"></div>
+                                </div>
+                                <span class="total-bids">30 Bids</span>
+                            </div>
+                            <div class="text-center">
+                                <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
+                        <div class="auction-thumb">
+                            <a ><img src="../assets/images/car-1.png" alt="car"></a>
+                            <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                            <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
+                        </div>
+                        <div class="auction-content">
+                            <h6 class="title">
+                                <a >2018 Hyundai Sonata</a>
+                            </h6>
+                            <div class="bid-area">
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-green.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Current Bid</div>
+                                        <div class="amount">$876.00</div>
+                                    </div>
+                                </div>
+                                <div class="bid-amount">
+                                    <div class="icon">
+                                        <img src="../assets/images/auction-bid-amount.png" alt="">
+                                    </div>
+                                    <div class="amount-content">
+                                        <div class="current">Buy Now</div>
+                                        <div class="amount">$5,00.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="countdown-area">
+                                <div class="countdown">
+                                    <div id="bid_counter26"></div>
+                                </div>
+                                <span class="total-bids">30 Bids</span>
+                            </div>
+                            <div class="text-center">
+                                <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============= Car Auction Section Ends Here =============-->
+</div>
