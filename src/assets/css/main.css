@@ -1,88 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:ital,wght@0,400;0,500;0,700;1,500&display=swap");
-/*
-Template Name: Sbidu - Bid & Auction HTML Template
-Template URI: http://pixner.net/sbidu/wall
-Author: uiaxis
-Author URI: https://themeforest.net/user/uiaxis
-Version: 1.0.0
-Text Domain: 
-*/
-/*
-///// CSS Index \\
-01. Reset CSS Start
----------------------------
-02. General CSS
----------------------------
-03. Section Header CSS
----------------------------
-04. Footer Section CSS
----------------------------
-05. Header  Section CSS
----------------------------
-06. Cart Area Sidebar CSS
----------------------------
-07. Banner Section CSS
-----Banner Section Two CSS
-----Banner Section Four CSS
-----Banner Section 5  CSS
----------------------------
-08. Browse Slider Section CSS
----------------------------
-09. Hero Section CSS
----------------------------
-10. Sidebar Widget CSS
----------------------------
-11. Client Section CSS
----------------------------
-12. How Section CSS
----------------------------
-13. Art & Electronics Auction Section CSS
----------------------------
-14. Coins & Bullions Auction Section CSS
----------------------------
-15. Jewelry Section CSS
----------------------------
-16. Call In Section CSS
----------------------------
-17. Popular Auction Section CSS
----------------------------
-18. Real Estate Auction Section CSS
----------------------------
-19. Upcoming Auction Section CSS
----------------------------
-20. Trending Auction Section CSS
----------------------------
-21. Fetured Auction Section CSS
----------------------------
-22. Team Section CSS
----------------------------
-23. Overview  Section CSS
----------------------------
-24. Counter Section CSS
----------------------------
-25. About  Section CSS
----------------------------
-26. Account Section CSS
----------------------------
-27. Contact Section CSS
----------------------------
-28. Error Section CSS
----------------------------
-29. Faq Section CSS
----------------------------
-30. Product Details Section CSS
----------------------------
-31. Dashboard Section CSS
----------------------------
-32. Profile Section CSS
----------------------------
-33. Alert Section CSS
----------------------------
-34. Refferral Section CSS
----------------------------
-35. All Animation Section CSS
----------------------------
-*/
 html {
   color: #222;
   font-size: 1em;
@@ -10031,10 +9947,6 @@ input.ng-invalid.ng-touched {
   width: 25px;
   height: 25px;
   border: 1px solid #bccaea;
-}
-.alert-widget ul li input:checked::after {
-  opacity: 1;
-  background: url(./img/check.png) no-repeat center center;
 }
 .alert-widget ul li label {
   width: calc(100% - 25px);
