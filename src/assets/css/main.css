@@ -5207,19 +5207,30 @@ div[class*=auction] .custom-button {
   border: 1px solid rgba(177, 177, 177, 1);
 }
 
-[type="date"] {
+/* [type="date"] {
   background:#fff url('../images/my-wallet/calender-logo.png')  97% 50% no-repeat ;
-}
+} */
 [type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
+  font-size: 30px;
 }
 
-.wallet-table .wallet-date {
+.wallet-table .date-container {
+  padding: 0;
+}
+
+.wallet-table .date-container .wallet-date {
+  width: 230px;
+  color: black;
+  font-size: 13px;
+  padding: 0 0 0 15px;
   border: 1px solid rgba(177, 177, 177, 1);
   border-radius: 5px;
-  padding: 0 15px;
-  font-size: 13px;
   height: 35px;
+}
+
+.wallet-table .date-container [type="date"] {
+  background: white url('../images/modals/date-logo.png')  97% 50% no-repeat ;
 }
 
 .wallet-table .purchasing-table .status {
@@ -6089,6 +6100,14 @@ div[class*=auction] .custom-button {
   padding: 0 15px;
 }
 
+.signup-form input {
+  margin: 0;
+}
+
+.signup-form .field-container {
+  margin: 10px 0;
+}
+
 .sign-up .signup-form .fields input {
   background-color: white;
   font-size: 12px;
@@ -6194,6 +6213,14 @@ div[class*=auction] .custom-button {
   outline: none;
 }
 
+.verification-form input {
+  margin: 0;
+}
+
+.verification-form .field-container {
+  margin: 10px 0;
+}
+
 .verification-process .main-section {
   text-align: center;
   border: 2px solid white; 
@@ -6290,6 +6317,7 @@ div[class*=auction] .custom-button {
 
 .file-uploader {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
   transition: 0.3s;
@@ -6599,7 +6627,7 @@ div[class*=auction] .custom-button {
   display: flex;
   align-items: center;
   background: rgba(232, 232, 232, 1);
-  padding: 0 10px;
+  padding: 0 10px 0 0;
   border-radius: 10px;
   width: 230px;
 }
@@ -6629,6 +6657,7 @@ div[class*=auction] .custom-button {
   flex: 1;
   font-size: 12px;
   color: black;
+  border-radius: 10px;
 }
 
 .create-ad .time-section {
@@ -6724,6 +6753,10 @@ div[class*=auction] .custom-button {
   color: rgba(0, 0, 0, 0.5);
 }
 
+.question .input-field {
+  margin: 0;
+}
+
 .dispute .dispute-file-uploader {
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 1);
@@ -6777,9 +6810,13 @@ div[class*=auction] .custom-button {
   font-size: 13px;
   padding: 15px 20px;
   border-radius: 10px;
-  margin: 10px auto;
   border: none;
   color: black;
+}
+
+.question .field-container,
+.email .field-container {
+  margin: 10px auto;
 }
 
 .question .custom-bid-dropdown .dropdown-header {
@@ -6974,9 +7011,12 @@ div[class*=auction] .custom-button {
   padding: 10px 20px;
   font-size: 12px;
   background-color: rgba(237, 237, 237, 1);
-  margin: 10px auto;
   border: none;
   outline: none;
+}
+
+.secret-question-form .field-container {
+  margin: 10px auto;
 }
 
 
@@ -7008,7 +7048,6 @@ div[class*=auction] .custom-button {
 
 .reset-password .password-container {
   position: relative;
-  width: 70%;
 }
 
 .reset-password .toggle-icon {
@@ -7025,6 +7064,10 @@ div[class*=auction] .custom-button {
   font-size: 15px;
   color: rgba(0, 0, 0, 0.3);
   background-color: rgba(231, 231, 231, 1);
+}
+
+.reset-password .field-container {
+  width: 70%;
   margin: 8px 0;
 }
 
@@ -7186,6 +7229,32 @@ div[class*=auction] .custom-button {
 
 
 
+
+
+/* =========Validation messages============ */
+
+.sign-in-error-message {
+  font-size: 11px;
+  padding: 0 5px;
+  color: white;
+  line-height: 20px;
+}
+
+.error-message {
+  font-size: 11px;
+  padding: 0 5px;
+  color: darkred;
+  text-align: left;
+  line-height: 20px;
+}
+
+input.ng-invalid.ng-touched {
+  border-left: 4px solid red !important;
+}
+
+.sign-in-form input.ng-invalid.ng-touched {
+  border-left: 4px solid darkred !important;
+}
 
 
 

@@ -965,14 +965,14 @@
     if (scrollPosition >= 1) {
       $(".header-section").addClass('active');
     }
-    var header = $(".header-bottom");
-    $(window).on('scroll', function () {
-      if ($(this).scrollTop() < 1) {
-        header.removeClass("active");
-      } else {
-        header.addClass("active");
-      }
-    });
+    // var header = $(".header-bottom");
+    // $(window).on('scroll', function () {
+    //   if ($(this).scrollTop() < 1) {
+    //     header.removeClass("active");
+    //   } else {
+    //     header.addClass("active");
+    //   }
+    // });
     $('.tab ul.tab-menu li').on('click', function (g) {
       var tab = $(this).closest('.tab'),
         index = $(this).closest('li').index();
