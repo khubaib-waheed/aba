@@ -25,6 +25,7 @@
     "express": "^4.18.2",
     "jquery": "^3.7.1",
     "ng-otp-input": "^2.0.7",
+    "ngx-cookie-service": "^19.1.2",
     "owl.carousel": "^2.3.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
