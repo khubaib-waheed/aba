@@ -3,6 +3,7 @@ import { Component, ElementRef, HostListener, OnInit, QueryList, ViewChildren } 
 import { Router, RouterModule } from '@angular/router';
 import { CustomDropdownComponent } from '../../shared/custom-dropdown/custom-dropdown.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,11 @@ export class HomeComponent implements OnInit {
   isDropdownOpen = false; // State to track dropdown visibility
   businessFile: string | null = null;
   vehicleFile: string | null = null;
-  imagePreviews: string[] = Array(7).fill(''); // Holds image previews for 7 slots
+  imagePreviews: string[] = []; // Holds uploaded image previews
+  maxImages = 5; // Limit to 5 images
   createAdPage = 'create-ad-first-page';
   isActive: boolean = false;
-  createAdFirstForm: FormGroup = {} as FormGroup;
-  createAdSecondForm: FormGroup = {} as FormGroup;
+  createAuctionForm: FormGroup = {} as FormGroup;
 
   @ViewChildren('fileInputs') fileInputs!: QueryList<ElementRef<HTMLInputElement>>;
 
@@ -37,35 +38,57 @@ export class HomeComponent implements OnInit {
   }
 
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(
+    private router: Router, 
+    private fb: FormBuilder,
+    private authService: AuthService
+  ) {
     this.router.events.subscribe(() => {
       this.updateHeaderClass();
     });
   }
 
   ngOnInit(): void {
-    this.createAdFirstForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
+    this.createAuctionForm = this.fb.group({
+      Title: ['', Validators.required],
+      Description: ['', Validators.required],
+      ManufacturerId: ['', Validators.required],
+      ModelId: ['', Validators.required],
+      Year: ['', Validators.required],
+      Transmission: ['', Validators.required],
+      EngineType: ['', Validators.required],
+      StartingPrice: ['', Validators.required],
+      ReservePrice: ['', Validators.required],
+      BuyNowPrice: ['', Validators.required],
+      StartDateTime: ['', Validators.required],
+      EndDateTime: ['', Validators.required],
+      promoteAd: [{value: '', disabled: true}, Validators.required]
     });
 
-    this.createAdSecondForm = this.fb.group({
-      manufacturerId: ['', Validators.required],
-      modelId: ['', Validators.required],
-      year: ['', Validators.required],
-      transmission: ['', Validators.required],
-      engineType: ['', Validators.required],
-      startingPrice: ['', Validators.required],
-      reservePrice: ['', Validators.required],
-      buyNowPrice: ['', Validators.required],
-      startDateTime: ['', Validators.required],
-      endDateTime: ['', Validators.required],
-      promoteAd: ['', Validators.required]
-    });
+    this.authService.users().subscribe({
+      next: res => {
+        console.log('========= USERS ===========')
+        console.log(res)
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+
+   
+    this.authService.myInfo().subscribe({
+      next: res => {
+        console.log('========= MY INFO ===========')
+        console.log(res)
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
-  openFileSelector(index: number) {
-    this.fileInputs.get(index)?.nativeElement.click();
+  openFileSelector(fileInput: HTMLInputElement) {
+    fileInput.click();
   }
 
   toggleDropdown() {
@@ -81,15 +104,20 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  onFileSelected(event: Event, index: number) {
+  onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
+    if (input.files && input.files[0] && this.imagePreviews.length < this.maxImages) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        this.imagePreviews[index] = e.target?.result as string;
+        console.log(e.target)
+        this.imagePreviews.push(e.target?.result as string);
       };
       reader.readAsDataURL(input.files[0]);
     }
+  }
+  
+  removeImage(index: number) {
+    this.imagePreviews.splice(index, 1);
   }
 
   onFileSelect(event: Event, type: any): void {
@@ -122,15 +150,11 @@ export class HomeComponent implements OnInit {
     this.createAdPage = 'create-ad-second-page'
   }
 
-  onSubmitFirst() {
-    if (this.createAdFirstForm.valid) {
-      console.log('Form Submitted!', this.createAdFirstForm.value);
-    }
-  }
-
-  onSubmitSecond() {
-    if (this.createAdFirstForm.valid) {
-      console.log('Form Submitted!', this.createAdFirstForm.value);
-    }
+  onSubmit() {
+    // if (this.createAuctionForm.valid) {
+    //   console.log('Form Submitted!', this.createAuctionForm.value);
+    // }
+    console.log(this.createAuctionForm.value)
+    console.log(this.imagePreviews)
   }
 }

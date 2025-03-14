@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomDropdownComponent } from '../../shared/custom-dropdown/custom-dropdown.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { VerificationService } from '../../shared/services/verification.service';
 
 @Component({
   selector: 'app-secret-question',
@@ -13,21 +14,27 @@ import { CommonModule } from '@angular/common';
 export class SecretQuestionComponent implements OnInit {
   secretQuestionForm: FormGroup = {} as FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router,
+    private verificationService: VerificationService
+  ) {}
 
   ngOnInit(): void {
     this.secretQuestionForm = this.fb.group({
-      question1: ['', Validators.required],
-      answer1: ['', Validators.required],
-      question2: ['', Validators.required],
-      answer2: ['', Validators.required],
+      SecretQuestion1: ['', Validators.required],
+      SecretQuestion1Answer: ['', Validators.required],
+      SecretQuestion2: ['', Validators.required],
+      SecretQuestion2Answer: ['', Validators.required],
     });
   }
 
   onSubmit() {
-    if (this.secretQuestionForm.valid) {
-      console.log('Form Submitted!', this.secretQuestionForm.value);
-    }
+    // if (this.secretQuestionForm.valid) {
+    //   console.log('Form Submitted!', this.secretQuestionForm.value);
+    // }
+    this.verificationService.setFormData(this.secretQuestionForm.value);
+    this.router.navigate(['/auth/verification/address']);
   }
 
 }

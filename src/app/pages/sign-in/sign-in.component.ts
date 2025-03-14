@@ -5,6 +5,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
+import { interval, Subscription } from 'rxjs';
 declare var $: any; // Declare jQuery
 
 @Component({
@@ -16,17 +17,23 @@ declare var $: any; // Declare jQuery
 export class SignInComponent implements OnInit {
   signInForm: FormGroup = {} as FormGroup;
   emailForm: FormGroup = {} as FormGroup;
+  otpForm: FormGroup = {} as FormGroup;
   questionForm: FormGroup = {} as FormGroup;
   resetPasswordForm: FormGroup = {} as FormGroup;
 
   isPasswordVisible = false;
   otp: any;
+  tokenUuid: string = '';
+
+
+  resendDisabled = true;
+  timer: number = 60; // Timer countdown (in seconds)
+  private timerSubscription!: Subscription;
 
   config = {
     allowNumbersOnly: false,
     length: 4,
     isPasswordInput: false,
-    disableAutoFocus: false,
     placeholder: '',
     inputStyles: {
       'width': '50px',
@@ -42,26 +49,30 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
-      password: ['', Validators.required],  // Required field
-      email: ['', [Validators.required, Validators.email]] // Required & must be valid email
+      UserNameOrEmail: ['', [Validators.required, Validators.email]], // Required & must be valid email
+      Password: ['', Validators.required],  // Required field
     });
 
     this.emailForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
+      UserNameOrEmail: ['', [Validators.required, Validators.email]]
     });
 
+    this.otpForm = this.fb.group({})
+
     this.questionForm = this.fb.group({
-      secretQuestion1: ['', Validators.required],
+      SecretQuestion1: ['', Validators.required],
       SecretQuestion1Answer: ['', Validators.required],
-      secretQuestion2: ['', Validators.required],
+      SecretQuestion2: ['', Validators.required],
       SecretQuestion2Answer: ['', Validators.required]
     });
 
     this.resetPasswordForm = this.fb.group({
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]}, 
+      Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required]}, 
       { validators: this.matchPasswords }
     )
+
+
   }
 
   // Custom Validator to check if Password & Confirm Password match
@@ -80,12 +91,13 @@ export class SignInComponent implements OnInit {
 
     console.log(this.signInForm.value)
 
-    this.authService.signIn({userNameOrEmail: '', password: ''}).subscribe({
+    this.authService.signIn(this.signInForm.value).subscribe({
       next: res => {
+        this.authService.setToken(res.TokenUuid)
         this.router.navigate(['/app/home']);
       },
       error: err => {
-  
+        console.log(err)
       }
     })
   }
@@ -97,32 +109,32 @@ export class SignInComponent implements OnInit {
     //   console.log('Form is invalid');
     // }
 
-    console.log(this.emailForm.value);
 
-    this.closeModal('#email-modal');
-    this.openModal('#otp-modal');
-
-
-    this.authService.forgotPassword({UserNameOrEmail: ''}).subscribe({
+    this.authService.forgotPassword(this.emailForm.value).subscribe({
       next: res => {
-        
+        this.closeModal('#email-modal');
+        this.tokenUuid = res.TokenUuid;
+        this.startTimer();
+        this.openModal('#otp-modal');
+        console.log(res)
       },
       error: err => {
-  
+        console.log(err)
       }
     })
 
   }
 
   sendOTP() {
-    this.closeModal('#otp-modal');
-    this.openModal('#question-modal');
-    this.authService.verifyForgotPasswordCode({code: '', tokenUuid: ''}).subscribe({
+    this.authService.verifyForgotPasswordCode({Code: this.otp, TokenUuid: this.tokenUuid}).subscribe({
       next: res => {
-
+        this.closeModal('#otp-modal');
+        this.timerSubscription.unsubscribe();
+        this.tokenUuid = res.TokenUuid;
+        this.openModal('#question-modal');
       },
       error: err => {
-
+        console.log(err)
       }
     })
   }
@@ -133,15 +145,15 @@ export class SignInComponent implements OnInit {
     // } else {
     //   console.log('Form is invalid');
     // }
-    console.log(this.questionForm.value)
-    this.closeModal('#question-modal');
-    this.openModal('#reset-modal');
-    this.authService.verifySecretQuestion({password: '', tokenUuid: ''}).subscribe({
+    this.questionForm.value.TokenUuid = this.tokenUuid;
+    this.authService.verifySecretQuestion(this.questionForm.value).subscribe({
       next: res => {
-
+        this.closeModal('#question-modal');
+        this.tokenUuid = res.TokenUuid;
+        this.openModal('#reset-modal');
       },
       error: err => {
-
+        console.log(err)
       }
     })
   }
@@ -153,14 +165,13 @@ export class SignInComponent implements OnInit {
     //   console.log('Form is invalid');
     // }
 
-    console.log(this.resetPasswordForm.value)
-    this.closeModal('#reset-modal');
-    this.authService.resetPassword({value: {...this.resetPasswordForm.value}, tokenUuid: ''}).subscribe({
+    this.resetPasswordForm.value.TokenUuid = this.tokenUuid;
+    this.authService.resetPassword(this.resetPasswordForm.value).subscribe({
       next: res => {
-
+        this.closeModal('#reset-modal');
       },
       error: err => {
-
+        console.log(err)
       }
     })
   }
@@ -179,5 +190,32 @@ export class SignInComponent implements OnInit {
 
   closeModal(modalName: string): void {
     $(modalName).modal('hide'); // Close modal
+  }
+
+  startTimer() {
+    this.resendDisabled = true;
+    this.timer = 60; // Reset timer to 60 seconds
+
+    this.timerSubscription = interval(1000).subscribe(() => {
+      if (this.timer > 0) {
+        this.timer--;
+      } else {
+        this.resendDisabled = false;
+        this.timerSubscription.unsubscribe(); // Stop the timer when it reaches 0
+      }
+    });
+  }
+
+  resendOtp() {
+    // Call your API to resend OTP here
+    this.authService.resendCode({TokenUuid: this.tokenUuid}).subscribe({
+      next: res => {
+        this.tokenUuid = res.TokenUuid;
+        this.startTimer();
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 }

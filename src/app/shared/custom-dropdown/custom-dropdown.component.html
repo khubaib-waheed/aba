@@ -1,6 +1,6 @@
 <div class="custom-bid-dropdown" (click)="toggleDropdown()" #dropdownContainer>
     <div class="dropdown-header">
-        <span>{{ selectedOption }}</span>
+        <div class="selection">{{ selectedOption }}</div>
         <img src="../../../assets/images/down-arrow.png" alt="Arrow" class="arrow" [ngClass]="{'rotate': isOpen}">
     </div>
     <ul class="dropdown-list" *ngIf="isOpen">

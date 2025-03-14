@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { VerificationService } from '../../../shared/services/verification.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-business',
@@ -14,22 +16,37 @@ export class BusinessComponent implements OnInit {
   file: string | null = null;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private verificationService: VerificationService
   ) {}
 
   ngOnInit(): void {
     this.businessForm = this.fb.group({
-      companyName: ['', Validators.required],
-      companyPhoneNo: ['', Validators.required],
-      companyEmail: ['', [Validators.required, Validators.email]],
-      companyAddress: ['', Validators.required]
+      BusinessName: ['', Validators.required],
+      BusinessPhoneNumber: ['', Validators.required],
+      BusinessEmail: ['', [Validators.required, Validators.email]],
+      BusinessAddress: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    if (this.businessForm.valid) {
-      console.log('Form Submitted!', this.businessForm.value);
-    }
+    // if (this.businessForm.valid) {
+    //   console.log('Form Submitted!', this.businessForm.value);
+    // }
+
+    this.verificationService.setFormData(this.businessForm.value);
+    console.log(this.verificationService.getFormData())
+    this.authService.userInformation(this.verificationService.getFormData()).subscribe({
+      next: res => {
+       console.log(res)
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+    this.router.navigate(['/auth/verification/subscription']);
   }
   
 

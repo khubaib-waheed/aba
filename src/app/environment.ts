@@ -1,4 +1,4 @@
 export const environment = {
    production: true,
-   apiUrl: 'https://api.autobidalbania.com/api', // Example environment variable
+   apiUrl: 'http://51.21.94.6:3000', // Example environment variable
 };

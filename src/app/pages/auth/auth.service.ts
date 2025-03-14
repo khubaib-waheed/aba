@@ -1,7 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID  } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment';
+import { isPlatformBrowser } from '@angular/common';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +12,25 @@ import { environment } from '../../environment';
 export class AuthService {
 
   private baseUrl = `${environment.apiUrl}/auth`;
+  private tokenUuid = 'tokenUuid';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient, 
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  setToken(token: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.setItem(this.tokenUuid, token);
+    }
+  }
+
+  getToken(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return sessionStorage.getItem(this.tokenUuid);
+    }
+    return null;
+  }
 
   signUp(userInfo: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/signup`, userInfo);
@@ -26,6 +46,18 @@ export class AuthService {
 
   signIn(userInfo: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/login`, userInfo);
+  }
+
+  userInformation(userData: any): Observable<any>  {
+    return this.http.patch(`${environment.apiUrl}/user`, userData);
+  }
+
+  users(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/user`);
+  }
+
+  myInfo(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.apiUrl}/user/me`);
   }
 
   forgotPassword(email: any): Observable<any> {
@@ -49,12 +81,10 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer your-token-here' // Replace with your actual token
-    });
-    return this.http.post(`${this.baseUrl}/logout`, null, { headers });
+    return this.http.post(`${this.baseUrl}/logout`, null);
   }
+
+
 
 
 

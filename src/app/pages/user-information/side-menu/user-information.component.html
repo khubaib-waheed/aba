@@ -36,8 +36,8 @@
                             <li [class.active]="activeMenu === 'wallet'" (click)="setActiveMenu('wallet')">
                                 <a routerLink="/app/user-information/wallet"><img src="../assets/images/my-ads/wallet-logo.png" alt="">Wallet</a>
                             </li>
-                            <li [class.active]="activeMenu === 'logout'" (click)="goToSignInPage()">
-                                <a routerLink="/auth/sign-in"><img src="../assets/images/my-ads/logout-logo.png" alt="">Logout</a>
+                            <li [class.active]="activeMenu === 'logout'" (click)="logout()">
+                                <a><img src="../assets/images/my-ads/logout-logo.png" alt="">Logout</a>
                             </li>
                         </ul>
                     </div>

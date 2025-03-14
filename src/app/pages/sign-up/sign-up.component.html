@@ -14,53 +14,53 @@
                 <form class="signup-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
                     <div class="row fields">
                         <div class="col-lg-6 field-container">
-                           <input type="text" formControlName="firstName" placeholder="First name" required>
-                           <div class="error-message" *ngIf="signUpForm.get('firstName')?.invalid && signUpForm.get('firstName')?.touched">
-                            <span *ngIf="signUpForm.get('firstName')?.errors?.['required']">First Name is required.</span>
+                           <input type="text" formControlName="FirstName" placeholder="First name" required>
+                           <div class="error-message" *ngIf="signUpForm.get('FirstName')?.invalid && signUpForm.get('FirstName')?.touched">
+                            <span *ngIf="signUpForm.get('FirstName')?.errors?.['required']">First Name is required.</span>
                            </div>
                         </div>
 
                         <div class="col-lg-6 field-container">
-                           <input type="text" formControlName="lastName" placeholder="Last name" required>
-                           <div class="error-message" *ngIf="signUpForm.get('lastName')?.invalid && signUpForm.get('lastName')?.touched">
-                            <span *ngIf="signUpForm.get('lastName')?.errors?.['required']">Last Name is required.</span>
+                           <input type="text" formControlName="LastName" placeholder="Last name" required>
+                           <div class="error-message" *ngIf="signUpForm.get('LastName')?.invalid && signUpForm.get('LastName')?.touched">
+                            <span *ngIf="signUpForm.get('LastName')?.errors?.['required']">Last Name is required.</span>
                            </div>
                         </div>
 
                         <div class="col-lg-6 field-container">
-                           <input type="email" formControlName="email" placeholder="Email" required>
-                           <div class="error-message" *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched">
-                            <span *ngIf="signUpForm.get('email')?.errors?.['required']">Email is required.</span>
-                            <span *ngIf="signUpForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                           <input type="email" formControlName="Email" placeholder="Email" required>
+                           <div class="error-message" *ngIf="signUpForm.get('Email')?.invalid && signUpForm.get('Email')?.touched">
+                            <span *ngIf="signUpForm.get('Email')?.errors?.['required']">Email is required.</span>
+                            <span *ngIf="signUpForm.get('Email')?.errors?.['email']">Invalid email format.</span>
                            </div>
                         </div>
 
                         <div class="col-lg-6 field-container">
-                           <input type="tel" formControlName="phone" placeholder="Phone Number" required>
-                           <div class="error-message" *ngIf="signUpForm.get('phone')?.invalid && signUpForm.get('phone')?.touched">
-                            <span *ngIf="signUpForm.get('phone')?.errors?.['required']">Phone No. is required.</span>
+                           <input type="tel" formControlName="Phone" placeholder="Phone Number" required>
+                           <div class="error-message" *ngIf="signUpForm.get('Phone')?.invalid && signUpForm.get('Phone')?.touched">
+                            <span *ngIf="signUpForm.get('Phone')?.errors?.['required']">Phone No. is required.</span>
                            </div>
                         </div>
 
                         <div class="col-lg-6 field-container">
-                           <input type="password" formControlName="password" placeholder="Password" required>
-                           <div class="error-message" *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched">
-                            <span *ngIf="signUpForm.get('password')?.errors?.['required']">Password is required.</span>
+                           <input type="password" formControlName="Password" placeholder="Password" required>
+                           <div class="error-message" *ngIf="signUpForm.get('Password')?.invalid && signUpForm.get('Password')?.touched">
+                            <span *ngIf="signUpForm.get('Password')?.errors?.['required']">Password is required.</span>
                            </div>
                         </div>
 
                         <div class="col-lg-6 field-container">
-                            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" required>
-                            <div class="error-message" *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched">
-                                <span *ngIf="signUpForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
-                                <span *ngIf="signUpForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+                            <input type="password" formControlName="ConfirmPassword" placeholder="Confirm Password" required>
+                            <div class="error-message" *ngIf="signUpForm.get('ConfirmPassword')?.invalid && signUpForm.get('ConfirmPassword')?.touched">
+                                <span *ngIf="signUpForm.get('ConfirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+                                <span *ngIf="signUpForm.get('ConfirmPassword')?.errors?.['required']">Confirm Password is required.</span>
                             </div>
                          </div>
                     </div>
                     <div class="dropdown">
-                        <app-custom-dropdown formControlName="source" selectedOption="How did you hear about us?" [options]="['Facebook', 'Instagram', 'Google', 'Linkedin']"></app-custom-dropdown>
-                        <div class="error-message" *ngIf="signUpForm.get('source')?.invalid && signUpForm.get('source')?.touched">
-                            <span *ngIf="signUpForm.get('source')?.errors?.['required']">Source is required.</span>
+                        <app-custom-dropdown formControlName="Source" selectedOption="How did you hear about us?" [options]="['Facebook', 'Instagram', 'Google', 'Linkedin']"></app-custom-dropdown>
+                        <div class="error-message" *ngIf="signUpForm.get('Source')?.invalid && signUpForm.get('Source')?.touched">
+                            <span *ngIf="signUpForm.get('Source')?.errors?.['required']">Source is required.</span>
                         </div>
                     </div>
                     <div class="check-section">
@@ -71,7 +71,7 @@
                         <a class="sign-up-btn" type="submit" data-toggle="modal" data-target="#otp-modal">Sign up</a>
                     </div> -->
                     <div>
-                        <button class="sign-up-btn" type="submit" (click)="openModal('#otp-modal')">Sign up</button>
+                        <button class="sign-up-btn" type="submit">Sign up</button>
                     </div>
                     <div>
                         <a routerLink="/auth/sign-in" class="sign-in-link">Already have an account? Sign in</a>
@@ -104,7 +104,7 @@
                         <a class="continue-btn" data-dismiss="modal" data-toggle="modal" data-target="#email-verified-modal">Verify</a>
                     </div> -->
                     <div style="text-align: center; padding-top: 10px;">
-                        <a class="continue-btn" (click)="closeModal('#otp-modal'); openModal('#email-verified-modal'); sendOTP()">Verify</a>
+                        <a class="continue-btn" (click)="sendOTP()">Verify</a>
                     </div>
                 </form>
             </div>

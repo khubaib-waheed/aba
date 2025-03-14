@@ -9,19 +9,19 @@
         <div style="margin-top: 15px;">
           <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             
-            <input type="email" formControlName="email" placeholder="User Name / Email" class="input-field">
-            <div class="sign-in-error-message" *ngIf="signInForm.get('email')?.invalid && signInForm.get('email')?.touched">
-              <span *ngIf="signInForm.get('email')?.errors?.['required']">Email is required.</span>
-              <span *ngIf="signInForm.get('email')?.errors?.['email']">Invalid email format.</span>
+            <input type="email" formControlName="UserNameOrEmail" placeholder="User Name / Email" class="input-field">
+            <div class="sign-in-error-message" *ngIf="signInForm.get('UserNameOrEmail')?.invalid && signInForm.get('UserNameOrEmail')?.touched">
+              <span *ngIf="signInForm.get('UserNameOrEmail')?.errors?.['required']">Email is required.</span>
+              <span *ngIf="signInForm.get('UserNameOrEmail')?.errors?.['email']">Invalid email format.</span>
             </div>
             <div class="password-container">
-              <input type="password" formControlName="password" placeholder="Password" class="input-field"/>
+              <input type="password" formControlName="Password" placeholder="Password" class="input-field"/>
               <span class="toggle-icon">
                 <img src="../assets/images/verification/eye-icon.png" alt="Toggle">
               </span>
             </div>
-            <div class="sign-in-error-message" *ngIf="signInForm.get('password')?.invalid && signInForm.get('password')?.touched">
-              <span *ngIf="signInForm.get('password')?.errors?.['required']">Password is required.</span>
+            <div class="sign-in-error-message" *ngIf="signInForm.get('Password')?.invalid && signInForm.get('Password')?.touched">
+              <span *ngIf="signInForm.get('Password')?.errors?.['required']">Password is required.</span>
             </div>
           
           
@@ -86,10 +86,10 @@
             </div>
             <form [formGroup]="emailForm" (ngSubmit)="onSubmitEmail()">
                 <div class="field-container">
-                    <input type="text" formControlName="email" class="input-field" placeholder="Email">
-                    <div class="error-message" *ngIf="emailForm.get('email')?.invalid && emailForm.get('email')?.touched">
-                      <span *ngIf="emailForm.get('email')?.errors?.['required']">Email is required.</span>
-                      <span *ngIf="emailForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                    <input type="text" formControlName="UserNameOrEmail" class="input-field" placeholder="Email">
+                    <div class="error-message" *ngIf="emailForm.get('UserNameOrEmail')?.invalid && emailForm.get('UserNameOrEmail')?.touched">
+                      <span *ngIf="emailForm.get('UserNameOrEmail')?.errors?.['required']">Email is required.</span>
+                      <span *ngIf="emailForm.get('UserNameOrEmail')?.errors?.['email']">Invalid email format.</span>
                     </div>
                 </div>
                 <div style="text-align: center; padding-top: 10px;">
@@ -120,12 +120,18 @@
                 <h3 style="margin-bottom: 2px;">OTP</h3>
                 <div class="subtitle">We have sent a 4 digit one time <br> password to your email address</div>
             </div>
-            <form action="">
+            <form [formGroup]="otpForm" (ngSubmit)="sendOTP()">
               <div style="padding: 25px;">
                 <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
               </div>
+              <div *ngIf="resendDisabled" style="color: gray; font-size: 12px;text-align: center;">
+                <span>Resend code in</span><span style="color: green; font-size: 16px; font-weight: bold;"> {{timer}}s</span>
+              </div>
+              <div *ngIf="!resendDisabled" style="color: unset; font-size: 14px; font-weight: bold;text-align: center;">
+                <a style="text-decoration: underline;" (click)="resendOtp()">Resend code</a>
+              </div>
               <div style="text-align: center; padding-top: 10px;">
-                <a class="continue-btn" (click)="sendOTP()">Verify</a>
+                <button type="submit" class="continue-btn">Verify</button>
               </div>
             </form>
         </div>
@@ -155,9 +161,9 @@
             </div>
             <form [formGroup]="questionForm" (ngSubmit)="onSubmitQuestion()">
               <div class="field-container">
-                <app-custom-dropdown formControlName="secretQuestion1" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
-                <div class="error-message" *ngIf="questionForm.get('secretQuestion1')?.invalid && questionForm.get('secretQuestion1')?.touched">
-                  <span *ngIf="questionForm.get('secretQuestion1')?.errors?.['required']">Please select question.</span>
+                <app-custom-dropdown formControlName="SecretQuestion1" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
+                <div class="error-message" *ngIf="questionForm.get('SecretQuestion1')?.invalid && questionForm.get('SecretQuestion1')?.touched">
+                  <span *ngIf="questionForm.get('SecretQuestion1')?.errors?.['required']">Please select question.</span>
                 </div>
                </div>
 
@@ -169,9 +175,9 @@
                </div>
         
               <div class="field-container">
-                <app-custom-dropdown formControlName="secretQuestion2" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
-                <div class="error-message" *ngIf="questionForm.get('secretQuestion2')?.invalid && questionForm.get('secretQuestion2')?.touched">
-                  <span *ngIf="questionForm.get('secretQuestion2')?.errors?.['required']">Please select question.</span>
+                <app-custom-dropdown formControlName="SecretQuestion2" [selectedOption]="'Select a Secret Question'" [options]="['What was the name of your first pet?','What is your mother’s name?','What city were you born in?','What is the name of the first school you attended?','What is your favorite movie or TV show?','Who is your favorite teacher or mentor?','What city were you born in?','What is the name of your childhood best friend?']"></app-custom-dropdown>
+                <div class="error-message" *ngIf="questionForm.get('SecretQuestion2')?.invalid && questionForm.get('SecretQuestion2')?.touched">
+                  <span *ngIf="questionForm.get('SecretQuestion2')?.errors?.['required']">Please select question.</span>
                 </div>
               </div>
 
@@ -233,13 +239,13 @@
                       <div style="display: flex; justify-content: center;">
                         <div class="field-container">
                           <div class="password-container">
-                            <input type="password" formControlName="password" placeholder="Password" class="input-field"/>
+                            <input type="password" formControlName="Password" placeholder="Password" class="input-field"/>
                             <span class="toggle-icon" >
                               <img src="../assets/images/modals/eye-icon.png" alt="Toggle">
                             </span>
                           </div>
-                          <div class="error-message" *ngIf="resetPasswordForm.get('password')?.invalid && resetPasswordForm.get('password')?.touched">
-                            <span *ngIf="resetPasswordForm.get('password')?.errors?.['required']">Password is required.</span>
+                          <div class="error-message" *ngIf="resetPasswordForm.get('Password')?.invalid && resetPasswordForm.get('Password')?.touched">
+                            <span *ngIf="resetPasswordForm.get('Password')?.errors?.['required']">Password is required.</span>
                           </div>
                         </div>
                       </div>

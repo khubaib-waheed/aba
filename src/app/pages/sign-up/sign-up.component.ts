@@ -15,6 +15,7 @@ declare var $: any; // Declare jQuery
 })
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup = {} as FormGroup;
+  tokenUuid: string = '';
   otp: any;
   config = {
     allowNumbersOnly: false,
@@ -36,13 +37,13 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      source: ['', Validators.required],
-      confirmPassword: ['', Validators.required]}, { validators: this.matchPasswords });
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      Phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      Password: ['', [Validators.required, Validators.minLength(6)]],
+      Source: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required]}, { validators: this.matchPasswords });
       
   }
 
@@ -51,23 +52,6 @@ export class SignUpComponent implements OnInit {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { mismatch: true };
-  }
-
-  onSubmit() {
-    // if (this.signUpForm.valid) {
-    //   console.log('Form Submitted!', this.signUpForm.value);
-    // }
-    console.log(this.signUpForm)
-    console.log('Form Submitted!', this.signUpForm.value);
-
-    this.authService.signUp({data: ''}).subscribe({
-      next: res => {
-
-      },
-      error: err => {
-
-      }
-    })
   }
 
   goToSecretQuestion() {
@@ -86,13 +70,35 @@ export class SignUpComponent implements OnInit {
     $(modalName).modal('hide'); // Close modal
   }
 
-  sendOTP() {
-    this.authService.verifyCode({code: '', tokenUuid: ''}).subscribe({
-      next: res => {
+  onSubmit() {
+    // if (this.signUpForm.valid) {
+    //   console.log('Form Submitted!', this.signUpForm.value);
+    // }
+    console.log('Form Submitted!', this.signUpForm.value);
 
+    this.authService.signUp(this.signUpForm.value).subscribe({
+      next: res => {
+        this.tokenUuid = res.TokenUuid;
+        this.openModal('#otp-modal');
       },
       error: err => {
+        console.log(err)
+      }
+    })
+  }
 
+  sendOTP() {
+    console.log(this.otp)
+    console.log(this.tokenUuid)
+    this.authService.verifyCode({Code: this.otp, TokenUuid: this.tokenUuid}).subscribe({
+      next: res => {
+        this.closeModal('#otp-modal');
+        this.tokenUuid = res.TokenUuid;
+        this.authService.setToken(res.TokenUuid)
+        this.openModal('#email-verified-modal');
+      },
+      error: err => {
+        console.log(err)
       }
     })
   }

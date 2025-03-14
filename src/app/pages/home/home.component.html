@@ -253,141 +253,144 @@
             <div style="text-align: center; border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 10px;">
                 <h4>Create Ad</h4>
             </div>
-            <ng-container *ngIf="createAdPage === 'create-ad-first-page'">
-                <div class="title">
-                    Upload image
-                </div>
-                <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
-                    <div class="upload-container">
-                        <div class="upload-grid">
-                          <div class="upload-box" *ngFor="let preview of imagePreviews; let i = index" (click)="openFileSelector(i)">
-                            <input #fileInputs type="file" accept="image/*" (change)="onFileSelected($event, i)">
-                            <img *ngIf="preview" class="uploaded-image" [src]="preview" alt="Uploaded Image">
-                            <div *ngIf="!preview">
-                                <img src="../assets/images/modals/image-icon.png" alt="">
+            <form [formGroup]="createAuctionForm" (ngSubmit)="onSubmit()">
+                <ng-container *ngIf="createAdPage === 'create-ad-first-page'">
+                    <div class="title">
+                        Upload image
+                    </div>
+                    <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
+                        <div class="upload-container">
+                            <div class="upload-grid">
+                              <!-- Display uploaded images with delete button -->
+                              <div class="upload-box" *ngFor="let preview of imagePreviews; let i = index">
+                                <img class="uploaded-image" [src]="preview" alt="Uploaded Image">
+                                <img class="delete-btn" src="../assets/images/modals/cross-icon.png" (click)="removeImage(i)" alt="">
+                              </div>
+                          
+                              <!-- Show only one "Add Image" button -->
+                              <div class="upload-box add-image-box" *ngIf="imagePreviews.length < maxImages" (click)="openFileSelector(fileInput)">
+                                <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
+                                <img src="../assets/images/modals/image-icon.png" alt="Add">
                                 <div>Add Image</div>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                          
                     </div>
-                </div>
-                <form [formGroup]="createAdFirstForm" (ngSubmit)="onSubmitFirst()">
                     <div class="title">Ad Title</div>
                     <div>
-                        <input class="add-title" formControlName="title" type="text" placeholder="Ad Title">
-                        <div class="error-message" *ngIf="createAdFirstForm.get('title')?.invalid && createAdFirstForm.get('title')?.touched">
-                            <span *ngIf="createAdFirstForm.get('title')?.errors?.['required']">Title is required.</span>
+                        <input class="add-title" formControlName="Title" type="text" placeholder="Ad Title">
+                        <div class="error-message" *ngIf="createAuctionForm.get('Title')?.invalid && createAuctionForm.get('Title')?.touched">
+                            <span *ngIf="createAuctionForm.get('Title')?.errors?.['required']">Title is required.</span>
                         </div>
                     </div>
                     <div>
-                        <textarea class="add-description" formControlName="description" placeholder="Ad Description"></textarea>
-                        <div class="error-message" *ngIf="createAdFirstForm.get('description')?.invalid && createAdFirstForm.get('description')?.touched">
-                            <span *ngIf="createAdFirstForm.get('description')?.errors?.['required']">Description is required.</span>
+                        <textarea class="add-description" formControlName="Description" placeholder="Ad Description"></textarea>
+                        <div class="error-message" *ngIf="createAuctionForm.get('Description')?.invalid && createAuctionForm.get('Description')?.touched">
+                            <span *ngIf="createAuctionForm.get('Description')?.errors?.['required']">Description is required.</span>
                         </div>
                     </div>
                     <div style="text-align: center; padding-top: 25px;">
-                        <a class="post-btn" (click)="goToNextCreateAdPage()">Next</a>
+                        <button type="button" class="post-btn" (click)="goToNextCreateAdPage()">Next</button>
                     </div>
-                </form>
-            </ng-container>
+                </ng-container>
 
-            <ng-container *ngIf="createAdPage === 'create-ad-second-page'">
-                <div class="title">
-                    Upload Vehicle Verification Document
-                </div>
-                <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
-                    <div class="file-uploader">
-                        <label for="vehicleFileInput" *ngIf="!vehicleFile">
-                          <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
-                          <div class="upload-text">
-                            <strong>Business Verification</strong>
-                                <p>(E.g.Tax Verification Document)</p>
-                          </div>
-                        </label>
-                        <input type="file" id="vehicleFileInput" hidden (change)="onFileSelect($event, 'vehicle')">
-                        
-                        <!-- Show selected file name -->
-                        <div class="file-name" *ngIf="vehicleFile">
-                          <div style="display: flex; justify-content: space-between;">
-                              <div class="name">
-                                  {{ vehicleFile }}
+                <ng-container *ngIf="createAdPage === 'create-ad-second-page'">
+                    <div class="title">
+                        Upload Vehicle Verification Document
+                    </div>
+                    <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
+                        <div class="file-uploader">
+                            <label for="vehicleFileInput" *ngIf="!vehicleFile">
+                              <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
+                              <div class="upload-text">
+                                <strong>Business Verification</strong>
+                                    <p>(E.g.Tax Verification Document)</p>
                               </div>
-                              <div>
-                                  <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('vehicle')" alt="">
+                            </label>
+                            <input type="file" id="vehicleFileInput" hidden (change)="onFileSelect($event, 'vehicle')">
+                            
+                            <!-- Show selected file name -->
+                            <div class="file-name" *ngIf="vehicleFile">
+                              <div style="display: flex; justify-content: space-between;">
+                                  <div class="name">
+                                      {{ vehicleFile }}
+                                  </div>
+                                  <div>
+                                      <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('vehicle')" alt="">
+                                  </div>
                               </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                </div>
-                <form [formGroup]="createAdSecondForm" (ngSubmit)="onSubmitSecond()">
+                    </div>
                     <div class="title">Vehicle information</div>
                     <div class="dropdowns-section">
                         <div>
-                            <app-custom-dropdown formControlName="manufacturerId" [selectedOption]="'Select Manufacturer'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('manufacturerId')?.invalid && createAdSecondForm.get('manufacturerId')?.touched">
-                                <span *ngIf="createAdSecondForm.get('manufacturerId')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="ManufacturerId" [selectedOption]="'Select Manufacturer'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAuctionForm.get('ManufacturerId')?.invalid && createAuctionForm.get('ManufacturerId')?.touched">
+                                <span *ngIf="createAuctionForm.get('ManufacturerId')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
         
                         <div>
-                            <app-custom-dropdown formControlName="modelId" [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('modelId')?.invalid && createAdSecondForm.get('modelId')?.touched">
-                                <span *ngIf="createAdSecondForm.get('modelId')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="ModelId" [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAuctionForm.get('ModelId')?.invalid && createAuctionForm.get('ModelId')?.touched">
+                                <span *ngIf="createAuctionForm.get('ModelId')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
         
                         <div>
-                            <app-custom-dropdown formControlName="year" [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('year')?.invalid && createAdSecondForm.get('year')?.touched">
-                                <span *ngIf="createAdSecondForm.get('year')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="Year" [selectedOption]="'Select Year'" [options]="['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAuctionForm.get('Year')?.invalid && createAuctionForm.get('Year')?.touched">
+                                <span *ngIf="createAuctionForm.get('Year')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
         
                         <div>
-                            <app-custom-dropdown formControlName="transmission" [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('transmission')?.invalid && createAdSecondForm.get('transmission')?.touched">
-                                <span *ngIf="createAdSecondForm.get('transmission')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="Transmission" [selectedOption]="'Transmission'" [options]="['Automatic', 'Manual', 'Semi-Automatic']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAuctionForm.get('Transmission')?.invalid && createAuctionForm.get('Transmission')?.touched">
+                                <span *ngIf="createAuctionForm.get('Transmission')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
         
                         <div>
-                            <app-custom-dropdown formControlName="engineType" [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('engineType')?.invalid && createAdSecondForm.get('engineType')?.touched">
-                                <span *ngIf="createAdSecondForm.get('engineType')?.errors?.['required']">Please select</span>
+                            <app-custom-dropdown formControlName="EngineType" [selectedOption]="'Engine Type'" [options]="['Petrol', 'Diesel', 'Hybrid', 'Electric']"></app-custom-dropdown>
+                            <div class="error-message" *ngIf="createAuctionForm.get('EngineType')?.invalid && createAuctionForm.get('EngineType')?.touched">
+                                <span *ngIf="createAuctionForm.get('EngineType')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
                     </div>
                     <div class="title">
-                        Pricing
+                         Pricing
                     </div>
                     <div class="row" style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px; margin: 0; justify-content: space-between;">
                         <div class="col-lg-4 p-0">
                             <div class="input-container">
-                                <input type="text" formControlName="startingPrice" class="input-field" placeholder="Starting Price">
+                                <input type="text" formControlName="StartingPrice" class="input-field" placeholder="Starting Price">
                                 <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
                             </div>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('startingPrice')?.invalid && createAdSecondForm.get('startingPrice')?.touched">
-                                <span *ngIf="createAdSecondForm.get('startingPrice')?.errors?.['required']">Price is required.</span>
+                            <div class="error-message" *ngIf="createAuctionForm.get('StartingPrice')?.invalid && createAuctionForm.get('StartingPrice')?.touched">
+                                <span *ngIf="createAuctionForm.get('StartingPrice')?.errors?.['required']">Price is required.</span>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-4 p-0">
                             <div class="input-container">
-                                <input type="text" formControlName="reservePrice" class="input-field" placeholder="Reserve Price">
+                                <input type="text" formControlName="ReservePrice" class="input-field" placeholder="Reserve Price">
                                 <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
                             </div>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('reservePrice')?.invalid && createAdSecondForm.get('reservePrice')?.touched">
-                                <span *ngIf="createAdSecondForm.get('reservePrice')?.errors?.['required']">Price is required.</span>
+                            <div class="error-message" *ngIf="createAuctionForm.get('ReservePrice')?.invalid && createAuctionForm.get('ReservePrice')?.touched">
+                                <span *ngIf="createAuctionForm.get('ReservePrice')?.errors?.['required']">Price is required.</span>
                             </div>
                         </div>
-
+    
                         <div class="col-lg-4 p-0">
                             <div class="input-container">
-                                <input type="text" formControlName="buyNowPrice" class="input-field" placeholder="Buy now price">
+                                <input type="text" formControlName="BuyNowPrice" class="input-field" placeholder="Buy now price">
                                 <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
                             </div>
-                            <div class="error-message" *ngIf="createAdSecondForm.get('buyNowPrice')?.invalid && createAdSecondForm.get('buyNowPrice')?.touched">
-                                <span *ngIf="createAdSecondForm.get('buyNowPrice')?.errors?.['required']">Price is required.</span>
+                            <div class="error-message" *ngIf="createAuctionForm.get('BuyNowPrice')?.invalid && createAuctionForm.get('BuyNowPrice')?.touched">
+                                <span *ngIf="createAuctionForm.get('BuyNowPrice')?.errors?.['required']">Price is required.</span>
                             </div>
                         </div>
                     </div>
@@ -398,15 +401,15 @@
                             </div>
                             <div class="row" style="margin: 0;">
                                 <div class="col-lg-6 date-container">
-                                    <input type="date" formControlName="startDateTime" class="date-field" placeholder="Auction Start">
-                                    <div class="error-message" *ngIf="createAdSecondForm.get('startDateTime')?.invalid && createAdSecondForm.get('startDateTime')?.touched">
-                                        <span *ngIf="createAdSecondForm.get('startDateTime')?.errors?.['required']">Start Date is required.</span>
+                                    <input type="date" formControlName="StartDateTime" class="date-field" placeholder="Auction Start">
+                                    <div class="error-message" *ngIf="createAuctionForm.get('StartDateTime')?.invalid && createAuctionForm.get('StartDateTime')?.touched">
+                                        <span *ngIf="createAuctionForm.get('StartDateTime')?.errors?.['required']">Start Date is required.</span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 date-container">
-                                    <input type="date" formControlName="endDateTime" class="date-field" placeholder="Auction End">
-                                    <div class="error-message" *ngIf="createAdSecondForm.get('endDateTime')?.invalid && createAdSecondForm.get('endDateTime')?.touched">
-                                        <span *ngIf="createAdSecondForm.get('endDateTime')?.errors?.['required']">End Date is required.</span>
+                                    <input type="date" formControlName="EndDateTime" class="date-field" placeholder="Auction End">
+                                    <div class="error-message" *ngIf="createAuctionForm.get('EndDateTime')?.invalid && createAuctionForm.get('EndDateTime')?.touched">
+                                        <span *ngIf="createAuctionForm.get('EndDateTime')?.errors?.['required']">End Date is required.</span>
                                     </div>
                                 </div>
                             </div>
@@ -421,8 +424,8 @@
                                     <input type="text" formControlName="promoteAd" class="input-field" placeholder="$10">
                                     <span class="icon"><img src="../assets/images/modals/dollar-logo.png" alt=""></span>
                                 </div>
-                                <div class="error-message" *ngIf="createAdSecondForm.get('promoteAd')?.invalid && createAdSecondForm.get('promoteAd')?.touched">
-                                    <span *ngIf="createAdSecondForm.get('promoteAd')?.errors?.['required']">Price is required.</span>
+                                <div class="error-message" *ngIf="createAuctionForm.get('promoteAd')?.invalid && createAuctionForm.get('promoteAd')?.touched">
+                                    <span *ngIf="createAuctionForm.get('promoteAd')?.errors?.['required']">Price is required.</span>
                                 </div>
                             </div>
                             <div class="check-section">
@@ -432,10 +435,10 @@
                         </div>
                     </div>
                     <div style="text-align: center; padding-top: 25px;">
-                        <a class="post-btn" data-toggle="modal" data-target="#confirmation-modal">Post Ad</a>
+                        <button type="submit" class="post-btn" data-toggle="modal" data-target="#confirmation-modal">Post Ad</button>
                     </div>
-                </form>
-            </ng-container>
+                </ng-container>
+            </form>
         </div>
       </div>
     </div>

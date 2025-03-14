@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { AuthService } from './pages/auth/auth.service';
 
 
 
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit, AfterViewInit  {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
   
   ngOnInit(): void {

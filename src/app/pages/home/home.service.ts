@@ -15,4 +15,8 @@ export class HomeService {
   createAd(model: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/auction`, model);
   }
+
+  contact(model: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/user/contact-admin`, model);
+  }
 }

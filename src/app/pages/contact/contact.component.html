@@ -9,25 +9,25 @@
                         <div class="heading">We'd love to hear from you! Let us know how we can help.</div>
                         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                             <div>
-                                <input formControlName="name" class="input-field" type="text" placeholder="Your Name">
-                                <div class="error-message" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-                                    <span *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</span>
+                                <input formControlName="Name" class="input-field" type="text" placeholder="Your Name">
+                                <div class="error-message" *ngIf="contactForm.get('Name')?.invalid && contactForm.get('Name')?.touched">
+                                    <span *ngIf="contactForm.get('Name')?.errors?.['required']">Name is required.</span>
                                 </div>
                             </div>
                             <div>
-                                <input formControlName="email" class="input-field" type="text" placeholder="Enter your Email ID">
-                                <div class="error-message" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-                                    <span *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</span>
-                                    <span *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</span>
+                                <input formControlName="Email" class="input-field" type="text" placeholder="Enter your Email ID">
+                                <div class="error-message" *ngIf="contactForm.get('Email')?.invalid && contactForm.get('Email')?.touched">
+                                    <span *ngIf="contactForm.get('Email')?.errors?.['required']">Email is required.</span>
+                                    <span *ngIf="contactForm.get('Email')?.errors?.['email']">Invalid email format.</span>
                                 </div>
                             </div>
                             <div>
-                                <textarea formControlName="message" class="input-field" placeholder="Type your message"></textarea>
-                                <div class="error-message" *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-                                    <span *ngIf="contactForm.get('message')?.errors?.['required']">Message is required.</span>
+                                <textarea formControlName="Message" class="input-field" placeholder="Type your message"></textarea>
+                                <div class="error-message" *ngIf="contactForm.get('Message')?.invalid && contactForm.get('Message')?.touched">
+                                    <span *ngIf="contactForm.get('Message')?.errors?.['required']">Message is required.</span>
                                 </div>
                             </div>
-                            <a class="send-message-btn">Send Message</a>
+                            <button type="submit" class="send-message-btn">Send Message</button>
                         </form>
                     </div>
                 </div>

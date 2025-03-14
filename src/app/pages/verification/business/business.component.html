@@ -3,31 +3,31 @@
     <form class="verification-form" [formGroup]="businessForm" (ngSubmit)="onSubmit()">
         <div class="row fields">
             <div class="col-lg-12 field-container">
-               <input type="text" formControlName="companyName" placeholder="Company Name">
-               <div class="error-message" *ngIf="businessForm.get('companyName')?.invalid && businessForm.get('companyName')?.touched">
-                 <span *ngIf="businessForm.get('companyName')?.errors?.['required']">Name is required.</span>
+               <input type="text" formControlName="BusinessName" placeholder="Company Name">
+               <div class="error-message" *ngIf="businessForm.get('BusinessName')?.invalid && businessForm.get('BusinessName')?.touched">
+                 <span *ngIf="businessForm.get('BusinessName')?.errors?.['required']">Name is required.</span>
                </div>
             </div>
 
             <div class="col-lg-12 field-container">
-               <input type="text" formControlName="companyPhoneNo" placeholder="Company Phone Number">
-               <div class="error-message" *ngIf="businessForm.get('companyPhoneNo')?.invalid && businessForm.get('companyPhoneNo')?.touched">
-                 <span *ngIf="businessForm.get('companyPhoneNo')?.errors?.['required']">Phone No is required.</span>
+               <input type="text" formControlName="BusinessPhoneNumber" placeholder="Company Phone Number">
+               <div class="error-message" *ngIf="businessForm.get('BusinessPhoneNumber')?.invalid && businessForm.get('BusinessPhoneNumber')?.touched">
+                 <span *ngIf="businessForm.get('BusinessPhoneNumber')?.errors?.['required']">Phone No is required.</span>
                </div>
             </div>
 
             <div class="col-lg-12 field-container">
-               <input type="email" formControlName="companyEmail" placeholder="Company Email">
-               <div class="error-message" *ngIf="businessForm.get('companyEmail')?.invalid && businessForm.get('companyEmail')?.touched">
-                <span *ngIf="businessForm.get('companyEmail')?.errors?.['required']">Email is required.</span>
-                <span *ngIf="businessForm.get('companyEmail')?.errors?.['email']">Invalid email format.</span>
+               <input type="email" formControlName="BusinessEmail" placeholder="Company Email">
+               <div class="error-message" *ngIf="businessForm.get('BusinessEmail')?.invalid && businessForm.get('BusinessEmail')?.touched">
+                <span *ngIf="businessForm.get('BusinessEmail')?.errors?.['required']">Email is required.</span>
+                <span *ngIf="businessForm.get('BusinessEmail')?.errors?.['email']">Invalid email format.</span>
               </div>
             </div>
 
             <div class="col-lg-12 field-container">
-               <input type="text" formControlName="companyAddress" placeholder="Company Address">
-               <div class="error-message" *ngIf="businessForm.get('companyAddress')?.invalid && businessForm.get('companyAddress')?.touched">
-                <span *ngIf="businessForm.get('companyAddress')?.errors?.['required']">Address is required.</span>
+               <input type="text" formControlName="BusinessAddress" placeholder="Company Address">
+               <div class="error-message" *ngIf="businessForm.get('BusinessAddress')?.invalid && businessForm.get('BusinessAddress')?.touched">
+                <span *ngIf="businessForm.get('BusinessAddress')?.errors?.['required']">Address is required.</span>
               </div>
             </div>
 
@@ -64,7 +64,7 @@
                 <a routerLink="/auth/verification/subscription" class="verification-skip-btn">Skip</a>
             </div>
             <div>
-                <a routerLink="/auth/verification/subscription" class="verification-btn">Continue</a>
+                <button type="submit" class="verification-btn">Continue</button>
             </div>
         </div>
     </form>

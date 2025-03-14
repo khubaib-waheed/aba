@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-user-information',
@@ -16,6 +17,7 @@ export class UserInformationComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object, 
     private router: Router,
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -60,8 +62,16 @@ export class UserInformationComponent implements OnInit {
   changePage(s: any) {
     return
   }
-  goToSignInPage() {
-    return
+  logout() {
+    this.authService.logout().subscribe({
+      next: res => {
+        console.log(res)
+        this.router.navigate(['/auth/sign-in']);
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
   ngOnDestroy() {

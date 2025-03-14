@@ -4832,10 +4832,13 @@ div[class*=auction] .custom-button {
 .get-start-btn, .send-message-btn {
   background-color: rgba(255, 200, 87, 1);
   border-radius: 50px;
-  padding: 15px 60px;
+  padding: 0 60px;
   color: black;
   font-size: 20px;
   margin-top: 10px;
+  border: none;
+  width: unset;
+  height: 50px;
 }
 
 .get-start-btn:hover {
@@ -6171,7 +6174,7 @@ div[class*=auction] .custom-button {
   padding: 15px 0 20px 0;
 }
 
-.verification-form .custom-bid-dropdown .dropdown-header span {
+.verification-form .custom-bid-dropdown .dropdown-header div {
   flex: 1;
 }
 
@@ -6199,6 +6202,8 @@ div[class*=auction] .custom-button {
   font-size: 12px;
   font-weight: 600;
   margin: 10px auto auto auto;
+  width: unset;
+  border: none;
 }
 
 .verification-skip-btn {
@@ -6336,6 +6341,12 @@ div[class*=auction] .custom-button {
   text-align: center;
 }
 
+.custom-bid-dropdown .dropdown-header .selection {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .arrow {
   transition: transform 0.3s ease-in-out;
 }
@@ -6367,6 +6378,8 @@ div[class*=auction] .custom-button {
   font-size: 13px;
   color: black;
   border-bottom: 1px solid rgba(211, 211, 211, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dropdown-item:last-child {
@@ -6388,15 +6401,15 @@ div[class*=auction] .custom-button {
 
 /**=============image uploader ===============**/
 
-.create-ad .upload-container {
-  width: 100%;
-  max-width: 800px;
-}
-
 .create-ad .upload-title {
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.create-ad .upload-container {
+  width: 100%;
+  max-width: 800px;
 }
 
 .create-ad .upload-grid {
@@ -6421,15 +6434,35 @@ div[class*=auction] .custom-button {
   overflow: hidden;
 }
 
-.create-ad .upload-box .uploaded-image {
+.create-ad .upload-box img.uploaded-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: scale-down;
   display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
+  border-radius: 8px;
 }
+
+.create-ad .upload-box.add-image-box {
+  background: rgba(232, 232, 232, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-ad .upload-box .delete-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: white;
+  border: none;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 
 .create-ad input[type="file"] {
   display: none;
@@ -6624,8 +6657,10 @@ div[class*=auction] .custom-button {
   color: white;
   background-color: rgba(228, 30, 38, 1);
   font-size: 20px;
-  padding: 12px 18%;
   border-radius: 50px;
+  border: none;
+  padding: 0 18%;
+  height: 50px;
 }
 
 .create-ad .post-btn:hover {
@@ -6960,6 +6995,10 @@ div[class*=auction] .custom-button {
 
 .secret-question .custom-bid-dropdown .dropdown-list .dropdown-item {
   padding: 5px 20px;
+}
+
+.secret-question-form .continue-btn{
+  width: unset;
 }
 
 
