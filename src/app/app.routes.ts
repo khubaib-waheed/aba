@@ -24,50 +24,50 @@ import { ProcessComponent } from './pages/verification/process/process.component
 import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
-    {
-        path: 'app',
-        component: HomeComponent, // Routes with header & footer
-        children: [
-          { path: '', redirectTo: 'home', pathMatch: 'full' },
-          { path: 'home', component: LandingPageComponent },
-          // { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
-          { path: 'contact', component: ContactComponent },
-          { path: 'new-cars', component: NewCarsComponent },
-          { path: 'auction-list', component: AuctionListComponent },
-          { path: 'bid-detail/:id', component: BidDetailComponent },
-          { 
-            path: 'user-information', 
-            component: UserInformationComponent, 
-            children: [
-              { path: 'profile', component: ProfileComponent },
-              { path: 'chat', component: ChatComponent },
-              { path: 'ads', component: AdsComponent },
-              { path: 'bids', component: BidsComponent },
-              { path: 'favourites', component: FavouritesComponent },
-              { path: 'wallet', component: WalletComponent },
-            ]
-          }
-        ]
-    },
-    {
-        path: 'auth',
-        component: AuthComponent, // Routes without header & footer
-        children: [
-          { path: 'sign-in', component: SignInComponent },
-          { path: 'sign-up', component: SignUpComponent },
-          { path: 'secret-question', component: SecretQuestionComponent },
-          { 
-            path: 'verification', 
-            component: ProcessComponent,
-            children: [
-              { path: 'address', component: AddressComponent },
-              { path: 'documents', component: DocumentsComponent },
-              { path: 'business', component: BusinessComponent },
-              { path: 'subscription', component: SubscriptionComponent },
-            ]
-           },
-        ]
-    },
-    { path: '', redirectTo: 'app/home', pathMatch: 'full' },
-    { path: '**', redirectTo: 'app/home' } // Handle unknown routes
+    // {
+    //     path: 'app',
+    //     component: HomeComponent, // Routes with header & footer
+    //     children: [
+    //       { path: '', redirectTo: 'home', pathMatch: 'full' },
+    //       { path: 'home', component: LandingPageComponent },
+    //       // { path: 'contact', component: ContactComponent, canActivate: [authGuard] },
+    //       { path: 'contact', component: ContactComponent },
+    //       { path: 'new-cars', component: NewCarsComponent },
+    //       { path: 'auction-list', component: AuctionListComponent },
+    //       { path: 'bid-detail/:id', component: BidDetailComponent },
+    //       { 
+    //         path: 'user-information', 
+    //         component: UserInformationComponent, 
+    //         children: [
+    //           { path: 'profile', component: ProfileComponent },
+    //           { path: 'chat', component: ChatComponent },
+    //           { path: 'ads', component: AdsComponent },
+    //           { path: 'bids', component: BidsComponent },
+    //           { path: 'favourites', component: FavouritesComponent },
+    //           { path: 'wallet', component: WalletComponent },
+    //         ]
+    //       }
+    //     ]
+    // },
+    // {
+    //     path: 'auth',
+    //     component: AuthComponent, // Routes without header & footer
+    //     children: [
+    //       { path: 'sign-in', component: SignInComponent },
+    //       { path: 'sign-up', component: SignUpComponent },
+    //       { path: 'secret-question', component: SecretQuestionComponent },
+    //       { 
+    //         path: 'verification', 
+    //         component: ProcessComponent,
+    //         children: [
+    //           { path: 'address', component: AddressComponent },
+    //           { path: 'documents', component: DocumentsComponent },
+    //           { path: 'business', component: BusinessComponent },
+    //           { path: 'subscription', component: SubscriptionComponent },
+    //         ]
+    //        },
+    //     ]
+    // },
+    // { path: '', redirectTo: 'app/home', pathMatch: 'full' },
+    // { path: '**', redirectTo: 'app/home' } // Handle unknown routes
 ];
