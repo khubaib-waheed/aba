@@ -70,7 +70,8 @@ export class AuctionListComponent implements OnInit, AfterViewInit {
             this.page++;
             console.log(this.page)
           } 
-
+           console.log(this.auctions.length)
+           console.log(res.Count)
           if(this.auctions.length === res.Count) {
             this.hasMoreAuctions = false; // No more data to load
           }
@@ -103,6 +104,7 @@ export class AuctionListComponent implements OnInit, AfterViewInit {
     }
     this.page = 1;
     this.auctions = [];
+    this.hasMoreAuctions = true;
     this.showEmptyCard = true;
     this.filters = this.auctionFilterForm.value;
     this.getAuctions()

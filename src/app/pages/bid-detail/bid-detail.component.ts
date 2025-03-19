@@ -133,7 +133,7 @@ export class BidDetailComponent implements OnInit {
   submitBid() {
     this.homeService.bid({AuctionId: this.auctionId, Price: this.bidAmount}).subscribe({
       next: res => {
-         
+        this.toast.success(res.Message)
       },
       error: err => {
        this.toast.error(err.error.Message, {dismissible: true, autoClose: false})

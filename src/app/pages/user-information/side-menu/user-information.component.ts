@@ -26,6 +26,15 @@ export class UserInformationComponent implements OnInit {
   ngOnInit() {
     this.setCurrentRoute();
 
+    this.authService.myInfo().subscribe({
+      next: (res) => {
+        console.log(res)
+      },
+      error: err => {
+       this.toast.error(err.error.Message);
+      }
+    })
+
     this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),

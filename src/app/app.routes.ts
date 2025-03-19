@@ -38,6 +38,7 @@ export const routes: Routes = [
           { 
             path: 'user-information', 
             component: UserInformationComponent, 
+            canActivate: [authGuard],
             children: [
               { path: 'profile', component: ProfileComponent },
               { path: 'chat', component: ChatComponent },
