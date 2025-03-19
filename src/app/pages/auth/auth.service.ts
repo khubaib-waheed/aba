@@ -1,9 +1,8 @@
 import { Injectable, Inject, PLATFORM_ID  } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment';
 import { isPlatformBrowser } from '@angular/common';
-
 
 
 @Injectable({
@@ -13,9 +12,10 @@ export class AuthService {
 
   private baseUrl = `${environment.apiUrl}/auth`;
   private tokenUuid = 'tokenUuid';
+  private userId = 'userId'
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -28,6 +28,42 @@ export class AuthService {
   getToken(): string | null {
     if (isPlatformBrowser(this.platformId)) {
       return sessionStorage.getItem(this.tokenUuid);
+    }
+    return null;
+  }
+
+  saveCredentials(email: string, password: string, remember: boolean) {
+    if (remember && isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password);
+    }
+  }
+
+  getSavedCredentials() {
+    if (isPlatformBrowser(this.platformId)) {
+      const email = localStorage.getItem('email') || '';
+      const password = localStorage.getItem('password') || '';
+      return { email, password };
+    }
+    return { email: '', password: '' }; // Return empty for SSR
+  }
+
+  clearCredentials() {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('email');
+      localStorage.removeItem('password');
+    }
+  }
+
+  setUserId(id: any): void {
+    if (isPlatformBrowser(this.platformId)) {
+      sessionStorage.setItem(this.userId, id);
+    }
+  }
+
+  getUserId(): string | null {
+    if (isPlatformBrowser(this.platformId)) {
+      return sessionStorage.getItem(this.userId);
     }
     return null;
   }

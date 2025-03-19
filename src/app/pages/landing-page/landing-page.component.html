@@ -40,29 +40,9 @@
                     </div>
                     <div class="m--15" style=" display: flex;justify-content: center;">
                         <div #owlCarousel class="browse-slider owl-theme owl-carousel">
-                            <a  class="browse-item">
-                                <img src="../assets/images/slide-car-all.png" alt="auction">
-                                <span class="info">All</span>
-                            </a>
-                            <a  class="browse-item">
-                                <img src="../assets/images/slide-car-honda.png" alt="auction">
-                                <span class="info">Honda</span>
-                            </a>
-                            <a  class="browse-item">
-                                <img src="../assets/images/slide-car-toyota.png" alt="auction">
-                                <span class="info">Toyota</span>
-                            </a>
-                            <a  class="browse-item">
-                                <img src="../assets/images/slide-car-ford.png" alt="auction">
-                                <span class="info">Ford F</span>
-                            </a>
-                            <a  class="browse-item">
-                                <img src="../assets/images/slide-car-bmw.png" alt="auction">
-                                <span class="info">BMW</span>
-                            </a>
-                            <a  class="browse-item">
-                                <img src="../assets/images/slide-car-rover.png" alt="auction">
-                                <span class="info">Land Rover</span>
+                            <a class="browse-item" *ngFor="let car of slidingCars;">
+                                <img [src]="(car.Media) ? car.Media.OriginalUrl : '../assets/images/slide-car-all.png'" alt="manufacturer">
+                                <div class="info">{{car.Name}}</div>
                             </a>
                         </div>
                     </div>
@@ -88,9 +68,9 @@
                                 <h6>Start winning cars with comfort</h6>
                             </div>
                         </div>
-                        <a routerLink="/app/auction-list" class="normal-button">View All</a>
+                        <!-- <a routerLink="/app/auction-list" class="normal-button">View All</a> -->
                     </div>
-                    <div class="row justify-content-center mb-30-none">
+                    <!-- <div class="row justify-content-center mb-30-none">
                         <div class="col-sm-10 col-md-6 col-lg-4">
                             <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
                                 <div class="auction-thumb">
@@ -220,7 +200,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <ng-container>
+                        <div class="col-lg-12">
+                            <div class="auction-item-2 no-data" data-aos="zoom-out-up" data-aos-duration="1600">
+                                No Featured Auctions
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
             </section>
     
@@ -238,19 +225,22 @@
                                 <h6>We offer affordable Vehicles</h6>
                             </div>
                         </div>
-                        <a routerLink="/app/auction-list" class="normal-button">View All</a>
+                        <a routerLink="/app/auction-list" (click)="onScrollToTop()" class="normal-button">View All</a>
                     </div>
-                    <div class="row justify-content-center mb-30-none">
-                        <div class="col-sm-10 col-md-6 col-lg-4">
+                    <div class="row mb-30-none">
+                        <div *ngFor="let auction of auctions;" class="col-sm-10 col-md-6 col-lg-4">
                             <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="2200">
                                 <div class="auction-thumb">
-                                    <a ><img src="../assets/images/car-1.png" alt="car"></a>
-                                    <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
+                                    <a><img class="main-img" [src]="(auction.Medias) ? auction.Medias[0].BasePath+auction.Medias[0].ThumbPath : '../assets/images/car-1.png'" alt="car"></a>
+                                    <div class="rating">
+                                        <img class="star" alt="Favorite Star" (click)="toggleFavorite(auction)"
+                                           [src]="(auction?.IsFavorite) ? '../assets/images/auction-marked-star.png' : '../assets/images/auction-star.png'" >
+                                    </div>
                                     <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
                                 </div>
                                 <div class="auction-content">
                                     <h6 class="title">
-                                        <a>2018 Hyundai Sonata</a>
+                                        <a>{{auction.Title}}</a>
                                     </h6>
                                     <div class="bid-area">
                                         <div class="bid-amount">
@@ -259,7 +249,7 @@
                                             </div>
                                             <div class="amount-content">
                                                 <div class="current">Current Bid</div>
-                                                <div class="amount">$876.00</div>
+                                                <div class="amount">${{auction.StartingPrice}}</div>
                                             </div>
                                         </div>
                                         <div class="bid-amount">
@@ -268,109 +258,39 @@
                                             </div>
                                             <div class="amount-content">
                                                 <div class="current">Buy Now</div>
-                                                <div class="amount">$5,00.00</div>
+                                                <div class="amount">${{auction.BuyNowPrice}}</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="countdown-area">
-                                        <div class="countdown">
-                                            <div id="bid_counter26"></div>
+                                    <div class="timer">
+                                        <div class="countdown-area">
+                                            <div class="times">
+                                                <p style="font-size: 13px;" *ngIf="auction.status !== 'running'">{{ auction.status }}</p>
+                                                <ng-container *ngIf="auction.status === 'running'">
+                                                    <p>{{auction.remainingTime.days}}d</p><span style="font-weight: 700;">:</span>
+                                                    <p>{{auction.remainingTime.hours}}h</p> <span style="font-weight: 700;">:</span>
+                                                    <p>{{auction.remainingTime.minutes}}m</p> <span style="font-weight: 700;">:</span>
+                                                    <p>{{auction.remainingTime.seconds}}s</p>
+                                                </ng-container>
+                                            </div>                                                  
+                                            <span class="total-bids">{{auction.Bids.length}} Bids</span>
                                         </div>
-                                        <span class="total-bids">30 Bids</span>
                                     </div>
                                     <div class="text-center">
-                                        <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-10 col-md-6 col-lg-4">
-                            <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="1100">
-                                <div class="auction-thumb">
-                                    <a ><img src="../assets/images/car-1.png" alt="car"></a>
-                                    <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
-                                    <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
-                                </div>
-                                <div class="auction-content">
-                                    <h6 class="title">
-                                        <a>2018 Hyundai Sonata</a>
-                                    </h6>
-                                    <div class="bid-area">
-                                        <div class="bid-amount">
-                                            <div class="icon">
-                                                <img src="../assets/images/auction-bid-green.png" alt="">
-                                            </div>
-                                            <div class="amount-content">
-                                                <div class="current">Current Bid</div>
-                                                <div class="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="bid-amount">
-                                            <div class="icon">
-                                                <img src="../assets/images/auction-bid-amount.png" alt="">
-                                            </div>
-                                            <div class="amount-content">
-                                                <div class="current">Buy Now</div>
-                                                <div class="amount">$5,00.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="countdown-area">
-                                        <div class="countdown">
-                                            <div id="bid_counter26"></div>
-                                        </div>
-                                        <span class="total-bids">30 Bids</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-10 col-md-6 col-lg-4">
-                            <div class="auction-item-2" data-aos="zoom-out-up" data-aos-duration="1200">
-                                <div class="auction-thumb">
-                                    <a ><img src="../assets/images/car-1.png" alt="car"></a>
-                                    <div class="rating"><img src="../assets/images/auction-star.png" alt="car"></div>
-                                    <div class="bid"><img src="../assets/images/auction-bid-red.png" alt="car"></div>
-                                </div>
-                                <div class="auction-content">
-                                    <h6 class="title">
-                                        <a>2018 Hyundai Sonata</a>
-                                    </h6>
-                                    <div class="bid-area">
-                                        <div class="bid-amount">
-                                            <div class="icon">
-                                                <img src="../assets/images/auction-bid-green.png" alt="">
-                                            </div>
-                                            <div class="amount-content">
-                                                <div class="current">Current Bid</div>
-                                                <div class="amount">$876.00</div>
-                                            </div>
-                                        </div>
-                                        <div class="bid-amount">
-                                            <div class="icon">
-                                                <img src="../assets/images/auction-bid-amount.png" alt="">
-                                            </div>
-                                            <div class="amount-content">
-                                                <div class="current">Buy Now</div>
-                                                <div class="amount">$5,00.00</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="countdown-area">
-                                        <div class="countdown">
-                                            <div id="bid_counter26"></div>
-                                        </div>
-                                        <span class="total-bids">30 Bids</span>
-                                    </div>
-                                    <div class="text-center">
-                                        <a routerLink="/app/bid-detail/3" class="submit-bid-btn">SUBMIT A BID</a>
+                                        <a [routerLink]="'/app/bid-detail/' + auction.Id" (click)="onScrollToTop()" class="submit-bid-btn">SUBMIT A BID</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <ng-container *ngIf="auctions.length === 0;">
+                        <div class="col-lg-12">
+                            <div class="auction-item-2 no-data" data-aos="zoom-out-up" data-aos-duration="1600">
+                                No Auctions
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
             </section>
             <!--============= Car Auction Section Ends Here =============-->

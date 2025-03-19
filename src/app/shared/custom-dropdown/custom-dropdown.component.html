@@ -1,11 +1,11 @@
 <div class="custom-bid-dropdown" (click)="toggleDropdown()" #dropdownContainer>
     <div class="dropdown-header">
-        <div class="selection">{{ selectedOption }}</div>
+        <div class="selection">{{ selectedOption || placeholder }}</div>
         <img src="../../../assets/images/down-arrow.png" alt="Arrow" class="arrow" [ngClass]="{'rotate': isOpen}">
     </div>
     <ul class="dropdown-list" *ngIf="isOpen">
         <li class="dropdown-item" *ngFor="let option of options" (click)="selectOption(option, $event)">
-            {{ option }}
+            {{ displayFn(option) }}
         </li>
     </ul>
 </div>

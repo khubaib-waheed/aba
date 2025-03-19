@@ -1,0 +1,3 @@
+<i *ngFor="let star of stars" (click)="rate(star)" class="material-icons star" [ngClass]="{ 'clickable': !readOnly }">
+   {{ star.checked ? 'star' : (star.half ? 'star_half' : 'star_border') }}
+</i>

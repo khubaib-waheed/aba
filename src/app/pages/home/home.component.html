@@ -24,48 +24,60 @@
                         </div>
                     </li>
                 </ul>
-                <ul class="cart-button-area">                      
-                    <li>
-                        <div class="amount-section" (click)="goToWallet()">
-                            <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
-                            <p class="amount">$ 100</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="sell-section" data-toggle="modal" data-target="#post-ad-modal">
-                            <p class="sell">Sell</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a routerLink="/app/user-information/profile"><img class="profile-icon" src="../assets/images/user-profile.png" alt=""></a>
-                    </li>
-                </ul>
-
-
-                <div class="settings">
-                    <div class="header-container">
-                        <div class="profile-menu">
-                            <!-- Profile Icon -->
-                            <img 
-                                id="profileButton" 
-                                class="profile-icon" 
-                                (click)="toggleDropdown()" 
-                                src="../assets/images/user-profile.png" 
-                                alt="User Profile"
-                            >
-                    
-                            <!-- Dropdown Menu -->
-                            <div class="dropdowns-menu" *ngIf="isDropdownOpen">
-                                <div class="dropdown-item amount-section" (click)="goToWallet()">
+                <ng-container *ngIf="showActions">
+                    <ng-container *ngIf="loggedIn">
+                        <ul class="cart-button-area">                      
+                            <li>
+                                <div class="amount-section" (click)="goToWallet()">
                                     <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
                                     <p class="amount">$ 100</p>
                                 </div>
-                                <a class="dropdown-item sell-section" data-toggle="modal" data-target="#post-ad-modal">Sell</a>
-                                <a routerLink="/app/user-information/profile" class="dropdown-item sell-section">Profile</a>
+                            </li>
+                            <li>
+                                <div class="sell-section" (click)="openModal('#post-ad-modal')">
+                                    <p class="sell">Sell</p>
+                                </div>
+                            </li>
+                            <li>
+                                <a routerLink="/app/user-information/profile"><img class="profile-icon" src="../assets/images/user-profile.png" alt=""></a>
+                            </li>
+                        </ul>
+        
+        
+                        <div class="settings">
+                            <div class="header-container">
+                                <div class="profile-menu">
+                                    <!-- Profile Icon -->
+                                    <img 
+                                        id="profileButton" 
+                                        class="profile-icon" 
+                                        (click)="toggleDropdown()" 
+                                        src="../assets/images/user-profile.png" 
+                                        alt="User Profile"
+                                    >
+                            
+                                    <!-- Dropdown Menu -->
+                                    <div class="dropdowns-menu" *ngIf="isDropdownOpen">
+                                        <div class="dropdown-item amount-section" (click)="goToWallet()">
+                                            <img class="amount-icon" src="../assets/images/money-bucket.png" alt="">
+                                            <p class="amount">$ 100</p>
+                                        </div>
+                                        <a class="dropdown-item sell-section" data-toggle="modal" data-target="#post-ad-modal">Sell</a>
+                                        <a routerLink="/app/user-information/profile" class="dropdown-item sell-section">Profile</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </ng-container>
+    
+                    <ng-container *ngIf="!loggedIn">
+                        <ul>                      
+                            <li>
+                                <a class="sign-in" routerLink="/auth/sign-in">Sign In</a>
+                            </li>
+                        </ul>
+                    </ng-container>
+                </ng-container>
             </div>
         </div>
     </div>
@@ -80,16 +92,16 @@
                 </div>
                 <ul class="menu ml-auto">
                     <li>
-                        <a routerLink="/app/home">Home</a>
+                        <a routerLink="/app/home" (click)="onScrollToTop()">Home</a>
                     </li>
                     <li>
-                        <a routerLink="/app/auction-list">Auction</a>
+                        <a routerLink="/app/auction-list" (click)="onScrollToTop()">Auction</a>
                     </li>
                     <li>
-                        <a routerLink="/app/new-cars">New Cars</a>
+                        <a routerLink="/app/new-cars" (click)="onScrollToTop()">New Cars</a>
                     </li>
                     <li>
-                        <a routerLink="/app/contact">Contact</a>
+                        <a routerLink="/app/contact" (click)="onScrollToTop()">Contact</a>
                     </li>
                 </ul>
                 <form class="search-form" onsubmit="return false;">
@@ -245,7 +257,7 @@
 
 
 <!--************************** Create AD Modal  ******************************-->
-<div class="modal fade" id="post-ad-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" #modalContainer id="post-ad-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="create-ad-modal modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-body create-ad" style="position: relative;">
@@ -262,8 +274,8 @@
                         <div class="upload-container">
                             <div class="upload-grid">
                               <!-- Display uploaded images with delete button -->
-                              <div class="upload-box" *ngFor="let preview of imagePreviews; let i = index">
-                                <img class="uploaded-image" [src]="preview" alt="Uploaded Image">
+                              <div class="upload-box" *ngFor="let image of imagePreviews; let i = index">
+                                <img class="uploaded-image" [src]="image.preview" alt="Uploaded Image">
                                 <img class="delete-btn" src="../assets/images/modals/cross-icon.png" (click)="removeImage(i)" alt="">
                               </div>
                           
@@ -301,23 +313,23 @@
                     </div>
                     <div style="border-bottom: 1px solid rgba(165, 165, 165, 1); padding-bottom: 20px;">
                         <div class="file-uploader">
-                            <label for="vehicleFileInput" *ngIf="!vehicleFile">
+                            <label for="vehicleFileInput" *ngIf="!vehicleFileName">
                               <img src="../assets/images/verification/upload-icon.png" alt="Upload Icon" class="upload-icon">
                               <div class="upload-text">
                                 <strong>Business Verification</strong>
                                     <p>(E.g.Tax Verification Document)</p>
                               </div>
                             </label>
-                            <input type="file" id="vehicleFileInput" hidden (change)="onFileSelect($event, 'vehicle')">
+                            <input type="file" id="vehicleFileInput" hidden (change)="onFileSelect($event)">
                             
                             <!-- Show selected file name -->
-                            <div class="file-name" *ngIf="vehicleFile">
+                            <div class="file-name" *ngIf="vehicleFileName">
                               <div style="display: flex; justify-content: space-between;">
                                   <div class="name">
-                                      {{ vehicleFile }}
+                                      {{ vehicleFileName }}
                                   </div>
                                   <div>
-                                      <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile('vehicle')" alt="">
+                                      <img class="remove-btn" src="../assets/images/modals/cross-icon.png" (click)="removeFile()" alt="">
                                   </div>
                               </div>
                             </div>
@@ -326,14 +338,25 @@
                     <div class="title">Vehicle information</div>
                     <div class="dropdowns-section">
                         <div>
-                            <app-custom-dropdown formControlName="ManufacturerId" [selectedOption]="'Select Manufacturer'" [options]="['Toyota', 'Honda' ,'Ford', 'BMW', 'Mercedes-Benz', 'Tesla' ,'Nissan', 'Hyundai', 'Audi' ,'Chevrolet']"></app-custom-dropdown>
+                            <app-custom-dropdown 
+                              formControlName="ManufacturerId" 
+                              [displayFn]="displayManufacturer"
+                              [valueFn]="valueManufacturer"
+                              [placeholder]="'Select Manufacturer'" 
+                              [options]="manufacturers">
+                            </app-custom-dropdown>
                             <div class="error-message" *ngIf="createAuctionForm.get('ManufacturerId')?.invalid && createAuctionForm.get('ManufacturerId')?.touched">
                                 <span *ngIf="createAuctionForm.get('ManufacturerId')?.errors?.['required']">Please select</span>
                             </div>
                         </div>
-        
                         <div>
-                            <app-custom-dropdown formControlName="ModelId" [selectedOption]="'Select Model'" [options]="['Corolla', 'Camry', 'RAV4', 'Highlander', 'Tacoma', 'Prius', 'Avalon']"></app-custom-dropdown>
+                            <app-custom-dropdown 
+                              formControlName="ModelId" 
+                              [displayFn]="displayCarModel"
+                              [valueFn]="valueCarModel"
+                              [placeholder]="'Select Model'" 
+                              [options]="carModels">
+                            </app-custom-dropdown>
                             <div class="error-message" *ngIf="createAuctionForm.get('ModelId')?.invalid && createAuctionForm.get('ModelId')?.touched">
                                 <span *ngIf="createAuctionForm.get('ModelId')?.errors?.['required']">Please select</span>
                             </div>

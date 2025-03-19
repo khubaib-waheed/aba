@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Component({
   selector: 'app-user-information',
@@ -18,6 +19,7 @@ export class UserInformationComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object, 
     private router: Router,
     private authService: AuthService,
+    private toast: HotToastService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -47,10 +49,10 @@ export class UserInformationComponent implements OnInit {
   }
 
   onScrollToTop(): void {
-      if (isPlatformBrowser(this.platformId)) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  }
 
 
 
@@ -62,14 +64,18 @@ export class UserInformationComponent implements OnInit {
   changePage(s: any) {
     return
   }
+
   logout() {
     this.authService.logout().subscribe({
-      next: res => {
-        console.log(res)
+      next: () => {
+        if (isPlatformBrowser(this.platformId)) {
+          sessionStorage.clear();
+        }
+       
         this.router.navigate(['/auth/sign-in']);
       },
       error: err => {
-        console.log(err)
+       this.toast.error(err.error.Message);
       }
     })
   }

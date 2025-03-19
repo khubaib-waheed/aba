@@ -5,6 +5,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
+import { HotToastService } from '@ngxpert/hot-toast';
 declare var $: any; // Declare jQuery
 
 @Component({
@@ -16,6 +17,7 @@ declare var $: any; // Declare jQuery
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup = {} as FormGroup;
   tokenUuid: string = '';
+  loading: boolean = false;
   otp: any;
   config = {
     allowNumbersOnly: false,
@@ -32,6 +34,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private toast: HotToastService,
     private authService: AuthService
   ) {}
 
@@ -74,31 +77,30 @@ export class SignUpComponent implements OnInit {
     // if (this.signUpForm.valid) {
     //   console.log('Form Submitted!', this.signUpForm.value);
     // }
-    console.log('Form Submitted!', this.signUpForm.value);
 
     this.authService.signUp(this.signUpForm.value).subscribe({
       next: res => {
         this.tokenUuid = res.TokenUuid;
+        this.authService.setUserId(res.User.Id);
         this.openModal('#otp-modal');
       },
       error: err => {
-        console.log(err)
+        this.toast.error(err.error.Message);
       }
     })
   }
 
   sendOTP() {
-    console.log(this.otp)
-    console.log(this.tokenUuid)
     this.authService.verifyCode({Code: this.otp, TokenUuid: this.tokenUuid}).subscribe({
       next: res => {
         this.closeModal('#otp-modal');
         this.tokenUuid = res.TokenUuid;
-        this.authService.setToken(res.TokenUuid)
+        this.authService.setToken(res.TokenUuid);
+        this.authService.setUserId(res.User.Id);
         this.openModal('#email-verified-modal');
       },
       error: err => {
-        console.log(err)
+        this.toast.error(err.error.Message);
       }
     })
   }

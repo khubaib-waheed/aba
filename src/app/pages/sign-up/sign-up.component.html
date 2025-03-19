@@ -71,7 +71,7 @@
                         <a class="sign-up-btn" type="submit" data-toggle="modal" data-target="#otp-modal">Sign up</a>
                     </div> -->
                     <div>
-                        <button class="sign-up-btn" type="submit">Sign up</button>
+                        <button [disabled]="signUpForm.invalid" class="sign-up-btn" type="submit">Sign up</button>
                     </div>
                     <div>
                         <a routerLink="/auth/sign-in" class="sign-in-link">Already have an account? Sign in</a>

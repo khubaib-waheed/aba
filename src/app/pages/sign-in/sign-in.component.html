@@ -4,10 +4,10 @@
 
   <div class="container">
       <div class="sign-in-form">
-        <h3 class="title">Welcome to</h3>
-        <h3 class="title">Auto Bid Albania</h3>
+        <h3 class="title" data-aos="zoom-out-down" data-aos-duration="1200">Welcome to</h3>
+        <h3 class="title" data-aos="zoom-out-down" data-aos-duration="1200">Auto Bid Albania</h3>
         <div style="margin-top: 15px;">
-          <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="signInForm" data-aos="zoom-out-up" data-aos-duration="1200" (ngSubmit)="onSubmit()">
             
             <input type="email" formControlName="UserNameOrEmail" placeholder="User Name / Email" class="input-field">
             <div class="sign-in-error-message" *ngIf="signInForm.get('UserNameOrEmail')?.invalid && signInForm.get('UserNameOrEmail')?.touched">
@@ -41,7 +41,7 @@
         
         <div class="check-section">
           <div>
-              <input type="checkbox" class="form-check-input">
+              <input type="checkbox" [(ngModel)]="rememberMe" [ngModelOptions]="{standalone: true}" class="form-check-input">
               <a style="color: white; cursor: context-menu;">Remember me</a>
           </div>
           
@@ -50,8 +50,10 @@
           </div>
         </div>
         <div style="text-align: center;padding: 30px 10px;">
-          <!-- <a routerLink="/app/home" class="sign-in-btn">Sign In</a> -->
-          <button type="submit" class="sign-in-btn">Sign In</button>
+          <button [disabled]="signInForm.invalid" type="submit" class="sign-in-btn">
+            <div>Sign In</div>
+            <div *ngIf="loading" class="spinner"></div>
+          </button>
         </div>
        </form>
       </div>
@@ -93,7 +95,7 @@
                     </div>
                 </div>
                 <div style="text-align: center; padding-top: 10px;">
-                    <button type="submit" class="continue-btn">Continue</button>
+                    <button [disabled]="emailForm.invalid" type="submit" class="continue-btn">Continue</button>
                 </div>
             </form>
         </div>
@@ -253,13 +255,13 @@
                       <div style="display: flex; justify-content: center;">
                         <div class="field-container">
                           <div class="password-container">
-                            <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="input-field"/>
+                            <input type="password" formControlName="ConfirmPassword" placeholder="Confirm Password" class="input-field"/>
                             <span class="toggle-icon" >
                               <img src="../assets/images/modals/eye-icon.png" alt="Toggle">
                             </span>
                           </div>
-                          <div class="error-message" *ngIf="resetPasswordForm.get('confirmPassword')?.invalid && resetPasswordForm.get('confirmPassword')?.touched">
-                            <span *ngIf="resetPasswordForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</span>
+                          <div class="error-message" *ngIf="resetPasswordForm.get('ConfirmPassword')?.invalid && resetPasswordForm.get('ConfirmPassword')?.touched">
+                            <span *ngIf="resetPasswordForm.get('ConfirmPassword')?.errors?.['required']">Confirm password is required.</span>
                           </div>
                         </div>
                       </div>

@@ -1,0 +1,17 @@
+.star {
+    font-size: 24px;
+    color: rgba(244, 164, 31, 1);
+    cursor: context-menu;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.clickable {
+    cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.2);
+    }
+}
+  
+  
+  

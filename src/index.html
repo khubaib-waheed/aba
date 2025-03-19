@@ -6,6 +6,8 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="./assets/images/website-logo.png">
+  <link rel="stylesheet" href="https://unpkg.com/@ngxpert/hot-toast@4.1.1/src/styles/styles.css"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
@@ -31,20 +33,23 @@
     });
 
     
-  function changeImage(src) {
+    function changeImage(src) {
     const mainImg = document.getElementById('mainImg');
 
-    // Fade out the current image
+    // Fade out the image smoothly
     mainImg.style.opacity = '0';
 
     setTimeout(() => {
         // Change the image source
         mainImg.src = src;
 
-        // Fade in the new image
-        mainImg.style.opacity = '1';
-    }, 500); 
-  }
+        // Wait for the image to load before fading in
+        mainImg.onload = () => {
+            mainImg.style.opacity = '1';
+        };
+    }, 300); // Slightly longer delay to allow fade-out
+}
+
   </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { Component, ElementRef, forwardRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, forwardRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -19,8 +19,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CustomDropdownComponent implements ControlValueAccessor, OnInit {
   isOpen = false;
-  @Input() selectedOption = 'Select';
+  @Input() selectedOption = '';
+  @Input() placeholder: string = 'Select';
   @Input() options: string[] = [];
+  @Input() displayFn: (option: any) => string = (option) => option; // Function for dropdown display
+  @Input() valueFn: (option: any) => any = (option) => option; // Function for emitted value
+
+  @Output() change = new EventEmitter<any>(); // Emit change event
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
@@ -30,7 +35,8 @@ export class CustomDropdownComponent implements ControlValueAccessor, OnInit {
   ngOnInit() {
     // Ensure that if no value is provided, a default one is set
     if (!this.selectedOption && this.options.length > 0) {
-      this.selectedOption = this.options[0];
+      // this.selectedOption = this.displayFn(this.options[0]);
+      this.selectedOption = this.placeholder;
     }
   }
 
@@ -38,11 +44,14 @@ export class CustomDropdownComponent implements ControlValueAccessor, OnInit {
     this.isOpen = !this.isOpen;
   }
 
-  selectOption(option: string, event: Event) {
-    this.selectedOption = option;
+  selectOption(option: any, event: Event) {
+    this.selectedOption = this.displayFn ? this.displayFn(option) : option;
+    const returnValue = this.valueFn ? this.valueFn(option) : option;
     this.isOpen = false;
-    this.onChange(option); // Notify Angular Forms
-    this.onTouched(); // Mark as touched
+    this.isOpen = false;
+    this.onChange(returnValue);
+    this.onTouched();
+    this.change.emit(returnValue); // Emit event to parent component
     event.stopPropagation();
   }
 
@@ -54,13 +63,13 @@ export class CustomDropdownComponent implements ControlValueAccessor, OnInit {
   }
 
   // ControlValueAccessor methods
-  writeValue(value: string): void {
+  writeValue(value: any): void {
     if (value) {
       this.selectedOption = value;
     }
   }
 
-  registerOnChange(fn: (value: string) => void): void {
+  registerOnChange(fn: (value: any) => void): void {
     this.onChange = fn;
   }
 

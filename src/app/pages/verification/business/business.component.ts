@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { VerificationService } from '../../../shared/services/verification.service';
 import { AuthService } from '../../auth/auth.service';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Component({
   selector: 'app-business',
@@ -19,6 +20,7 @@ export class BusinessComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private toast: HotToastService,
     private verificationService: VerificationService
   ) {}
 
@@ -43,7 +45,7 @@ export class BusinessComponent implements OnInit {
        console.log(res)
       },
       error: err => {
-        console.log(err)
+       this.toast.error(err.error.Message);
       }
     })
     this.router.navigate(['/auth/verification/subscription']);
